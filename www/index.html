@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; connect-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+		<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <title>Colis Club</title>
+		
+    </head>
+    <body>
+		
+		<img src="img/logo.jpg" alt="colisclub" class="logo_cc_connexion"/> 
+		
+		<div class="clear"></div>
+	
+		<div class="form"> 
+			<!-----------------MENU---------------->
+			<ul class="tab-group">
+				<li class="tab active"><a href="#login">Connexion</a></li>
+				<li class="tab"><a href="#signup">Inscription</a></li>
+			</ul>
+			<a href="">rafraichir</a>
+			<div class="tab-content">
+			<!-----------------CONNEXION---------------->
+				<div id="login">   
+					<h1>Connexion</h1>
+
+					<form action="/" method="post">
+
+						<div class="field-wrap">
+							<label>
+								Email<span class="req">*</span>
+							</label>
+							<input type="email"required autocomplete="off"/>
+						</div>
+
+						<div class="field-wrap">
+							<label>
+								Mot de passe<span class="req">*</span>
+							</label>
+							<input type="password"required autocomplete="off"/>
+						</div>
+
+						<p class="forgot"><a href="#">Mot de passe oublié?</a></p>
+
+						<button class="button button-block"/>Connexion</button>
+					</form>
+				</div>
+			
+			<!-----------------INSCRIPTION---------------->
+			
+				<div id="signup">   
+					<h1>Inscription</h1>
+				  
+					<form action="/" method="post">
+						<!-----------------vos infos---------------->
+						<div class="top-row">
+							<div class="field-wrap">
+								<label>
+									Nom<span class="req">*</span>
+								</label>
+								<input type="text" name="nom" required />
+							</div>
+
+							<div class="field-wrap">
+								<label>
+									Prénom<span class="req">*</span>
+								</label>
+								<input type="text" name="prenom" required/>
+							</div>
+						</div>
+						
+						<div class="field-wrap">
+							<label>
+								Date de naissance<span class="req">*</span>
+							</label>
+							<input type="date" name="date_naissance" required />
+						</div>
+
+						<div class="field-wrap">
+							<label>
+								Mot de passe<span class="req">*</span>
+							</label>
+							<input type="password" name="pass" required />
+						</div>
+						
+						<div class="field-wrap">
+							<label>
+								Confirmer le Mot de passe<span class="req">*</span>
+							</label>
+							<input type="password" name="pass_confirm" required />
+						</div>
+						
+						<!-----------------contact---------------->
+						<div class="field-wrap">
+							<label>
+								Email<span class="req">*</span>
+							</label>
+							<input type="email" name="email" required />
+						</div>
+					  
+						<div class="field-wrap">
+							<label>
+								Téléphone <span class="req">*</span>
+							</label>
+							<input type="text" name="tel" required />
+						</div>
+						
+						<!-----------------adresse---------------->
+						<div class="field-wrap">
+							<label>
+								Adresse<span class="req">*</span>
+							</label>
+							<input type="text" name="adresse" required />
+						</div>
+						
+						<!-----------------Photo---------------->
+						<div class="field-wrap">
+							<div id="image-preview">
+								<input type="file" name="photo_profil" id="image-upload" />
+							</div>
+							<label for="image-upload" id="image-label">Choisir ma photo</label>
+						</div>
+						
+						<div class="clear"></div>
+						
+						<!-----------------presentation---------------->
+						<div class="field-wrap">
+							<label>
+								Présentation<span class="req">*</span>
+							</label>
+							<textarea name="presentation"></textarea>
+						</div>
+						
+						<!-----------------casier---------------->
+						<div class="field-wrap">
+							<div id="casier-preview">
+								<input type="file" name="photo_casier" id="casier-upload" />
+							</div>
+							<label for="casier-upload" id="casier-label">Extrait de mon casier</label>
+						</div>
+						
+						<div class="clear"></div>
+						
+						<!-----------------statut---------------->
+						<div class="field-wrap">
+							<p class="titre_form">Votre statut <span class="req">*</span></p>
+							
+							<div class="ligne">
+								<label class="cb_radio">Une socièté (SARL, SAS, SA, SASU, ...)</label>
+								<input class="cb_radio" type="radio" name="statut" value="societe" required />
+							</div>
+							
+							<div class="clear"></div>
+							
+							<div class="ligne_grisee">
+								<label class="cb_radio">Auto-entrepreneur</label>
+								<input class="cb_radio" type="radio" name="statut" value="autoentrepreneur" required />
+							</div>
+							
+							<div class="clear"></div>
+							
+							<div class="ligne">
+								<label class="cb_radio">Particulier</label>
+								<input class="cb_radio" type="radio" name="statut" value="particulier" required />
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+						
+						<!-----------------véhicules---------------->
+						<div class="field-wrap">
+							<p class="titre_form">Vos véhicules <span class="req">*</span></p>
+							
+							<div class="ligne">
+								<label class="cb_radio">A pied</label>
+								<input class="cb_radio" type="checkbox" name="apied"  />
+							</div>
+							
+							<div class="clear"></div>
+							
+							<div class="ligne_grisee">
+								<label class="cb_radio">Vélo</label>
+								<input class="cb_radio" type="checkbox" name="velo"  />
+							</div>
+							
+							<div class="clear"></div>
+							
+							<div class="ligne">
+								<label class="cb_radio">Scooter</label>
+								<input class="cb_radio" type="checkbox" name="scooter"  />
+							</div>
+							
+							<div class="clear"></div>
+							
+							<div class="ligne_grisee">
+								<label class="cb_radio">Moto</label>
+								<input class="cb_radio" type="checkbox" name="moto"  />
+							</div>
+							
+							<div class="clear"></div>
+							
+							<div class="ligne">
+								<label class="cb_radio">Voiture</label>
+								<input class="cb_radio" type="checkbox" name="voiture"  />
+							</div>
+							
+							<div class="clear"></div>
+							
+							<div class="ligne_grisee">
+								<label class="cb_radio">Fourgon</label>
+								<input class="cb_radio" type="checkbox" name="fourgon"  />
+							</div>
+							
+							<div class="clear"></div>
+							
+							<div class="ligne">
+								<label class="cb_radio">Camion</label>
+								<input class="cb_radio" type="checkbox" name="camion"  />
+							</div>
+						</div>
+						
+						<div class="clear"></div>
+						
+						<div class="field-wrap">
+							<label>
+								Numéro de permis<span class="req">*</span>
+							</label>
+							<input type="text" name="num_permis"/>
+						</div>
+						
+						<div class="field-wrap">
+							<div id="permis-preview">
+								<input type="file" name="photo_permis" id="permis-upload" />
+							</div>
+							<label for="permis-upload" id="permis-label">Permis de conduire</label>
+						</div>
+						
+						<div class="clear"></div>
+					  
+						<button type="submit" class="button button-block"/>S'inscrire</button>
+					</form>
+				</div>
+			</div><!-- tab-content -->
+		</div> <!-- /form -->
+		
+        <script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="jquery.avatar.js"></script> <!--source du plugin : http://www.jqueryrain.com/?1GQ9Mb3F -->
+    </body>
+</html>
