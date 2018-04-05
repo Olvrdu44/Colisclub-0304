@@ -121,7 +121,6 @@ a:hover {
   padding: 20px;
   max-width: 600px;
   margin: 0px auto;
-  border-radius: 4px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
 
@@ -158,7 +157,7 @@ a:hover {
   color: #ffffff;
 }
 
-.tab-content > div:last-child {
+.tab-content > div:nth-last-child(1), .tab-content > div:nth-last-child(2){
   display: none;
 }
 
@@ -228,6 +227,7 @@ input:focus, textarea:focus {
 textarea {
   border: 2px solid #a0b3b0;
   resize: vertical;
+  margin-top:30px
 }
 
 .field-wrap {
@@ -274,58 +274,130 @@ textarea {
 }
 
 .forgot {
-  margin-top: -20px;
+  margin-top: 0px;
   text-align: right;
 }
 /**********************************************************************/
 
 /************************IMAGE DE PROFIL CREATION DE PROFIL / CASIER / PERMIS ***************************/
-#image-preview, #casier-preview, #permis-preview {
-    width: 128px;
-    height: 128px;
-    position: relative;
-    overflow: hidden;
-    background: url(../img/photoProfil.png);
-    color: #ecf0f1;
-    border-radius: 50%;
-    float: left;
-	margin-left: calc(50% - 64px);
+.avatar{
+	width:128px;
+	height:128px;
+	border-radius:50%;
+	overflow:hidden;
+	margin-left:calc(50% - 64px);
+	float:left;
 }
-#casier-preview, #permis-preview {
+.casier, .permis{
+	width:128px;
+	height:128px;
 	border-radius:0px;
+	overflow:hidden;
+	margin-left:calc(50% - 64px);
+	float:left;
 }
-#image-preview input, #casier-preview input,  #permis-preview input {
-  line-height: 200px;
-  font-size: 200px;
-  position: absolute;
-  opacity: 0;
-  z-index: 10;
+.avatar img, .casier img, .permis img{
+	width:100%;
+	height:100%;
 }
-label#image-label, label#casier-label, label#permis-label 
-{
-    cursor: pointer;
-    width: 100%;
-    font-size: 14px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #fff;
-    margin-top: 0;
-    margin-left: 0;
-    float: left;
-    left: 0;
-    position: static;
 
+.avatar img.up, .casier img.up, .permis img.up{
+	width:150%;
+	margin-left:-25%;
 }
-label#image-label:hover, label#casier-label:hover, label#permis-label:hover {
-    background-color: #EF925F;
-	transition:1s;
+/************************      RADIO ET CHECKBOX ***************************/
+
+input.cb_radio[type="checkbox"] {
+    display:none;
 }
+
+input.cb_radio[type="checkbox"] + label.cb_radio {
+    color:#f2f2f2;
+}
+
+input.cb_radio[type="checkbox"] + label.cb_radio span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-2px 10px 0 0;
+    vertical-align:middle;
+    background:url(../img/check_radio_sheet_2.png) left top no-repeat;
+    cursor:pointer;
+}
+
+input.cb_radio[type="checkbox"]:checked + label.cb_radio span {
+    background:url(../img/check_radio_sheet_2.png) -19px top no-repeat;
+}
+
+input.cb_radio[type="radio"] {
+    display:none;
+}
+
+input.cb_radio[type="radio"] + label.cb_radio {
+    color:#f2f2f2;
+    font-family:Arial, sans-serif;
+	
+}
+
+input.cb_radio[type="radio"] + label.cb_radio span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-2px 10px 0 0;
+    vertical-align:middle;
+    background:url(../img/check_radio_sheet_2.png) -38px top no-repeat;
+    cursor:pointer;
+}
+
+input.cb_radio[type="radio"]:checked + label.cb_radio span {
+    background:url(../img/check_radio_sheet_2.png) -57px top no-repeat;
+}
+/**************************   GOOGLE AUTOCOMPLETE ***************************/
+#locationField, #controls {
+	position: relative;
+	width: 480px;
+}
+
+.label {
+	text-align: right;
+	font-weight: bold;
+	width: 100px;
+	color: #303030;
+}
+#address {
+	border: 1px solid #000090;
+	background-color: #f0f0ff;
+	width: 480px;
+	padding-right: 2px;
+}
+#address td {
+	font-size: 10pt;
+}
+.field {
+	width: 99%;
+	color:#444;
+}
+.slimField {
+	width: 80px;
+}
+.wideField {
+	width: 200px;
+}
+#locationField {
+	height: 20px;
+	margin-bottom: 2px;
+}
+
 
 /*************************** RAJOUT PERSO ***********************************/
 
 .clear{
 	clear:both;
 	width:100%
+}
+
+.cacher{
+	display:none;
 }
 
 img.logo_cc_connexion{
@@ -341,16 +413,17 @@ p.titre_form{
 	border-top: 1px solid #fff;
 	padding-top: 10px;
 	font-weight: bold;
+	margin-top: 30px;
 }
 
 label.cb_radio {
     color: rgba(255, 255, 255, 0.5);
-    pointer-events: none;
     font-size: 12px;
     float: left;
-    width: 50%;
+    width: 100%;
 	position:static;
 	line-height:1;
+	pointer-events: auto;
 }
 
 input.cb_radio{
@@ -377,3 +450,51 @@ input.cb_radio{
 .ligne_grisee{
 	background:#263139;
 }
+
+input[name='num_permis']{
+	margin-top:30px;
+}
+
+button[type="submit"]
+{
+	margin-top:30px;
+}
+
+.cacher_label{
+	opacity:0;
+}
+
+input.error{
+	border: 2px solid #c10;
+}
+
+.inscription_validee p, .pass_perdu p{
+	float:left;
+	padding:20px;
+	background:#096;
+	border:2px solid #060;
+	color:#fff;
+	width:80%;
+	margin-left:10%;
+}
+
+.indic_etoile{
+	margin-top:20px;
+}
+.indic_etoile span{
+	float:left;
+	font-size:22px;
+	color:#fff;
+	margin-top:7px;
+	margin-right:5px
+}
+
+.indic_etoile p {
+	color:#fff;;
+	float:left;
+}
+
+.info_company{
+	margin-top:20px;
+}
+

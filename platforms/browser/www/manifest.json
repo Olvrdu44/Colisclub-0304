@@ -4,7 +4,7 @@
   "name": "ColisClub",
   "short_name": "ColisClub",
   "version": "fr.rainetcom.colisclub",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "description": "L'application colis club pour les coursiers",
   "author": "Apache Cordova Team",
   "icons": [],
   "start_url": "index.html"

@@ -24,11 +24,19 @@
     },
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
-    }
-  },
-  "dependent_plugins": {
+    },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
-  }
+  },
+  "dependent_plugins": {}
 }

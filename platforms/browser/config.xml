@@ -2,9 +2,9 @@
 <widget id="fr.rainetcom.colisclub" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>ColisClub</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        L'application colis club pour les coursiers
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
+    <author email="olivier@rainetcom.fr" href="http:www.rainetcom.fr">
         Apache Cordova Team
     </author>
     <content src="index.html" />
@@ -15,4 +15,9 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <access origin="http://google.com" />
+    <access origin="https://google.com" />
+    <access origin="http://maps.google.com" />
+    <access origin="http://*.google.com" />
+    <access origin="http://www.colisclub.fr" />
 </widget>
