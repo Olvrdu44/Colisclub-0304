@@ -30,6 +30,50 @@
     <feature name="FileTransfer">
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="CordovaGoogleMaps">
+        <param name="android-package" value="plugin.google.maps.CordovaGoogleMaps" />
+        <param name="onload" value="true" />
+        <param name="onreset" value="true" />
+    </feature>
+    <feature name="Map">
+        <param name="android-package" value="plugin.google.maps.PluginMap" />
+    </feature>
+    <feature name="Polyline">
+        <param name="android-package" value="plugin.google.maps.PluginPolyline" />
+    </feature>
+    <feature name="Polygon">
+        <param name="android-package" value="plugin.google.maps.PluginPolygon" />
+    </feature>
+    <feature name="Marker">
+        <param name="android-package" value="plugin.google.maps.PluginMarker" />
+    </feature>
+    <feature name="Circle">
+        <param name="android-package" value="plugin.google.maps.PluginCircle" />
+    </feature>
+    <feature name="TileOverlay">
+        <param name="android-package" value="plugin.google.maps.PluginTileOverlay" />
+    </feature>
+    <feature name="GroundOverlay">
+        <param name="android-package" value="plugin.google.maps.PluginGroundOverlay" />
+    </feature>
+    <feature name="KmlOverlay">
+        <param name="android-package" value="plugin.google.maps.PluginKmlOverlay" />
+    </feature>
+    <feature name="Geocoder">
+        <param name="android-package" value="plugin.google.maps.PluginGeocoder" />
+    </feature>
+    <feature name="LocationService">
+        <param name="android-package" value="plugin.google.maps.PluginLocationService" />
+    </feature>
+    <feature name="Environment">
+        <param name="android-package" value="plugin.google.maps.Environment" />
+    </feature>
+    <feature name="MarkerCluster">
+        <param name="android-package" value="plugin.google.maps.PluginMarkerCluster" />
+    </feature>
     <name>ColisClub</name>
     <description>
         L'application colis club pour les coursiers
@@ -39,17 +83,20 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <access origin="http://google.com" />
+    <access origin="https://google.com" />
+    <access origin="http://maps.google.com" />
+    <access origin="http://*.google.com" />
+    <access origin="http://www.colisclub.fr" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <access origin="http://google.com" />
-    <access origin="https://google.com" />
-    <access origin="http://maps.google.com" />
-    <access origin="http://*.google.com" />
-    <access origin="http://www.colisclub.fr" />
     <allow-intent href="market:*" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="xwalkZOrderOnTop" value="true" />
+    <preference name="BackgroundColor" value="0" />
+    <preference name="android-minSdkVersion" value="19" />
 </widget>

@@ -19,6 +19,8 @@
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-file-transfer": "^1.7.1",
     "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-googlemaps": "^2.2.9",
+    "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-media": "^5.0.2",
     "cordova-plugin-media-capture": "^3.0.1",
     "cordova-plugin-network-information": "^2.0.1",
@@ -37,7 +39,8 @@
       "cordova-plugin-file": {},
       "cordova-plugin-camera": {},
       "cordova-plugin-file-transfer": {},
-      "cordova-plugin-console": {}
+      "cordova-plugin-console": {},
+      "cordova-plugin-inappbrowser": {}
     },
     "platforms": [
       "ios",

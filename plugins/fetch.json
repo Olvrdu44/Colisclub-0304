@@ -10,7 +10,7 @@
   "cordova-plugin-geolocation": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-geolocation@4.0.1"
+      "id": "cordova-plugin-geolocation@^4.0.1"
     },
     "is_top_level": true,
     "variables": {}
@@ -78,5 +78,26 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-inappbrowser": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-inappbrowser@2.0.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-googlemaps": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-googlemaps@^2.2.9"
+    },
+    "is_top_level": true,
+    "variables": {
+      "API_KEY_FOR_ANDROID": "AIzaSyDI9IqV1J3MutLrIUU4g6TACjyxzLllUb8",
+      "API_KEY_FOR_IOS": "AIzaSyDI9IqV1J3MutLrIUU4g6TACjyxzLllUb8",
+      "LOCATION_WHEN_IN_USE_DESCRITPION": "descritpion quand j utilise la geoloc",
+      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "description geoloc 2"
+    }
   }
 }

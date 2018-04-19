@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://use.fontawesome.com http://www.colisclub.fr https://maps.googleapis.com https://ssl.gstatic.com 'unsafe-inline' 'unsafe-eval'; style-src * 'self' 'unsafe-inline';  script-src * 'self' 'unsafe-inline'; media-src *; connect-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+		<link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+        <title>Colis Club</title>
+		
+    </head>
+    <body>
+	
+		<div id="interchangeable">
+		
+			<div class="espace_coursier">
+				<!--<<<<<<<<<<<<<<<   HEADER   >>>>>>>>>>>>>>>>>>>>>-->
+				<div class="menu_fix_haut">
+					<img src="img/logo.jpg" alt="colisclub"/>
+					<p class="titre_page">Mes informations</p>
+				</div>
+				
+				<div class="clear"></div>
+				
+				<!--************* MES INFORMATIONS   *********************-->
+				<div class="mes_informations">
+					<input type="hidden" name="uploadphoto"/>	
+					<div class="menu_infos">
+						<!-- header -->
+						<p class="nom_coursier">Schunemann <span>Olivier</span> </p>
+						
+						<div class="clear"></div>
+						
+						<div class="avatar">
+							<img src="img/photoProfil.png" alt="avatar"/>
+							<input type="hidden" name="avatar" />
+						</div>
+						
+						<div class="clear"></div>
+							
+						<!-- Menu du profil -->
+						
+						<div class="popup_confirm cacher">
+							<p><i class="fas fa-check"></i> Vos modifications ont bien été enregistrées</p>
+						</div>
+						
+						<div class="menu_informations">
+							<a class="go_infos">
+								<i class="fas fa-user"></i>
+								<p>Infos</p>
+							</a>
+							<a class="go_securite">
+								<i class="fas fa-lock"></i>
+								<p>Sécurité</p>
+							</a>
+							<a class="go_paiement">
+								€
+								<p>Paiements</p>
+							</a>
+							<a class="go_statut">
+								<i class="fas fa-briefcase"></i>
+								<p>Statut</p>
+							</a>
+							<a class="go_vehicules">
+								<i class="fas fa-car"></i>
+								<p>Véhicules</p>
+							</a>
+						</div>
+						<div class="clear"></div>
+					</div>
+					
+					<!-- infos -->
+					<div class="form_dejaco update_infos cacher">
+						<h1>Infos</h1>
+						<div class="form">
+							<form action="" method="post">
+								<input type="hidden" name="id_coursier" value="27"/>
+								<!-----------------vos infos---------------->
+								<div class="top-row">
+									<div class="field-wrap">
+										<label>
+											Nom<span class="req">*</span>
+										</label>
+										<input value="schunemann" type="text" name="nom" required />
+									</div>
+
+									<div class="field-wrap">
+										<label>
+											Prénom<span class="req">*</span>
+										</label>
+										<input value="olivier" type="text" name="prenom" required/>
+									</div>
+								</div>
+								<div class="field-wrap">
+									<label>
+										Date de naissance<span class="req">*</span>
+									</label>
+									<input value="1988-12-11" type="date" name="date_naissance" required />
+								</div>
+								<div class="field-wrap">
+									<label>
+										Email<span class="req">*</span>
+									</label>
+									<input value="olivier@ainetcom.fr" type="email" name="email" required />
+								</div>
+							  
+								<div class="field-wrap">
+									<label>
+										Téléphone <span class="req">*</span>
+									</label>
+									<input value="0646681935" type="text" name="tel" required />
+								</div>
+									
+								<!-----------------adresse---------------->
+								<div class="field-wrap">
+									<label>
+										Adresse<span class="req">*</span>
+									</label>
+									<input type="text" name="adresse" placeholder="" required id="autocomplete"/>
+									
+									<input type="hidden" id="street_number" ></input><!-- numero -->
+									<input type="hidden" id="route"></input><!-- rue -->
+									<input type="hidden" id="locality"></input><!-- ville -->
+									<input type="hidden" id="administrative_area_level_1" disabled="true"></input><!-- region -->
+									<input type="hidden" id="postal_code"></input><!-- Code postal -->
+									<input type="hidden" id="country"></input><!-- Pays -->
+								</div>
+								<a class="back_profil"><i class="fas fa-arrow-left"></i> retour</a>
+								<input type="submit" value="Valider">
+								<div class="clear"></div>
+							</form>
+						</div>
+					</div>
+					
+					<!-- sécurité  -->
+					
+					<div class="form_dejaco update_mdp cacher">
+						<h1>Sécurité</h1>
+						<div class="form">
+							<form action="/" method="post">
+								<div class="field-wrap">
+									<label>
+										Mot de passe actuel<span class="req">*</span>
+									</label>
+									<input type="password" name="pass" required />
+								</div>
+								<div class="field-wrap">
+									<label>
+										Nouveau MDP (6 car min)<span class="req">*</span>
+									</label>
+									<input type="password" name="new_pass" required />
+								</div>
+								
+								<div class="field-wrap">
+									<label>
+										Confirmer le MDP<span class="req">*</span>
+									</label>
+									<input type="password" name="pass_confirm" required  />
+								</div>
+								<a class="back_profil"><i class="fas fa-arrow-left"></i> retour</a>
+								<input type="submit" value="Valider">
+								<div class="clear"></div>
+							</form>
+						</div>
+					</div>
+					
+					<!-- paiement -->
+					
+					<div class="form_dejaco update_pay cacher">
+						<h1>Paiements</h1>
+						<a class="back_profil"><i class="fas fa-arrow-left"></i> retour</a>
+					</div>
+					
+					
+					<!-- statut -->
+					
+					<div class="form_dejaco update_statut cacher">
+						<h1>Statut</h1>
+						<div class="form">
+							<form action="/" method="post">
+								<div class="field-wrap">
+									<p class="titre_form">Votre statut <span class="req">*</span></p>
+									
+									<div class="ligne">
+										<input class="cb_radio" type="radio" name="statut" value="societe" required id="societe" />
+										<label class="cb_radio" for="societe"><span></span>Une socièté (SARL, SAS, SA, SASU, ...)</label>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="ligne_grisee">
+										<input class="cb_radio" type="radio" name="statut" value="autoentrepreneur" required id="auto_entrepreneur" />
+										<label class="cb_radio" for="auto_entrepreneur"><span></span>Auto-entrepreneur</label>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="ligne">
+										<input class="cb_radio" type="radio" name="statut" value="particulier" required id="Particulier" />
+										<label class="cb_radio" for="Particulier"><span></span>Particulier</label>
+									</div>
+								</div>
+								
+								<div class="clear"></div>
+								
+								<!-----------------entreprise---------------->
+								<div class="info_company cacher">
+									<div class="field-wrap">
+										<label>
+											Siret <span class="req">*</span>
+										</label>
+										<input type="text" name="siret" required />
+									</div>
+									<div class="field-wrap">
+										<label>
+											Nom de votre entreprise <span class="req">*</span>
+										</label>
+										<input type="text" name="company" required />
+									</div>
+								</div>
+								<a class="back_profil"><i class="fas fa-arrow-left"></i> retour</a>
+								<input type="submit" value="Valider">
+								<div class="clear"></div>
+							</form>
+						</div>
+					</div>
+					
+					<!-- Véhicules -->
+					
+					<div class="form_dejaco update_vehicules cacher">
+						<h1>Véhicules</h1>
+						<div class="form">
+							<form action="/" method="post">
+								<div class="field-wrap">
+									<p class="titre_form">Vos véhicules <span class="req">*</span></p>
+									
+									<div class="ligne">
+										<input class="cb_radio voirNumPermis" type="checkbox" name="apied" id="a_pied" />
+										<label class="cb_radio" for="a_pied"><span></span>A pied</label>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="ligne_grisee">
+										<input class="cb_radio voirNumPermis" type="checkbox" name="velo" id="velo" />
+										<label class="cb_radio" for="velo"><span></span>Vélo</label>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="ligne">
+										<input class="cb_radio voirNumPermis" type="checkbox" name="scooter" id="scooter"  />
+										<label class="cb_radio" for="scooter"><span></span>Scooter</label>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="ligne_grisee">
+										<input class="cb_radio voirNumPermis" type="checkbox" name="moto" id="moto" />
+										<label class="cb_radio" for="moto"><span></span>Moto</label>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="ligne">
+										<input class="cb_radio voirNumPermis" type="checkbox" name="voiture" id="voiture" />
+										<label class="cb_radio" for="voiture"><span></span>Voiture</label>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="ligne_grisee">
+										<input class="cb_radio voirNumPermis" type="checkbox" name="fourgon" id="fourgon"  />
+										<label class="cb_radio" for="fourgon"><span></span>Fourgon</label>
+									</div>
+									
+									<div class="clear"></div>
+									
+									<div class="ligne">
+										<input class="cb_radio voirNumPermis" type="checkbox" name="camion" id="camion" />
+										<label class="cb_radio" for="camion"><span></span>Camion</label>
+									</div>
+								</div>
+								
+								<div class="clear"></div>
+								
+								<div class="infoSuperPermis cacher">
+									<div class="field-wrap">
+										<label>
+											Numéro de permis <span class="req">*</span>
+										</label>
+										<input type="text" name="num_permis"/>
+									</div>
+									
+									<div class="field-wrap">
+										<p class="titre_form">Votre permis<span class="req">*</span></p>
+										<div class="permis">
+											<img src="img/photoProfil.png" alt="permis"/>
+											<input type="hidden" name="permis" />
+										</div>
+									</div>
+								</div>
+								
+								<div class="clear"></div>
+								
+								<a class="back_profil"><i class="fas fa-arrow-left"></i> retour</a>
+								<input type="submit" value="Valider">
+								<div class="clear"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				
+				<!--*************   LES COURSES DISPONIBLES     *************-->
+				<div class="courses_dispo cacher">
+					
+					<div class="entete_course_map">
+						
+						<div class="infos">
+							
+							<p class="client"> 
+								<i class="fas fa-user-circle"></i>
+								MIGNARD Lucie <br/> 
+								Rainet'Com
+							</p>
+							
+							<p class="date">
+								Le 30/03/2018 | 6:00 - 21:45 <br/>
+								Temps estimé : 53 mn
+							</p>
+							
+							<p class="prix">
+								61 kms <br/>
+								28.88 € HT
+							</p>	
+						</div>
+						
+						<div class="clear"></div>
+						
+						<p class="location">
+							<span class="depart">
+								Mignard Lucie <br/>
+								10 rue Préault 75019 PARIS 
+							</span>
+							<i class="fas fa-street-view"></i>
+							<span class="arrive">
+								Schunemann Olivier <br/>
+								65 Gr Grand Rue 75019 PARIS 
+							</span>
+						</p>
+						
+						<div class="clear"></div>
+						
+						<a>Accepter</a>
+						
+					</div>
+				
+				</div>
+				
+				<!--*************   MES LIVRAISONS   *************-->
+				
+				<div class="mes_livraisons cacher padding_20">
+					<div class="feuille_route">	
+						
+						<!-- header -->
+						<p class="nom_coursier poupoutest">Mes livraisons </p>
+						<p class="commande"><span>5</span> commandes </p>
+						
+						<div class="clear"></div>
+
+							<div class="entour_commande">
+							
+								<h3>12/04/2017 <span class="horaire">18:00 - 18:30</span><span class="poids"> > 10 Kg </span></h3>
+								
+								<p class="info">
+									<span><i class="fas fa-road"></i>55kms</span>
+									<span><i class="fas fa-stopwatch"></i>55 mins</span>
+									<span><i class="fas fa-euro-sign"></i>24.4</span>
+								</p>
+								<p>
+									<span class="qui"><i class="fas fa-user-circle"></i>Olivier Schunemann<a href="0646681935"><i class="fas fa-phone tel"></i></a></span>
+									<span class="adresse"><i class="fas fa-street-view"></i>10 allée des rameaux , 3 lotissement les oliviers, 26700 PIERRELATTE </span>
+								</p>
+								<p>
+									<span class="qui"><i class="fas fa-user-circle"></i>Lucie Mignard<a href="0646681935"><i class="fas fa-phone tel"></i></a></span>
+									<span class="adresse"><i class="fas fa-map-marker-alt"></i> 10 allée des rameaux , 3 lotissement les oliviers, 26700 PIERRELATTE</span>
+								 </p>
+								
+								<a class="valide_etape_code btn">Enlevé</a> <!--Go/enlevé/livré-->
+							</div>
+
+						<div class="popup popup_code cacher">
+							<i class="fas fa-times close"></i>
+							<p>Entrer le code renseigné par le client : </p>
+							<form action="" method="post">
+								<input type="text" name="code"/>
+								<input type="submit" value="Valider"/>
+							</form>
+						</div>
+					
+					</div> 
+				</div>
+
+				<!--<<<<<<<<<<<<<<<   MENU   >>>>>>>>>>>>>>>>>>>>>-->
+				<div class="menu_fix_bas">
+					<a class="go_map"><i class="fas fa-map"></i></a>
+					<a class="go_livraison"><i class="fas fa-cubes"></i></a>
+					
+					<a class="go_profil selected"><i class="fas fa-user-circle"></i></a>
+					<label class="switch">
+						<input class="switch__input" type="checkbox" />
+						<div class="switch__checkbox"></div>
+						<span class="switch__text">Dispo</span>
+					</label>
+				</div>
+				
+			</div>
+		</div>
+		
+        <script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI9IqV1J3MutLrIUU4g6TACjyxzLllUb8&libraries=places&callback=initAutocomplete"
+        async defer></script>
+    </body>
+</html>

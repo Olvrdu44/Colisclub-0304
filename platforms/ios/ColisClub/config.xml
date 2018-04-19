@@ -44,6 +44,9 @@
     <feature name="FileTransfer">
         <param name="ios-package" value="CDVFileTransfer" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>
     <name>ColisClub</name>
     <description>
         L'application colis club pour les coursiers
@@ -53,17 +56,17 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <access origin="http://google.com" />
+    <access origin="https://google.com" />
+    <access origin="http://maps.google.com" />
+    <access origin="http://*.google.com" />
+    <access origin="http://www.colisclub.fr" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <access origin="http://google.com" />
-    <access origin="https://google.com" />
-    <access origin="http://maps.google.com" />
-    <access origin="http://*.google.com" />
-    <access origin="http://www.colisclub.fr" />
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <preference name="AllowInlineMediaPlayback" value="false" />

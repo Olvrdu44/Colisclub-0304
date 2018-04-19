@@ -18,6 +18,15 @@
     },
     "cordova-plugin-console": {
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
   },
   "dependent_plugins": {}

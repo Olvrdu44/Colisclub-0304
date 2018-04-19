@@ -31,6 +31,7 @@ body {
     padding:0px;
     text-transform:uppercase;
     width:100%;
+	background:#1fb5ac;
 }
 
 /* Portrait layout (default) */
@@ -178,7 +179,7 @@ label {
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
   pointer-events: none;
-  font-size: 14px;
+  font-size: 12px;
   line-height:2;
 }
 label .req {
@@ -190,7 +191,7 @@ label.active {
   -webkit-transform: translateY(50px);
           transform: translateY(50px);
   left: 2px;
-  font-size: 14px;
+  font-size: 12px;
 }
 label.active .req {
   opacity: 0;
@@ -389,7 +390,7 @@ input.cb_radio[type="radio"]:checked + label.cb_radio span {
 }
 
 
-/*************************** RAJOUT PERSO ***********************************/
+/*************************** RAJOUT PERSO CONNEXION/INSCRIPTION ***********************************/
 
 .clear{
 	clear:both;
@@ -498,3 +499,486 @@ input.error{
 	margin-top:20px;
 }
 
+/*************************** RAJOUT PERSO ESPACE COURSIER ***********************************/
+
+.espace_coursier{
+  	max-width: 600px;
+  	margin: 0px auto;
+  	/*box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);*/
+	padding-top:50px;
+	padding-bottom:100px;
+}
+
+.menu_informations{
+	width:100%;
+	float:left;
+}
+
+.go_infos, .go_securite, .go_paiement, .go_statut, .go_vehicules{
+	width:45%;
+	margin-left:2.5%;
+	margin-right:2.5%;
+	float:left;
+	color:#fff;
+	text-align:center;
+	min-height:50px;
+	line-height:2;
+	font-size:28px;
+	margin-top:20px;
+}
+
+.go_infos p, .go_securite p, .go_paiement p, .go_statut p, .go_vehicules p{
+	font-size:14px;
+	margin:0;
+	font-weight:bold;
+}
+.go_infos:hover, .go_securite:hover, .go_paiement:hover, .go_statut:hover, .go_vehicules:hover{
+	color:#fff;
+}
+
+.go_infos{
+	background:#e12444;
+}
+
+.go_securite{
+	background:#1fb538;
+}
+
+.go_paiement{
+	background:#e0c124;
+}
+
+.go_statut{
+	background:#152056;
+}
+
+.go_vehicules{
+	background:#444;
+}
+.menu_fix_bas{
+	position:fixed;
+	bottom:0;
+	width:100%;
+}
+.menu_fix_haut {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    max-width: 600px;
+    margin-left: 0px;
+	min-height:30px;
+	background:#fff;
+	padding-top:20px;
+}
+
+.menu_fix_haut img{
+	float:left;
+	width:50px;
+	margin-left:20px;
+}
+
+.menu_fix_haut p{
+	float:left;
+	width: calc(100% - 140px);
+	text-align:center;
+	color:#1fb5ac;
+	font-weight:bold;
+	line-height:2;
+}
+
+.nom_coursier{
+	color:#FFF;
+	width:100%;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+}
+
+.menu_fix_bas{
+	position:fixed;
+	bottom:0;
+	max-width:600px;
+	width:100%;
+	left:0;
+	background:#e16e28;
+	min-height:50px;
+}
+
+.go_profil, .go_planning, .go_map, .go_livraison{
+	float:left;
+	width:23%;
+	margin-left:1%;
+	margin-right:1%;
+	color:#fff;
+	text-align:center;
+	font-size:28px;
+	line-height:2;
+}
+
+.menu_fix_bas .selected{
+	color:#444;
+}
+
+.form_dejaco h1{
+	color:#444;
+	margin-top:20px;
+}
+
+.form_dejaco input{
+	font-size:12px;
+}
+
+.form_dejaco .back_profil{
+	float:left;
+	width:100px;
+	padding:5px;
+	background:#444;
+	border:0;	
+	color:#fff;
+	font-size:16px;
+}
+
+.form_dejaco input[type='submit']{
+	-webkit-appearance: none;
+	background:none;
+	float:right;
+	width:100px;
+	color:#fff;
+	padding:5px;
+	background:#1fb5ac;	
+	border:0;
+	margin-top:0;
+	font-size:16px;
+	cursor:pointer;
+	border-radius:0px;
+	
+}
+
+.popup_confirm{
+	background:#0C6;
+	border:1px solid #060;
+	color:#fff;
+	margin-top:10px;
+}
+
+.popup_confirm p{
+	padding:5px;
+	font-weight:bold;
+	font-size:12px;
+	text-align:center;
+}
+
+.popup_confirm p i{
+	font-size:20px;
+}
+
+/********************BOUTON ON/OFF ***************/
+label.switch {
+  align-items: center;
+  display: flex;
+  pointer-events:auto;
+  position:static;
+  float: left;
+	width: 23%;
+	margin: 0px 1%;
+	margin-top:-15px;
+}
+
+.switch__input {
+  display: none;
+}
+.switch__input:checked + .switch__checkbox {
+  background-color: #1fb5ac;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.21);
+}
+.switch__input:checked + .switch__checkbox::before {
+  transform: scale(0);
+}
+.switch__input:checked + .switch__checkbox::after {
+  left: 20px;
+}
+
+.switch__checkbox {
+  background-color: #dedede;
+  border-radius: 40px;
+  cursor: pointer;
+  height: 20px;
+  position: relative;
+  transition: all 300ms ease;
+  width: 40px;
+}
+.switch__checkbox::before, .switch__checkbox::after {
+  content: '';
+  bottom: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 300ms ease;
+}
+.switch__checkbox::before {
+  background-color: #fff;
+  box-shadow: none;
+  border-radius: inherit;
+  right: 0;
+  transform: scale(1);
+  margin: 2px;
+}
+.switch__checkbox::after {
+  background-color: #fff;
+  border: 0 solid #dedede;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  height: 20px;
+  margin-bottom: auto;
+  margin-top: auto;
+  position: absolute;
+  margin: auto 0;
+  width: 20px;
+}
+
+.switch__text {
+  margin-top: 40px;
+  margin-left: -40px;
+  color:#fff;
+}
+
+/*** FEUILLE DE ROUTE *****/
+
+.feuille_route p.commande {
+	text-align:center;
+	color:#fff;
+	font-weight:bold;
+}
+.feuille_route .entour_commande {
+	width: calc(100% + 40px);
+	background:rgba(255, 255, 255, 0.2);
+	margin-left: -20px;	
+	border-bottom:1px solid rgba(255, 255, 255, 0.2);
+	float: left;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.feuille_route .entour_commande h3 {
+	text-transform: none;
+	font-size: 11px;
+	width: 100%;
+	text-align: center;	
+	background: rgba(0, 0, 0, 0.5);	
+	color: #fff;	
+	margin-top: 0;
+	padding: 5px 0;
+}
+.feuille_route .entour_commande p {
+	text-transform: none;
+	font-size: 13px;
+	color: #fff;
+	margin: 0;
+	width: calc(100% - 20px);
+	float: left;
+	margin-left: 10px;
+	margin-bottom:10px;
+}
+.feuille_route .entour_commande span.poids {
+	padding: 3px 10px;
+	background: #e0c124;
+	border-radius: 4px;
+	float: left;
+	margin-top: -2.5px;
+	margin-left:10px;
+}
+.feuille_route .entour_commande p i {
+	width: 25px;
+	color: #1fb5ac;
+	font-size: 20px;
+	margin-top: 5px;
+	text-align: center;
+}
+.feuille_route .entour_commande p i.tel {
+	color:#e16c26;
+	font-size:16px;
+}
+.feuille_route .entour_commande p span.qui{
+	width:100%;
+	float:left;
+	text-align:center;
+}
+.feuille_route .entour_commande a.btn {
+    float: left;
+    width: 80%;
+    margin-left: 10%;
+    text-transform: none;
+    background: #e16c26;
+    color: #fff;
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 13px;
+	margin-bottom:10px;
+	font-weight:bold;
+}
+.feuille_route .entour_commande p.info{
+	float:left;
+	width:100%;
+	text-align:center;
+	margin-left:0;
+}
+.feuille_route .entour_commande p.info i{
+	color:#444;
+}
+.feuille_route .entour_commande p.info span{
+	margin:0px 5px;
+}
+.feuille_route .entour_commande p span.adresse{
+	float:left;
+	width:100%;
+	text-align:center;
+}
+.feuille_route .popup {
+	position: fixed;
+	top: 52px;
+	left: 0;	
+	width: 100%;	
+	height: 100%;	
+	background: rgba(19, 35, 47, 0.9);
+}
+.feuille_route .popup p {
+	font-size: 12px;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	margin-top: 50px;
+	font-weight: bold;
+}
+.feuille_route .popup input[type=text] {
+	width:60%;
+	height:35px;
+	margin-left:20%;
+}
+.feuille_route .popup input[type=submit] {
+	width: 60%;
+	height: 35px;
+	margin-left: 20%;	
+	background: #1fb5ac;	
+	color: #fff;	
+	text-align: center;	
+	margin-top: 20px;	
+	border-color: #1fb5ac;	
+	font-size: 16px;
+	-webkit-appearance: none;
+	
+}
+.feuille_route .popup i.close {
+	position:absolute;
+	top:0;
+	right:0;
+	padding:10px;
+	color:rgba(255, 255, 255, 0.5);
+	font-size:18px;
+}
+.courses_dispo .entete_course_map {
+	width: 100%;
+	margin-left: 0;
+	background: #444;
+	float: left;
+	margin-top: 20px;
+}
+.courses_dispo .entete_course_map p {
+	text-transform:none;
+	float:left;
+	font-size:12px;
+	color:#fff;
+	line-height: 12px;
+	margin-bottom:0;
+	margin-top:5px;
+	width: 100%;
+	text-align: center;
+}
+.courses_dispo .entete_course_map p i{
+	color:#e16c26;
+	font-size:16px;
+}
+.courses_dispo .entete_course_map .infos p.client {
+	text-align: center;
+	border-bottom: 1px solid #555;
+	width:100%;
+	padding-bottom:5px;
+}
+.courses_dispo .entete_course_map .infos p.client i {
+	font-size: 16px;
+	margin-right: 5px;
+	margin-top: 4px;
+	color:#e16c26;
+}
+.courses_dispo .entete_course_map .infos {
+	float: left;
+	width: 100%;
+	margin-left: 0;
+}
+
+
+.courses_dispo .entete_course_map .infos p.prix {
+    margin-top: 7px;
+    margin-bottom: 0;
+    background: #e0c124;
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 12px;
+    text-align: center;
+    width: 100px;
+    margin-left: calc(50% - 50px);
+    font-weight: bold;
+    line-height: 1.4;
+}
+.courses_dispo .entete_course_map p.location {
+	width:calc(100% - 20px);
+	margin-left:10px;
+}
+.courses_dispo .entete_course_map p.location span.depart {
+	float:left;
+	text-align:center;
+	width:100%;
+}
+.courses_dispo .entete_course_map p.location span.arrive {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.courses_dispo .entete_course_map p.location i {
+	float: left;
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+	color:#e16c26;
+	margin:5px 0px;
+}
+.courses_dispo .entete_course_map a {
+    width: 90%;
+    text-align: center;
+    background: #e16e28;
+    color: #fff;
+    float: left;
+    margin-top: 10px;
+    padding: 12px 0;
+    margin-left: 5%;
+    margin-bottom: 10px;
+}
+
+span.horaire{
+	color:#e16c26;
+	margin-left:10px
+}
+
+.logo_connec{
+	float:left;
+	width:100%;
+	background:#fff;
+	margin-top:20px;
+}
+
+span.colororange{
+	color:#e16c26;
+	
+}
+
+.padding_20{
+	padding:20px;
+}

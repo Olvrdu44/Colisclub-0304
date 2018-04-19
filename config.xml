@@ -1,44 +1,55 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="fr.rainetcom.colisclub" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ColisClub</name>
-    <description>
+  <name>ColisClub</name>
+  <description>
         L'application colis club pour les coursiers
     </description>
-    <author email="olivier@rainetcom.fr" href="http:www.rainetcom.fr">
+  <author email="olivier@rainetcom.fr" href="http:www.rainetcom.fr">
         Apache Cordova Team
     </author>
-    <content src="index.html" />
-    <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
-    <platform name="android">
-        <allow-intent href="market:*" />
-    </platform>
-    <platform name="ios">
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
-    </platform>
-    <engine name="ios" spec="^4.5.4" />
-    <engine name="android" spec="^7.0.0" />
-    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
-		<access origin="http://google.com" />
-		<access origin="https://google.com" />
-		<access origin="http://maps.google.com" />
-		<access origin="http://*.google.com" />
-		<access origin="http://www.colisclub.fr" />
-    <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
-    <plugin name="cordova-plugin-media" spec="^5.0.2">
-        <variable name="KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE" value="NO" />
-    </plugin>
-    <plugin name="cordova-plugin-media-capture" spec="^3.0.1" />
-    <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
-    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
-    <plugin name="cordova-plugin-file" spec="^6.0.1" />
-    <plugin name="cordova-plugin-camera" spec="^4.0.2" />
-    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
-    <plugin name="cordova-plugin-console" spec="^1.1.0" />
+  <content src="index.html"/>
+  <access origin="*"/>
+  <access origin="http://google.com"/>
+  <access origin="https://google.com"/>
+  <access origin="http://maps.google.com"/>
+  <access origin="http://*.google.com"/>
+  <access origin="http://www.colisclub.fr"/>
+  <allow-intent href="http://*/*"/>
+  <allow-intent href="https://*/*"/>
+  <allow-intent href="tel:*"/>
+  <allow-intent href="sms:*"/>
+  <allow-intent href="mailto:*"/>
+  <allow-intent href="geo:*"/>
+  <platform name="android">
+    <allow-intent href="market:*"/>
+  </platform>
+  <platform name="ios">
+    <allow-intent href="itms:*"/>
+    <allow-intent href="itms-apps:*"/>
+  </platform>
+  <engine name="ios" spec="^4.5.4"/>
+  <engine name="android" spec="^7.0.0"/>
+  <plugin name="cordova-plugin-whitelist" spec="^1.3.3"/>
+  <plugin name="cordova-plugin-media" spec="^5.0.2">
+    <variable name="KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE" value="NO"/>
+  </plugin>
+  <plugin name="cordova-plugin-media-capture" spec="^3.0.1"/>
+  <plugin name="cordova-plugin-dialogs" spec="^2.0.1"/>
+  <plugin name="cordova-plugin-network-information" spec="^2.0.1"/>
+  <plugin name="cordova-plugin-file" spec="^6.0.1"/>
+  <plugin name="cordova-plugin-camera" spec="^4.0.2"/>
+  <plugin name="cordova-plugin-file-transfer" spec="^1.7.1"/>
+  <plugin name="cordova-plugin-console" spec="^1.1.0"/>
+  <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2"/>
+    <plugin name="cordova-plugin-googlemaps" spec="^2.2.9">
+    <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDI9IqV1J3MutLrIUU4g6TACjyxzLllUb8" />
+    <variable name="API_KEY_FOR_IOS" value="AIzaSyDI9IqV1J3MutLrIUU4g6TACjyxzLllUb8" />
+
+    <!-- these are optional settings -->
+    <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+    <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.0" />
+    <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="(your custom message)" />
+    <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="(your custom message)" />
+  </plugin>
+
 </widget>

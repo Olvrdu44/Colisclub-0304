@@ -36,6 +36,15 @@
     },
     "cordova-plugin-console": {
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-plugin-googlemaps": {
+      "API_KEY_FOR_ANDROID": "AIzaSyDI9IqV1J3MutLrIUU4g6TACjyxzLllUb8",
+      "PLAY_SERVICES_VERSION": "12.0.0",
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.0",
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
   },
   "dependent_plugins": {}

@@ -9,15 +9,15 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <access origin="http://google.com" />
+    <access origin="https://google.com" />
+    <access origin="http://maps.google.com" />
+    <access origin="http://*.google.com" />
+    <access origin="http://www.colisclub.fr" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <access origin="http://google.com" />
-    <access origin="https://google.com" />
-    <access origin="http://maps.google.com" />
-    <access origin="http://*.google.com" />
-    <access origin="http://www.colisclub.fr" />
 </widget>
