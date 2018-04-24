@@ -19,85 +19,60 @@
     <script >
     document.addEventListener("deviceready", function() 
 	{
-		var Latitude = undefined;
-		var Longitude = undefined;
+		// Get the current device location "without map"
+		var option = {
+			maximumAge: 3000,
+			timeout: 5000,
+		  enableHighAccuracy: true // use GPS as much as possible
+		};
+		plugin.google.maps.LocationService.getMyLocation(option, function(location) 
+		{
+			// Create a map with the device location
+			var mapDiv = document.getElementById('map_canvas');
+			var map = plugin.google.maps.Map.getMap(mapDiv, 
+			{
+				'camera': 
+				{
+					target: location.latLng,
+					zoom: 16
+				}
+			  });
 
-		// Get geo coordinates
+			map.addEventListener(plugin.google.maps.event.MAP_READY, function() 
+			{
+				// Add a marker
+				var text = ["Current your location:\n",
+				"latitude:" + location.latLng.lat.toFixed(3),
+				"longitude:" + location.latLng.lng.toFixed(3),
+				"speed:" + location.speed,
+				"time:" + location.time,
+				"bearing:" + location.bearing].join("\n");
 
-		function getMapLocation() {
-
-			navigator.geolocation.getCurrentPosition
-			(onMapSuccess, onMapError, { enableHighAccuracy: true });
-		}
-
-		// Success callback for get geo coordinates
-
-		var onMapSuccess = function (position) {
-
-			Latitude = position.coords.latitude;
-			Longitude = position.coords.longitude;
-
-			getMap(Latitude, Longitude);
-
-		}
-
-		// Get map by using coordinates
-
-		function getMap(latitude, longitude) {
-
-			var mapOptions = {
-				center: new google.maps.LatLng(0, 0),
-				zoom: 1,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
-
-			map = new google.maps.Map
-			(document.getElementById("map"), mapOptions);
-
-
-			var latLong = new google.maps.LatLng(latitude, longitude);
-
-			var marker = new google.maps.Marker({
-				position: latLong
+				var marker = map.addMarker(
+				{
+					title: text,
+					position: location.latLng
+				}, function(marker) 
+				{
+				  marker.showInfoWindow();
+				});
 			});
-
-			marker.setMap(map);
-			map.setZoom(15);
-			map.setCenter(marker.getPosition());
+		});
+		function onSuccess(position) {
+			alert('on change de position');
 		}
 
-		// Success callback for watching your changing position
-
-		var onMapWatchSuccess = function (position) {
-
-			var updatedLatitude = position.coords.latitude;
-			var updatedLongitude = position.coords.longitude;
-
-			if (updatedLatitude != Latitude && updatedLongitude != Longitude) {
-
-				Latitude = updatedLatitude;
-				Longitude = updatedLongitude;
-
-				getMap(updatedLatitude, updatedLongitude);
-			}
+		// onError Callback receives a PositionError object
+		//
+		function onError(error) {
+			alert('code: '    + error.code    + '\n' +
+				  'message: ' + error.message + '\n');
 		}
 
-		// Error callback
-
-		function onMapError(error) {
-			console.log('code: ' + error.code + '\n' +
-				'message: ' + error.message + '\n');
-		}
-
-		// Watch your changing position
-
-		function watchMapPosition() {
-
-			return navigator.geolocation.watchPosition
-			(onMapWatchSuccess, onMapError, { enableHighAccuracy: true });
-		}
+		// Options: throw an error if no update is received every 30 seconds.
+		//
+		var watchID = navigator.geolocation.watchPosition(onSuccess, onError, option);
 		
-		getMapLocation();
 	});
 	
 	
@@ -111,7 +86,6 @@
     </div>
 	
 	<script type="text/javascript" src="jquery.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI9IqV1J3MutLrIUU4g6TACjyxzLllUb8"></script>
 
 </body>
 
