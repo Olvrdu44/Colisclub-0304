@@ -17,25 +17,35 @@
     }
     </style>
     <script >
-    document.addEventListener("deviceready", function() {
+    document.addEventListener("deviceready", function() 
+	{
 		
-      var map = plugin.google.maps.Map.getMap(document.getElementById("map_canvas"));
+		const GOOGLE = {"lat": 44.17444, "lng": 5.1320499};
+		var map = plugin.google.maps.Map.getMap(document.getElementById("map_canvas"),
+		{
+			'camera':
+			{
+				'latLng': GOOGLE,
+				'zoom':17,
+			}
+		});
 	  
-	  map.addMarker ({
-		  position: {lat: 44.17444, lng: 5.1320499},
-		  title: "Bonjour Cordova Google Maps pour iOS et Android",
-		  extrait: "Ce plugin est génial!"
-		}, function (marker) {});
+		// You have to wait the MAP_READY event.
+		map.one(plugin.google.maps.event.MAP_READY, onMapInit);
 	  
-	  <!-- plugin.google.maps.LocationService.getMyLocation (function (result) { -->
-		  <!-- alert (["Votre emplacement actuel: \ n", -->
-			  <!-- "latitude:" + location.latLng.lat.toFixed (3), -->
-			  <!-- "longitude:" + location.latLng.lng.toFixed (3), -->
-			  <!-- "speed:" + location.speed, -->
-			  <!-- "time:" + location.time, -->
-			  <!-- "portant:" + location.bearing] .join ("\ n")); -->
-		<!-- }); -->
-    });
+		function onMapInit(map) 
+		{
+			// Add a marker
+			map.addMarker({
+				'position': GOOGLE,
+				'title': "Hello GoogleMap for Cordova!"
+			}, function(marker) 
+			{
+				// Show the infoWindow
+				marker.showInfoWindow();
+			});
+		}
+	});
     </script>
 </head>
 
