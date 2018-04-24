@@ -18,12 +18,14 @@
     </style>
     <script >
     document.addEventListener("deviceready", function() {
-		map.addMarker ({
+		
+      var map = plugin.google.maps.Map.getMap(document.getElementById("map_canvas"));
+	  
+	  map.addMarker ({
 		  position: {lat: 44.17444, lng: 5.1320499},
 		  title: "Bonjour Cordova Google Maps pour iOS et Android",
 		  extrait: "Ce plugin est génial!"
-		}, fonction (marqueur) {...})
-      var map = plugin.google.maps.Map.getMap(document.getElementById("map_canvas", options));
+		}, function (marker) {});
 	  
 	  <!-- plugin.google.maps.LocationService.getMyLocation (function (result) { -->
 		  <!-- alert (["Votre emplacement actuel: \ n", -->
