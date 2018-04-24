@@ -21,6 +21,8 @@
 	{
 		// Get the current device location "without map"
 		var option = {
+			maximumAge: 3000,
+			timeout: 5000,
 		  enableHighAccuracy: true // use GPS as much as possible
 		};
 		plugin.google.maps.LocationService.getMyLocation(option, function(location) 
@@ -56,16 +58,16 @@
 				  marker.showInfoWindow();
 				});
 				
-				refreshmylocation();
+				<!-- refreshmylocation(); -->
 				
-				function refreshmylocation()
-				{
-					setTimeout(function(){
-					marker.remove();
-					}, 10000);
+				<!-- function refreshmylocation() -->
+				<!-- { -->
+					<!-- setTimeout(function(){ -->
+					<!-- marker.remove(); -->
+					<!-- }, 10000); -->
 					
-					refreshmylocation();
-				}
+					<!-- refreshmylocation(); -->
+				<!-- } -->
 			});
 		});
 		
