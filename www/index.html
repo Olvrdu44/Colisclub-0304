@@ -57,19 +57,20 @@
 				});
 				
 				refreshmylocation();
+				
+				function refreshmylocation()
+				{
+					setTimeout(function(){
+					marker.remove();
+					}, 10000);
+					
+					refreshmylocation();
+				}
 			});
 		});
 		
 	});
-	function refreshmylocation()
-	{
-		setTimeout(function(){
-		alert("Boom!");
-		marker.remove();
-		}, 2000);
-		
-		refreshmylocation();
-	}
+	
 	
     </script>
 </head>
