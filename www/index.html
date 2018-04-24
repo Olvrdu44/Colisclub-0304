@@ -47,7 +47,7 @@
 				"time:" + location.time,
 				"bearing:" + location.bearing].join("\n");
 
-				map.addMarker(
+				var marker = map.addMarker(
 				{
 					title: text,
 					position: location.latLng
@@ -55,6 +55,7 @@
 				{
 				  marker.showInfoWindow();
 				});
+				
 				refreshmylocation();
 			});
 		});
