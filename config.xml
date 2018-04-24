@@ -38,7 +38,7 @@
   <platform name="ios">
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
-	  <icon height="57" platform="ios" src="=res/icon/ios/icon-57.png" width="57" />
+		<icon height="57" platform="ios" src="res/icon/ios/icon-57.png" width="57" />
         <icon height="114" platform="ios" src="res/icon/ios/icon-57-2x.png" width="114" />
         <icon height="72" platform="ios" src="res/icon/ios/icon-72.png" width="72" />
         <icon height="144" platform="ios" src="res/icon/ios/icon-72-2x.png" width="144" />
