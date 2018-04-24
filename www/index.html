@@ -58,9 +58,15 @@
 			});
 		});
 	});
-	setTimeout(function(){
-	  alert("Boom!");
-	}, 2000);
+	function refreshmylocation()
+	{
+		setTimeout(function(){
+		alert("Boom!");
+		marker.remove();
+		}, 2000);
+		
+		refreshmylocation();
+	}
 	
     </script>
 </head>
