@@ -18,7 +18,21 @@
     </style>
     <script >
     document.addEventListener("deviceready", function() {
-      var map = plugin.google.maps.Map.getMap(document.getElementById("map_canvas"));
+		map.addMarker ({
+		  position: {lat: ..., lng: ...},
+		  title: "Bonjour Cordova Google Maps pour iOS et Android",
+		  extrait: "Ce plugin est génial!"
+		}, fonction (marqueur) {...})
+      var map = plugin.google.maps.Map.getMap(document.getElementById("map_canvas", options));
+	  
+	  plugin.google.maps.LocationService.getMyLocation (function (result) {
+		  alert (["Votre emplacement actuel: \ n",
+			  "latitude:" + location.latLng.lat.toFixed (3),
+			  "longitude:" + location.latLng.lng.toFixed (3),
+			  "speed:" + location.speed,
+			  "time:" + location.time,
+			  "portant:" + location.bearing] .join ("\ n"));
+		});
     });
     </script>
 </head>
