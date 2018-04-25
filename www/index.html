@@ -98,7 +98,9 @@
 					dataType : 'html',
 					success: function (html) 
 					{
-						<!-- alert('ca marche' + html); -->
+						$("input[name='old_longitude']").val(lat);
+						$("input[name='old_longitude']").val(longi);
+						alert("valeur longitude input old:" + $("input[name='old_longitude']").val() );
 					},
 					error: function(resultat, statut, erreur) 
 					{
@@ -106,8 +108,7 @@
 					}
 				});
 				
-				$("input[name='old_longitude']").val(lat);
-				$("input[name='old_longitude']").val(longi);
+				
 			}	
 		}
 
