@@ -63,8 +63,8 @@
 			var lat = position.coords.latitude;//latitude actuelle
 			var longi = position.coords.longitude;//longitude actuelle
 			
-			var old_lat = parsefloat( $("input[name='old_latitude']").val() ); //derniere latitude enregistrée
-			var old_longi = parsefloat( $("input[name='old_longitude']").val() );//derniere longitude enregistrée
+			var old_lat = parseFloat( $("input[name='old_latitude']").val() ); //derniere latitude enregistrée
+			var old_longi = parseFloat( $("input[name='old_longitude']").val() );//derniere longitude enregistrée
 			
 			//pour avoir un nombre positif on verifie qui est superieur a qui
 			if(old_lat > lat)
