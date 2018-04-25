@@ -21,9 +21,9 @@
 	{
 		// Get the current device location "without map"
 		var option = {
-			maximumAge: 50000,
-			timeout: 50000,
-		  enableHighAccuracy: true // use GPS as much as possible
+			maximumAge: 3000,
+			timeout: 5000,
+			enableHighAccuracy: true // use GPS as much as possible
 		};
 		plugin.google.maps.LocationService.getMyLocation(option, function(location) 
 		{
@@ -87,7 +87,7 @@
 			
 			alert("old_lat: " + old_lat + " - lat: " + lat + " - dif_lat: " + dif_lat + " | old_longi: " + old_longi + " - longi: " + longi + " - dif_longi: " + dif_longi);
 			//si on a demarre juste l'appli (on a rien dans old_lat) ou si l ecart est > a 0.005 en longi ou en lati
-			if( old_lat == '' && old_longi == '' || dif_lat > 0.005 || dif_longi > 0.005)
+			if( old_lat == 0 && old_longi == 0 || dif_lat > 0.005 || dif_longi > 0.005)
 			{
 				alert("on rentre dans la condition");
 				$.ajax({
