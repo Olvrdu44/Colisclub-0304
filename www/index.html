@@ -56,15 +56,17 @@
 				{
 				  marker.showInfoWindow();
 				});
-				var watchID = navigator.geolocation.watchPosition(onSuccess, onError, option);
+				
+				retourneMaPosition();
+				
 			});
 			
 			
 		});
 		function onSuccess(position) 
 		{
-			var lat = precisionRound(position.coords.latitude, 5);//latitude actuelle
-			var longi = precisionRound(position.coords.longitude, 5 );//longitude actuelle
+			var lat = position.coords.latitude;//latitude actuelle
+			var longi = position.coords.longitude;//longitude actuelle
 			
 			alert("lat: " + lat + " - longi: " + longi);
 			
@@ -95,11 +97,16 @@
 		{
 			//pour l'alert de cordova (obligatoire d avoir une fonction mais rien a y faire perso :) )
 		}
-		function precisionRound(number, precision) 
+		
+		function retourneMaPosition()
 		{
-			var factor = Math.pow(10, precision);
-			return Math.round(number * factor) / factor;
+			setTimeout(function(){
+				  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+				}, 2000);
+				
+				retourneMaPosition();
 		}
+		
 
 		// Options: throw an error if no update is received every 30 seconds.
 		//
