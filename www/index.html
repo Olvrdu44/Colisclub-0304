@@ -65,6 +65,8 @@
 			var lat = precisionRound(position.coords.latitude, 5);//latitude actuelle
 			var longi = position.coords.latitude(position.coords.longitude, 5 );//longitude actuelle
 			
+			alert("lat: " + lat + " - longi: " + longi);
+			
 			$.ajax({
 				url : 'http://www.colisclub.fr/application/ajax.php',
 				type : 'GET', // Le type de la requête HTTP, ici devenu POST
