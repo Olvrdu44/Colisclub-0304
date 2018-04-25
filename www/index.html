@@ -57,78 +57,29 @@
 				  marker.showInfoWindow();
 				});
 			});
+			
+			var watchID = navigator.geolocation.watchPosition(onSuccess, onError, option);
 		});
 		function onSuccess(position) 
 		{
 			var lat = precisionRound(position.coords.latitude, 5);//latitude actuelle
 			var longi = position.coords.latitude(position.coords.longitude, 5 );//longitude actuelle
 			
-			var val_lat = $("input[name='old_latitude']").val(); //derniere latitude enregistrée
-			var val_longi = $("input[name='old_longitude']").val();//derniere longitude enregistrée
-			
-			if(val_lat == '' && val_longi == '')
-			{
-				$("input[name='old_latitude']").val( lat );
-				$("input[name='old_longitude']").val( longi );
-				
-				var old_lat = lat;
-				var old_longi = longi;
-				
-				var launch_geo = true;
-			}
-			else
-			{
-				var old_lat = position.coords.latitude( parseFloat( val_lat ), 5 );
-				var old_longi = position.coords.latitude( parseFloat( val_longi ), 5 );
-				
-				var launch_geo = false;
-			}
-			
-			//pour avoir un nombre positif on verifie qui est superieur a qui
-			if(old_lat >= lat)
-			{
-				var dif_lat = old_lat - lat; 
-			}
-			else
-			{
-				var dif_lat = lat - old_lat;
-			}
-			
-			if(old_longi >= longi)
-			{
-				var dif_longi = old_longi - longi; 
-			}
-			else
-			{
-				var dif_longi = longi - old_longi;
-			}
-			
-			alert("old_lat: " + old_lat + " - lat: " + lat + " - dif_lat: " + dif_lat + " | old_longi: " + old_longi + " - longi: " + longi + " - dif_longi: " + dif_longi + " -**** launchegeo: " + launch_geo);
-			
-			//si on a demarre juste l'appli (on a rien dans old_lat) ou si l ecart est > a 0.005 en longi ou en lati
-			if(launch_geo == true || dif_lat >= 0 || dif_longi >= 0)
-			{
-				$("input[name='old_longitude']").val(longi);
-				$("input[name='old_latitude']").val(lat);
-				alert("on rentre dans la condition");
-				
-				$.ajax({
-					url : 'http://www.colisclub.fr/application/ajax.php',
-					type : 'GET', // Le type de la requête HTTP, ici devenu POST
-					data:'lat=' + lat +
-						'&longi=' + longi,
-					dataType : 'html',
-					success: function (html) 
-					{
-						alert("ca marche");
-					},
-					error: function(resultat, statut, erreur) 
-					{
-						navigator.notification.alert("erreur", alertCallback, "Géolocalisation", "Fermer");
-					}
-				});	
-			}
-					
+			$.ajax({
+				url : 'http://www.colisclub.fr/application/ajax.php',
+				type : 'GET', // Le type de la requête HTTP, ici devenu POST
+				data:'lat=' + lat +
+					'&longi=' + longi,
+				dataType : 'html',
+				success: function (html) 
+				{
+					alert("ca marche");
+				},
+				error: function(resultat, statut, erreur) 
+				{
+					navigator.notification.alert("erreur", alertCallback, "Géolocalisation", "Fermer");
+				}
+			});		
 		}
 
 		// onError Callback receives a PositionError object
@@ -149,7 +100,7 @@
 
 		// Options: throw an error if no update is received every 30 seconds.
 		//
-		var watchID = navigator.geolocation.watchPosition(onSuccess, onError, option);
+		
 		
 	});
 	
