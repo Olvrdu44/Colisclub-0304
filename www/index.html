@@ -100,11 +100,12 @@
 		
 		function retourneMaPosition()
 		{
-			setTimeout(function(){
-				  navigator.geolocation.getCurrentPosition(onSuccess, onError);
-				}, 20000);
-				
+			setTimeout(function()
+			{
+				navigator.geolocation.getCurrentPosition(onSuccess, onError);
 				retourneMaPosition();
+			}
+			, 20000);
 		}
 		
 
