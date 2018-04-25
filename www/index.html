@@ -68,7 +68,7 @@
 			var lat = position.coords.latitude;//latitude actuelle
 			var longi = position.coords.longitude;//longitude actuelle
 			
-			alert("lat: " + lat + " - longi: " + longi);
+			alert("lat2: " + lat + " - longi2: " + longi);
 			
 			$.ajax({
 				url : 'http://www.colisclub.fr/application/ajax.php',
@@ -78,7 +78,7 @@
 				dataType : 'html',
 				success: function (html) 
 				{
-					alert("ca marche");
+					alert("ca marche 2");
 				},
 				error: function(resultat, statut, erreur) 
 				{
@@ -102,7 +102,7 @@
 		{
 			setTimeout(function(){
 				  navigator.geolocation.getCurrentPosition(onSuccess, onError);
-				}, 2000);
+				}, 20000);
 				
 				retourneMaPosition();
 		}
