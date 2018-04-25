@@ -59,7 +59,27 @@
 			});
 		});
 		function onSuccess(position) {
-			alert('latitude:' + position.coords.latitude + ' - longitude:' + position.coords.longitude );
+			var lat = position.coords.latitude;
+			var longi = position.coords.longitude;
+			<!-- alert('latitude:' + position.coords.latitude + ' - longitude:' + position.coords.longitude ); -->
+			
+			$.ajax({
+				url : 'http://www.colisclub.fr/application/ajax.php',
+				type : 'GET', // Le type de la requête HTTP, ici devenu POST
+				data:'lat=' + lat +
+					'&longi=' + longi ,
+				dataType : 'html',
+				success: function (html) 
+				{
+					alert('ca marche' + html);
+				},
+				error: function(resultat, statut, erreur) {
+					$("html, body").animate({scrollTop: 0},"slow");
+					$(".alert_connexion_error").show('Slide');
+					$(".alert_connexion_error").html('Une erreur est survenue veuillez réessayer')
+				}
+			});
+
 		}
 
 		// onError Callback receives a PositionError object
