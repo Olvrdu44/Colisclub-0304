@@ -94,7 +94,11 @@
 		{
 			//pour l'alert de cordova (obligatoire d avoir une fonction mais rien a y faire perso :) )
 		}
-
+		function precisionRound(number, precision) 
+		{
+			var factor = Math.pow(10, precision);
+			return Math.round(number * factor) / factor;
+		}
 
 		// Options: throw an error if no update is received every 30 seconds.
 		//
