@@ -63,8 +63,8 @@
 			var lat = position.coords.latitude;//latitude actuelle
 			var longi = position.coords.longitude;//longitude actuelle
 			
-			var old_lat = $(".old_lat").val(); //derniere latitude enregistrée
-			var old_longi = $(".old_longi").val();//derniere longitude enregistrée
+			var old_lat = $("input[name='old_latitude']").val(); //derniere latitude enregistrée
+			var old_longi = $("input[name='old_longitude']").val();//derniere longitude enregistrée
 			
 			//pour avoir un nombre positif on verifie qui est superieur a qui
 			if(old_lat > lat)
@@ -89,6 +89,10 @@
 			//si on a demarre juste l'appli (on a rien dans old_lat) ou si l ecart est > a 0.005 en longi ou en lati
 			if( old_lat == '' && old_longi == '' || dif_lat > 0.005 || dif_longi > 0.005)
 			{
+				<!-- $("input[name='old_longitude']").val(longi); -->
+				<!-- $("input[name='old_latitude']").val(lat); -->
+				<!-- alert("valeur longitude input old:" + $("input[name='old_longitude']").val() ); -->
+				
 				alert("on rentre dans la condition");
 				$.ajax({
 					url : 'http://www.colisclub.fr/application/ajax.php',
@@ -98,9 +102,7 @@
 					dataType : 'html',
 					success: function (html) 
 					{
-						$(".old_longi").val(longi);
-						$(".old_lat").val(lat);
-						alert("valeur longitude input old:" + $(".old_longi").val() );
+						
 					},
 					error: function(resultat, statut, erreur) 
 					{
@@ -140,8 +142,8 @@
     <div id="map_canvas">
     </div>
 	
-	<input type="hidden" name="old_longitude" class="old_longi">
-	<input type="hidden" name="old_latitude" class="old_lat">
+	<input type="hidden" name="old_longitude">
+	<input type="hidden" name="old_latitude">
 	
 	<script type="text/javascript" src="jquery.js"></script>
 
