@@ -89,10 +89,6 @@
 			//si on a demarre juste l'appli (on a rien dans old_lat) ou si l ecart est > a 0.005 en longi ou en lati
 			if( old_lat == '' && old_longi == '' || dif_lat > 0.005 || dif_longi > 0.005)
 			{
-				<!-- $("input[name='old_longitude']").val(longi); -->
-				<!-- $("input[name='old_latitude']").val(lat); -->
-				<!-- alert("valeur longitude input old:" + $("input[name='old_longitude']").val() ); -->
-				
 				alert("on rentre dans la condition");
 				$.ajax({
 					url : 'http://www.colisclub.fr/application/ajax.php',
@@ -102,7 +98,9 @@
 					dataType : 'html',
 					success: function (html) 
 					{
-						
+						$("input[name='old_longitude']").val(longi);
+						$("input[name='old_latitude']").val(lat);
+						alert("valeur longitude input old:" + $("input[name='old_longitude']").val() );
 					},
 					error: function(resultat, statut, erreur) 
 					{
@@ -142,8 +140,8 @@
     <div id="map_canvas">
     </div>
 	
-	<input type="hidden" name="old_longitude">
-	<input type="hidden" name="old_latitude">
+	<input type="hidden" name="old_longitude" value="0">
+	<input type="hidden" name="old_latitude" value="0">
 	
 	<script type="text/javascript" src="jquery.js"></script>
 
