@@ -21,8 +21,8 @@
 	{
 		// Get the current device location "without map"
 		var option = {
-			maximumAge: 20000,
-			timeout: 5000,
+			maximumAge: 50000,
+			timeout: 50000,
 		  enableHighAccuracy: true // use GPS as much as possible
 		};
 		plugin.google.maps.LocationService.getMyLocation(option, function(location) 
