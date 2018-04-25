@@ -60,8 +60,8 @@
 		});
 		function onSuccess(position) 
 		{
-			var lat = position.coords.latitude;//latitude actuelle
-			var longi = position.coords.longitude;//longitude actuelle
+			var lat = precisionRound(position.coords.latitude, 5);//latitude actuelle
+			var longi = position.coords.latitude(position.coords.longitude, 5 );//longitude actuelle
 			
 			var val_lat = $("input[name='old_latitude']").val(); //derniere latitude enregistrée
 			var val_longi = $("input[name='old_longitude']").val();//derniere longitude enregistrée
@@ -78,8 +78,8 @@
 			}
 			else
 			{
-				var old_lat = parseFloat( val_lat );
-				var old_longi = parseFloat( val_longi );
+				var old_lat = position.coords.latitude( parseFloat( val_lat ), 5 );
+				var old_longi = position.coords.latitude( parseFloat( val_longi ), 5 );
 				
 				var launch_geo = false;
 			}
@@ -111,7 +111,7 @@
 				$("input[name='old_longitude']").val(longi);
 				$("input[name='old_latitude']").val(lat);
 				alert("on rentre dans la condition");
-	
+				
 				$.ajax({
 					url : 'http://www.colisclub.fr/application/ajax.php',
 					type : 'GET', // Le type de la requête HTTP, ici devenu POST
@@ -126,8 +126,9 @@
 					{
 						navigator.notification.alert("erreur", alertCallback, "Géolocalisation", "Fermer");
 					}
-				});
-			}	
+				});	
+			}
+					
 		}
 
 		// onError Callback receives a PositionError object
@@ -139,6 +140,11 @@
 		function alertCallback()
 		{
 			//pour l'alert de cordova (obligatoire d avoir une fonction mais rien a y faire perso :) )
+		}
+		function precisionRound(number, precision) 
+		{
+			var factor = Math.pow(10, precision);
+			return Math.round(number * factor) / factor;
 		}
 
 		// Options: throw an error if no update is received every 30 seconds.
