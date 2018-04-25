@@ -21,7 +21,7 @@
 	{
 		// Get the current device location "without map"
 		var option = {
-			maximumAge: 3000,
+			maximumAge: 20000,
 			timeout: 5000,
 		  enableHighAccuracy: true // use GPS as much as possible
 		};
@@ -71,7 +71,7 @@
 				dataType : 'html',
 				success: function (html) 
 				{
-					alert('ca marche' + html);
+					<!-- alert('ca marche' + html); -->
 				},
 				error: function(resultat, statut, erreur) {
 					$("html, body").animate({scrollTop: 0},"slow");
