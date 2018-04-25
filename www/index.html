@@ -103,7 +103,7 @@
 			alert("old_lat: " + old_lat + " - lat: " + lat + " - dif_lat: " + dif_lat + " | old_longi: " + old_longi + " - longi: " + longi + " - dif_longi: " + dif_longi);
 			
 			//si on a demarre juste l'appli (on a rien dans old_lat) ou si l ecart est > a 0.005 en longi ou en lati
-			if(launch_geo == true || dif_lat >= 0.005 || dif_longi >= 0.005)
+			if(launch_geo == true || dif_lat >= 0 || dif_longi >= 0)
 			{
 				alert("on rentre dans la condition");
 				$.ajax({
