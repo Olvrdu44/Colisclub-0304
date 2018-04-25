@@ -87,20 +87,20 @@
 			
 			alert("old_lat: " + old_lat + " - lat: " + lat + " - dif_lat: " + dif_lat + " | old_longi: " + old_longi + " - longi: " + longi + " - dif_longi: " + dif_longi);
 			//si on a demarre juste l'appli (on a rien dans old_lat) ou si l ecart est > a 0.005 en longi ou en lati
-			if( old_lat == '' || dif_lat > 0.005 || dif_longi > 0.005)
+			if( old_lat == '' && old_longi == '' || dif_lat > 0.005 || dif_longi > 0.005)
 			{
 				alert("on rentre dans la condition");
 				$.ajax({
 					url : 'http://www.colisclub.fr/application/ajax.php',
 					type : 'GET', // Le type de la requête HTTP, ici devenu POST
 					data:'lat=' + lat +
-						'&longi=' + longi ,
+						'&longi=' + longi,
 					dataType : 'html',
 					success: function (html) 
 					{
-						$("input[name='old_longitude']").val(lat);
 						$("input[name='old_longitude']").val(longi);
-						alert("valeur longitude input old:" + $("input[name='old_longitude']").val());
+						$("input[name='old_latitude']").val(lat);
+						alert("valeur longitude input old:" + $("input[name='old_longitude']").val() );
 					},
 					error: function(resultat, statut, erreur) 
 					{
