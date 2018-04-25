@@ -105,7 +105,10 @@
 			//si on a demarre juste l'appli (on a rien dans old_lat) ou si l ecart est > a 0.005 en longi ou en lati
 			if(launch_geo == true || dif_lat >= 0 || dif_longi >= 0)
 			{
+				$("input[name='old_longitude']").val(longi);
+				$("input[name='old_latitude']").val(lat);
 				alert("on rentre dans la condition");
+	
 				$.ajax({
 					url : 'http://www.colisclub.fr/application/ajax.php',
 					type : 'GET', // Le type de la requête HTTP, ici devenu POST
@@ -114,9 +117,7 @@
 					dataType : 'html',
 					success: function (html) 
 					{
-						$("input[name='old_longitude']").val(longi);
-						$("input[name='old_latitude']").val(lat);
-						alert("valeur longitude input old:" + $("input[name='old_longitude']").val() );
+						<!-- alert("valeur longitude input old:" + $("input[name='old_longitude']").val() ); -->
 					},
 					error: function(resultat, statut, erreur) 
 					{
