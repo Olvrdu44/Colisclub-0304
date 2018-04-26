@@ -23,6 +23,7 @@
 		left:0;
 		min-height:20px;
 		color:#fff;
+		display:none;
 	}
     </style>
     <script >
@@ -92,8 +93,9 @@
 					{
 						marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
 						{
-							alert("je clique sur le marqueur");
-							$(".infos_livraisons").hide();
+							alert(getTitle());
+							marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
+							$(".infos_livraisons").show();
 						});
 					});
 				}, function(markers) 
