@@ -104,11 +104,12 @@
 					// After camera moves open the last marker.
 					markers[markers.length - 1].showInfoWindow();
 				  });
+					marker.on(plugin.google.maps.event.MARKER_CLICK, function() {
+						$(".infos_livraisons").hide();
+					});
 				 });
 				 
-				marker.on(plugin.google.maps.event.MARKER_CLICK, function() {
-					$(".infos_livraisons").hide();
-				});
+				
 			});
 		});
 		function onSuccess(position) 
