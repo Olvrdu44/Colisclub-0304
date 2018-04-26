@@ -77,7 +77,7 @@
 					{
 						position : {lng :  4.805528, lat :  43.949317 },
 						title :  " Benner Junior High School ",
-						'icon': { 'url': 'img/pointer_7.png', size: { width: 33, height: 45 } }
+						'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
 					}
 				]
 				// Add markers
@@ -95,6 +95,9 @@
 				  var bounds = [];
 				  data.forEach(function(POI) {
 					bounds.push(POI.position);
+					markers.on(plugin.google.maps.event.MARKER_CLICK, function() {
+						$(".infos_livraisons").hide();
+					});
 				  });
 
 				  map.moveCamera({
@@ -104,9 +107,7 @@
 					// After camera moves open the last marker.
 					markers[markers.length - 1].showInfoWindow();
 				  });
-					markers.on(plugin.google.maps.event.MARKER_CLICK, function() {
-						$(".infos_livraisons").hide();
-					});
+					
 				 });
 				 
 				
