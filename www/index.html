@@ -60,15 +60,40 @@
 				retourneMaPosition();
 				
 				var data = [
-				{
-					position : {lng :  4.696981, lat :  44.37775 },
-					title :  " Georgina P Blach Intermediate School "
-				},
-				{
-					position : {lng :  4.805528, lat :  43.949317 },
-					title :  " Benner Junior High School "
-				}
+					{
+						position : {lng :  4.696981, lat :  44.37775 },
+						title :  " Georgina P Blach Intermediate School "
+					},
+					{
+						position : {lng :  4.805528, lat :  43.949317 },
+						title :  " Benner Junior High School "
+					}
 				]
+				// Add markers
+				var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
+
+				baseArrayClass.map(function(options, cb) {
+				  // The variable "options" contains each element of the data.
+				  //
+				  // The variable "cb" is a callback function of iteration.
+				  map.addMarker(options, cb);
+
+				}, function(markers) {
+
+				  // Set a camera position that includes all markers.
+				  var bounds = [];
+				  data.forEach(function(POI) {
+					bounds.push(POI.position);
+				  });
+
+				  map.moveCamera({
+					target: bounds
+				  }, function() {
+
+					// After camera moves open the last marker.
+					markers[markers.length - 1].showInfoWindow();
+				  });
+				 });
 			});
 		});
 		function onSuccess(position) 
@@ -78,17 +103,17 @@
 		
 			$.ajax({
 				url : 'http://www.colisclub.fr/application/ajax.php',
-				type : 'GET', // Le type de la requête HTTP, ici devenu POST
+				type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
 				data:'lat=' + lat +
 					'&longi=' + longi,
 				dataType : 'html',
 				success: function (html) 
 				{
-					alert("position enregistrée");
+					alert("position enregistrÃ©e");
 				},
 				error: function(resultat, statut, erreur) 
 				{
-					navigator.notification.alert("erreur", alertCallback, "Géolocalisation", "Fermer");
+					navigator.notification.alert("erreur", alertCallback, "GÃ©olocalisation", "Fermer");
 				}
 			});		
 		}
