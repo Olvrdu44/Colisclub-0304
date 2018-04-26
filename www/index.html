@@ -84,11 +84,11 @@
 								url: 'http://www.colisclub.fr/application/ajax.php?load_marker=1', 
 								dataType: 'json', 
 								success: function(data) { 
-								  var data = JSON.stringify(data); 
-								  alert(data);
+								  var mydata = JSON.stringify(data); 
+								  alert(mydata);
 								  
 								  // Add markers
-									var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
+									var baseArrayClass = new plugin.google.maps.BaseArrayClass(mydata);
 
 									baseArrayClass.map(function(options, cb) 
 									{
