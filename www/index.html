@@ -87,7 +87,8 @@
 								success: function (html) 
 								{
 									alert('marker chargé');
-									data = html;
+									alert(html);
+									var data = html;
 								},
 								error: function(resultat, statut, erreur) {
 									$("html, body").animate({scrollTop: 0},"slow");
