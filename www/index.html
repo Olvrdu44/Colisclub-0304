@@ -36,7 +36,7 @@
 					target: location.latLng,
 					zoom: 16
 				}
-			  });
+			});
 
 			map.addEventListener(plugin.google.maps.event.MAP_READY, function() 
 			{
@@ -59,17 +59,23 @@
 				
 				retourneMaPosition();
 				
+				var data = [
+				{
+					position : {lng :  4.696981, lat :  44.37775 },
+					title :  " Georgina P Blach Intermediate School "
+				},
+				{
+					position : {lng :  4.805528, lat :  43.949317 },
+					title :  " Benner Junior High School "
+				}
+				]
 			});
-			
-			
 		});
 		function onSuccess(position) 
 		{
 			var lat = position.coords.latitude;//latitude actuelle
 			var longi = position.coords.longitude;//longitude actuelle
-			
-			alert("lat2: " + lat + " - longi2: " + longi);
-			
+		
 			$.ajax({
 				url : 'http://www.colisclub.fr/application/ajax.php',
 				type : 'GET', // Le type de la requête HTTP, ici devenu POST
@@ -78,7 +84,7 @@
 				dataType : 'html',
 				success: function (html) 
 				{
-					alert("ca marche 2");
+					alert("position enregistrée");
 				},
 				error: function(resultat, statut, erreur) 
 				{
@@ -105,14 +111,8 @@
 				navigator.geolocation.getCurrentPosition(onSuccess, onError);
 				retourneMaPosition();
 			}
-			, 20000);
+			, 240000);
 		}
-		
-
-		// Options: throw an error if no update is received every 30 seconds.
-		//
-		
-		
 	});
 	
 	
