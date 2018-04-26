@@ -89,6 +89,42 @@
 									alert('marker chargé');
 									alert(html);
 									var data = html;
+									
+									// Add markers
+									var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
+
+									baseArrayClass.map(function(options, cb) 
+									{
+										// The variable "options" contains each element of the data.
+										//
+										// The variable "cb" is a callback function of iteration.
+										map.addMarker(options, function(marker) 
+										{
+											marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
+											{
+												var title = marker.getTitle();//on y mettra l id
+												alert( title );
+												//marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
+												$(".infos_livraisons").show();
+											});
+										});
+									}, function(markers) 
+									{
+										// Set a camera position that includes all markers.
+										var bounds = [];
+										data.forEach(function(POI) 
+										{
+											bounds.push(POI.position);
+										});
+
+										map.moveCamera({
+											target: bounds
+										}, function() 
+										{
+											// After camera moves open the last marker.
+											markers[markers.length - 1].showInfoWindow();
+										});
+									});
 								},
 								error: function(resultat, statut, erreur) {
 									$("html, body").animate({scrollTop: 0},"slow");
@@ -98,41 +134,7 @@
 							});
 							
 							
-							// Add markers
-							var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
-
-							baseArrayClass.map(function(options, cb) 
-							{
-								// The variable "options" contains each element of the data.
-								//
-								// The variable "cb" is a callback function of iteration.
-								map.addMarker(options, function(marker) 
-								{
-									marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
-									{
-										var title = marker.getTitle();//on y mettra l id
-										alert( title );
-										//marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
-										$(".infos_livraisons").show();
-									});
-								});
-							}, function(markers) 
-							{
-								// Set a camera position that includes all markers.
-								var bounds = [];
-								data.forEach(function(POI) 
-								{
-									bounds.push(POI.position);
-								});
-
-								map.moveCamera({
-									target: bounds
-								}, function() 
-								{
-									// After camera moves open the last marker.
-									markers[markers.length - 1].showInfoWindow();
-								});
-							});
+							
 						});
 					});
 					function onSuccess(position) 
