@@ -17,7 +17,6 @@
     }
 	.infos_livraisons{
 		position:fixed;
-		display:none;
 		background:#444;
 		width:100%;
 		top:0;
@@ -106,7 +105,7 @@
 				 });
 				 
 				marker.on(plugin.google.maps.event.MARKER_CLICK, function() {
-					$(".infos_livraisons").show();
+					$(".infos_livraisons").hide();
 				});
 			});
 		});
