@@ -80,15 +80,15 @@
 							
 							/* marker */
 							$.ajax({
-								url : 'http://www.colisclub.fr/application/ajax.php',
-								type : 'GET', // Le type de la requête HTTP, ici devenu POST
-								data:'load_marker=1', 
-								dataType : 'html',
+								url : 'http://www.colisclub.fr/application/ajax.php?load_marker=1',
+								data: data, 
+								dataType : 'json',
 								success: function (html) 
 								{
 									alert('marker chargé');
 									alert(html);
 									var data = html;
+									alert(data);
 									
 									// Add markers
 									var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
