@@ -85,7 +85,7 @@
 								dataType: 'json', 
 								success: function(data) { 
 									data.forEach(function (data) {
-									
+									alert(JSON.stringify(data));
 									map.addMarker( JSON.stringify(data), function(marker) {
 
 									// Show the infoWindow
