@@ -88,15 +88,16 @@
 					// The variable "options" contains each element of the data.
 					//
 					// The variable "cb" is a callback function of iteration.
-					map.addMarker(options, cb);
-
+					map.addMarker(options, function(marker) 
+					{
+						marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
+						{
+							alert("je clique sur le marqueur");
+							$(".infos_livraisons").hide();
+						});
+					});
 				}, function(markers) 
 				{
-					markers.on(plugin.google.maps.event.MARKER_CLICK, function() 
-					{
-						alert("je clique sur le marqueur");
-						$(".infos_livraisons").hide();
-					});
 					// Set a camera position that includes all markers.
 					var bounds = [];
 					data.forEach(function(POI) 
