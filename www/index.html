@@ -83,34 +83,35 @@
 				// Add markers
 				var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
 
-				baseArrayClass.map(function(options, cb) {
-				  // The variable "options" contains each element of the data.
-				  //
-				  // The variable "cb" is a callback function of iteration.
-				  map.addMarker(options, cb);
+				baseArrayClass.map(function(options, cb) 
+				{
+					// The variable "options" contains each element of the data.
+					//
+					// The variable "cb" is a callback function of iteration.
+					map.addMarker(options, cb);
 
-				}, function(markers) {
-
-				  // Set a camera position that includes all markers.
-				  var bounds = [];
-				  data.forEach(function(POI) {
-					bounds.push(POI.position);
-					markers.on(plugin.google.maps.event.MARKER_CLICK, function() {
+				}, function(markers) 
+				{
+					markers.on(plugin.google.maps.event.MARKER_CLICK, function() 
+					{
+						alert("je clique sur le marqueur");
 						$(".infos_livraisons").hide();
 					});
-				  });
+					// Set a camera position that includes all markers.
+					var bounds = [];
+					data.forEach(function(POI) 
+					{
+						bounds.push(POI.position);
+					});
 
-				  map.moveCamera({
-					target: bounds
-				  }, function() {
-
-					// After camera moves open the last marker.
-					markers[markers.length - 1].showInfoWindow();
-				  });
-					
-				 });
-				 
-				
+					map.moveCamera({
+						target: bounds
+					}, function() 
+					{
+						// After camera moves open the last marker.
+						markers[markers.length - 1].showInfoWindow();
+					});
+				});
 			});
 		});
 		function onSuccess(position) 
