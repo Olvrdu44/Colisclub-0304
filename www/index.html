@@ -72,12 +72,12 @@
 					{
 						position : {lng :  4.696981, lat :  44.37775 },
 						title :  " Georgina P Blach Intermediate School ",
-						'icon': { 'url': 'img/pointer_7.png', size: { width: 50, height: 67 } }
+						'icon': { 'url': 'img/pointer_7.png', size: { width: 33, height: 45 } }
 					},
 					{
 						position : {lng :  4.805528, lat :  43.949317 },
 						title :  " Benner Junior High School ",
-						'icon': { 'url': 'img/pointer_7.png', size: { width: 50, height: 67 } }
+						'icon': { 'url': 'img/pointer_7.png', size: { width: 33, height: 45 } }
 					}
 				]
 				// Add markers
@@ -104,7 +104,7 @@
 					// After camera moves open the last marker.
 					markers[markers.length - 1].showInfoWindow();
 				  });
-					marker.on(plugin.google.maps.event.MARKER_CLICK, function() {
+					markers[markers.length - 1].on(plugin.google.maps.event.MARKER_CLICK, function() {
 						$(".infos_livraisons").hide();
 					});
 				 });
