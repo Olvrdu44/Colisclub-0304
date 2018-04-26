@@ -93,7 +93,7 @@
 					{
 						marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
 						{
-							var title = getTitle ();
+							var title = getTitle('title');
 							alert( title );
 							marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
 							$(".infos_livraisons").show();
