@@ -78,7 +78,8 @@
 							
 							retourneMaPosition();
 							
-							var mydata = [{
+							var data = [
+							  {
 								position: {lng: 44.37775, lat: 4.696981},
 								title: "Ardis G Egan Intermediate School",
 								icon: {url:"img/pointer_7.png", size:{ width: 40, height: 54}}
@@ -87,43 +88,35 @@
 								position: {lng: 43.949317, lat: 4.805528},
 								title: "Portola School",
 								icon: {url:"img/pointer_7.png", size:{ width: 40, height: 54}}
-							  }];
-							  // Add markers
-								var baseArrayClass = new plugin.google.maps.BaseArrayClass(mydata);
+							  }
+							];
 
-								baseArrayClass.map(function(options, cb) 
-								{
-									// The variable "options" contains each element of the data.
-									// The variable "cb" is a callback function of iteration.
-									map.addMarker(options, function(marker) 
-									{
-										marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
-										{
-											var title = marker.getTitle();//on y mettra l id
-											alert( title );
-											//marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
-											$(".infos_livraisons").show();
-										});
-									});
-								}, function(markers) 
-								{
-									// Set a camera position that includes all markers.
-									var bounds = [];
-									mydata.forEach(function(POI) 
-									{
-										bounds.push(POI.position);
-									});
+							// Add markers
+							var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
 
-									map.moveCamera({
-										target: bounds
-									}, function() 
-									{
-										// After camera moves open the last marker.
-										markers[markers.length - 1].showInfoWindow();
-									});
-								});
-							
-							
+							baseArrayClass.map(function(options, cb) {
+							  // The variable "options" contains each element of the data.
+							  //
+							  // The variable "cb" is a callback function of iteration.
+							  map.addMarker(options, cb);
+
+							}, function(markers) {
+
+							  // Set a camera position that includes all markers.
+							  var bounds = [];
+							  data.forEach(function(POI) {
+								bounds.push(POI.position);
+							  });
+
+							  map.moveCamera({
+								target: bounds
+							  }, function() {
+
+								// After camera moves open the last marker.
+								markers[markers.length - 1].showInfoWindow();
+							  });
+
+							});
 						});
 					});
 					function onSuccess(position) 
