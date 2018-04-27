@@ -78,7 +78,17 @@
 							
 							retourneMaPosition();
 							
-							 var mydata = [{
+							/* marker */
+							 $.ajax({ 
+								type: 'GET', 
+								url: 'http://www.colisclub.fr/application/ajax.php?load_marker=1', 
+								dataType: 'json', 
+								success: function(data) { 
+									data.forEach(function (data) {
+									alert(JSON.stringify(data));
+								  });
+
+								  var mydata = [{
 									position: {lng: 44.37775, lat: 4.696981},
 									title: "Ardis G Egan Intermediate School",
 									icon: {url:"img/pointer_7.png", size:{ width: 40, height: 54}}
@@ -109,7 +119,7 @@
 									{
 										// Set a camera position that includes all markers.
 										var bounds = [];
-										data.forEach(function(POI) 
+										mydata.forEach(function(POI) 
 										{
 											bounds.push(POI.position);
 										});
@@ -122,8 +132,11 @@
 											markers[markers.length - 1].showInfoWindow();
 										});
 									});
-							
-							
+								}, 
+								error: function() { 
+								  alert('La requête n\'a pas abouti'); 
+								} 
+							  }); 
 						});
 					});
 					function onSuccess(position) 
