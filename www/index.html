@@ -78,17 +78,7 @@
 							
 							retourneMaPosition();
 							
-							/* marker */
-							 $.ajax({ 
-								type: 'GET', 
-								url: 'http://www.colisclub.fr/application/ajax.php?load_marker=1', 
-								dataType: 'json', 
-								success: function(data) { 
-									data.forEach(function (data) {
-									alert(JSON.stringify(data));
-								  });
-
-								  var mydata = [{
+							 var mydata = [{
 									position: {lng: 44.37775, lat: 4.696981},
 									title: "Ardis G Egan Intermediate School",
 									icon: {url:"img/pointer_7.png", size:{ width: 40, height: 54}}
@@ -132,11 +122,8 @@
 											markers[markers.length - 1].showInfoWindow();
 										});
 									});
-								}, 
-								error: function() { 
-								  alert('La requête n\'a pas abouti'); 
-								} 
-							  }); 
+							
+							
 						});
 					});
 					function onSuccess(position) 
