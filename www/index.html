@@ -87,18 +87,7 @@
 							success: function (html) 
 							{
 								alert(html);
-									var data = [
-								  {
-									position: {lng: 4.696981, lat: 44.37775},
-									title: "Ardis G Egan Intermediate School",
-									'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
-								  },
-								  {
-									position: {lng:4.805528 , lat: 43.949317},
-									title: "Portola School",
-									'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
-								  }
-								];
+									var data = html;
 
 								// Add markers
 								var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
