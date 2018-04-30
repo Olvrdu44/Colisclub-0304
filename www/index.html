@@ -88,7 +88,6 @@
 								{
 									html.forEach(function (mydata) 
 									{
-										alert(mydata.position);
 										map.addMarker({
 											position: mydata.position,
 											title: mydata.title,
@@ -96,6 +95,13 @@
 										  }, function(marker) {
 											// Show the infoWindow
 											<!-- marker.showInfoWindow(); -->
+											marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
+											{
+												var title = marker.getTitle();//on y mettra l id
+												alert( title );
+												//marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
+												$(".infos_livraisons").show();
+											});
 										  });
 									});
 								},
