@@ -83,11 +83,11 @@
 							url : 'http://www.colisclub.fr/application/ajax.php',
 							type : 'GET', // Le type de la requête HTTP, ici devenu POST
 							data:'load_marker=1',
-							dataType : 'html',
+							dataType : 'json',
 							success: function (html) 
 							{
 								alert(html);
-									var data = html;
+									var data = JSON.stringify(html);
 
 								// Add markers
 								var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
