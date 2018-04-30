@@ -79,37 +79,36 @@
 							retourneMaPosition();
 							
 							/* AJAX */
-						$.ajax({
-							url : 'http://www.colisclub.fr/application/ajax.php',
-							type : 'GET', // Le type de la requête HTTP, ici devenu POST
-							data:'load_marker=1',
-							dataType : 'json',
-							success: function (html) 
-							{
-								
-								html.forEach(function (mydata) 
+							$.ajax({
+								url : 'http://www.colisclub.fr/application/ajax.php',
+								type : 'GET', // Le type de la requête HTTP, ici devenu POST
+								data:'load_marker=1',
+								dataType : 'json',
+								success: function (html) 
 								{
-									<!-- alert(JSON.stringify(mydata)); -->
-									<!-- alert(JSON.stringify(mydata.position)); -->
-									<!-- var position_curseur = ; -->
-									
-									
-									map.addMarker({
-										position: JSON.stringify(mydata.position),
-										title: "Ardis G Egan Intermediate School",
-										'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
-									  }, function(marker) {
+									html.forEach(function (mydata) 
+									{
+										<!-- alert(JSON.stringify(mydata)); -->
+										alert(JSON.stringify(mydata.position));
+										alert(JSON.stringify(mydata.title));
+										alert(JSON.stringify(mydata.icon));
 
-										// Show the infoWindow
-										marker.showInfoWindow();
+										map.addMarker({
+											position: { lng: 4.696981, lat: 44.37775 },
+											title: "Ardis G Egan Intermediate School",
+											'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
+										  }, function(marker) {
 
-									  });
-								});
-							},
-							error: function(resultat, statut, erreur) {
-								alert('erreur');
-							}
-						});
+											// Show the infoWindow
+											marker.showInfoWindow();
+
+										  });
+									});
+								},
+								error: function(resultat, statut, erreur) {
+									alert('erreur');
+								}
+							});
 												
 							
 						});
