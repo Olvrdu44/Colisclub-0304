@@ -88,15 +88,15 @@
 								{
 									html.forEach(function (mydata) 
 									{
+										alert(mydata.position);
 										map.addMarker({
 											position: mydata.position,
 											title: mydata.title,
 											'icon': mydata.icon
 										  }, function(marker) {
 											// Show the infoWindow
-											marker.showInfoWindow();
+											<!-- marker.showInfoWindow(); -->
 										  });
-										  i++;
 									});
 								},
 								error: function(resultat, statut, erreur) {
