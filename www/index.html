@@ -96,10 +96,10 @@
 										<!-- alert(JSON.stringify(mydata.title)); -->
 										<!-- alert(JSON.stringify(mydata.icon)); -->
 										alert(i);
-										alert(GOOGLE[i]);
+										<!-- alert(GOOGLE[i]); -->
 
 										map.addMarker({
-											position: GOOGLE[i],
+											position: mydata.position,
 											title: "Ardis G Egan Intermediate School",
 											'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
 										  }, function(marker) {
