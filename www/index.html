@@ -86,12 +86,13 @@
 							dataType : 'json',
 							success: function (html) 
 							{
-								var data = '';
+								var data = '[';
 								html.forEach(function (mydata) 
 								{
 									alert(JSON.stringify(mydata));
 									data = data + mydata;  
 								});
+								data = data + ']';
 
 								// Add markers
 								var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
