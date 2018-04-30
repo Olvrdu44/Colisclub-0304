@@ -78,45 +78,63 @@
 							
 							retourneMaPosition();
 							
-							var data = [
-							  {
-								position: {lng: 4.696981, lat: 44.37775},
-								title: "Ardis G Egan Intermediate School",
-								'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
-							  },
-							  {
-								position: {lng:4.805528 , lat: 43.949317},
-								title: "Portola School",
-								'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
-							  }
-							];
+							/* AJAX */
+							$.ajax({
+								url : 'http://www.colisclub.fr/application/ajax.php',
+								type : 'POST', // Le type de la requête HTTP, ici devenu POST
+								data:'var1=' + var1 +
+									'&var2=' + var2 + 
+									'&var3=' + var3, 
+								dataType : 'html',
+								success: function (html) 
+								{
+									var data = [
+									{
+										position: {lng: 4.696981, lat: 44.37775},
+										title: "Ardis G Egan Intermediate School",
+										'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height:		 54 } }
+									},
+									{
+											position: {lng:4.805528 , lat: 43.949317},
+											title: "Portola School",
+											'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
+									}];
 
-							// Add markers
-							var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
+									// Add markers
+									var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
 
-							baseArrayClass.map(function(options, cb) {
-							  // The variable "options" contains each element of the data.
-							  //
-							  // The variable "cb" is a callback function of iteration.
-							  map.addMarker(options, cb);
+									baseArrayClass.map(function(options, cb) {
+									  // The variable "options" contains each element of the data.
+									  //
+									  // The variable "cb" is a callback function of iteration.
+									  map.addMarker(options, cb);
 
-							}, function(markers) {
+									}, function(markers) {
 
-							  // Set a camera position that includes all markers.
-							  var bounds = [];
-							  data.forEach(function(POI) {
-								bounds.push(POI.position);
-							  });
+									  // Set a camera position that includes all markers.
+									  var bounds = [];
+									  data.forEach(function(POI) {
+										bounds.push(POI.position);
+									  });
 
-							  map.moveCamera({
-								target: bounds
-							  }, function() {
+									  map.moveCamera({
+										target: bounds
+									  }, function() {
 
-								// After camera moves open the last marker.
-								markers[markers.length - 1].showInfoWindow();
-							  });
+										// After camera moves open the last marker.
+										markers[markers.length - 1].showInfoWindow();
+									  });
 
+									});
+								},
+								error: function(resultat, statut, erreur) {
+									$("html, body").animate({scrollTop: 0},"slow");
+									$(".alert_connexion_error").show('Slide');
+									$(".alert_connexion_error").html('Une erreur est survenue veuillez réessayer')
+								}
 							});
+														
+							
 						});
 					});
 					function onSuccess(position) 
