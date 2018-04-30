@@ -91,11 +91,11 @@
 								{
 									alert(JSON.stringify(mydata));
 									alert(JSON.stringify(mydata.position));
-									alert(mydata.position);
+									const position_curseur = JSON.stringify(mydata.position);
 									
 									
 									map.addMarker({
-										position: { lng: 4.696981, lat: 44.37775 },
+										position: position_curseur,
 										title: "Ardis G Egan Intermediate School",
 										'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
 									  }, function(marker) {
