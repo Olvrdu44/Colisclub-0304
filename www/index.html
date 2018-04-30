@@ -86,46 +86,26 @@
 							dataType : 'json',
 							success: function (html) 
 							{
-								var data = '[';
-								html.forEach(function (mydata) 
-								{
-									alert(JSON.stringify(mydata));
-									alert(JSON.stringify(mydata.position));
-									data = data + mydata + ',';  
-								});
-								data = data + ']';
+								map.addMarker({
+								position: lng: 4.696981, lat: 44.37775,
+								title: "Ardis G Egan Intermediate School",
+								'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
+							  }, function(marker) {
 
-								// Add markers
-								var baseArrayClass = new plugin.google.maps.BaseArrayClass(data);
+								// Show the infoWindow
+								marker.showInfoWindow();
 
-								baseArrayClass.map(function(options, cb) {
-								  // The variable "options" contains each element of the data.
-								  //
-								  // The variable "cb" is a callback function of iteration.
-								  map.addMarker(options, cb);
-
-								}, function(markers) {
-
-								  // Set a camera position that includes all markers.
-								  var bounds = [];
-								  data.forEach(function(POI) {
-									bounds.push(POI.position);
-								  });
-
-								  map.moveCamera({
-									target: bounds
-								  }, function() {
-
-									// After camera moves open the last marker.
-									markers[markers.length - 1].showInfoWindow();
-								  });
-
-								});
+							  });
+								<!-- html.forEach(function (mydata)  -->
+								<!-- { -->
+									<!-- alert(JSON.stringify(mydata)); -->
+									<!-- alert(JSON.stringify(mydata.position)); -->
+									<!-- data = data + mydata + ',';   -->
+								<!-- }); -->
+								<!-- }); -->
 							},
 							error: function(resultat, statut, erreur) {
-								$("html, body").animate({scrollTop: 0},"slow");
-								$(".alert_connexion_error").show('Slide');
-								$(".alert_connexion_error").html('Une erreur est survenue veuillez réessayer')
+								alert('erreur');
 							}
 						});
 												
