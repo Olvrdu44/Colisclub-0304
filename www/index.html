@@ -86,6 +86,9 @@
 								dataType : 'json',
 								success: function (html) 
 								{
+									var GOOGLE = [{"lat": 43.949317, "lng": 4.805528}, {"lat": 44.37775, "lng": 4.696981}];
+									var i = 0;
+
 									html.forEach(function (mydata) 
 									{
 										<!-- alert(JSON.stringify(mydata)); -->
@@ -94,7 +97,7 @@
 										alert(JSON.stringify(mydata.icon));
 
 										map.addMarker({
-											position: JSON.stringify(mydata.position),
+											position: GOOGLE[i],
 											title: "Ardis G Egan Intermediate School",
 											'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
 										  }, function(marker) {
@@ -103,6 +106,7 @@
 											marker.showInfoWindow();
 
 										  });
+										  i++;
 									});
 								},
 								error: function(resultat, statut, erreur) {
