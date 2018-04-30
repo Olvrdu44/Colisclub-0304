@@ -89,13 +89,13 @@
 								
 								html.forEach(function (mydata) 
 								{
-									alert(JSON.stringify(mydata));
-									alert(JSON.stringify(mydata.position));
-									var position_curseur = JSON.stringify(mydata.position);
+									<!-- alert(JSON.stringify(mydata)); -->
+									<!-- alert(JSON.stringify(mydata.position)); -->
+									<!-- var position_curseur = ; -->
 									
 									
 									map.addMarker({
-										position: position_curseur,
+										position: JSON.stringify(mydata.position),
 										title: "Ardis G Egan Intermediate School",
 										'icon': { 'url': 'img/pointer_7.png', size: { width: 40, height: 54 } }
 									  }, function(marker) {
