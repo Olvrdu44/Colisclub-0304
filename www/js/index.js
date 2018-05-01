@@ -1276,6 +1276,7 @@ function load_connexion()
 			success: function (html) 
 			{
 				$(".loader_map").html(html);
+				alert(html);
 				// Get the current device location "without map"
 				var option = {
 					maximumAge: 10000,
@@ -1284,6 +1285,7 @@ function load_connexion()
 				};
 				plugin.google.maps.LocationService.getMyLocation(option, function(location) 
 				{
+					alert("1");
 					// Create a map with the device location
 					var mapDiv = document.getElementById('map_canvas');
 					var map = plugin.google.maps.Map.getMap(mapDiv, 
@@ -1297,6 +1299,7 @@ function load_connexion()
 
 					map.addEventListener(plugin.google.maps.event.MAP_READY, function() 
 					{
+							alert("2");
 						// Add a marker
 						var text = ["Current your location:\n",
 						"latitude:" + location.latLng.lat.toFixed(3),
@@ -1324,6 +1327,7 @@ function load_connexion()
 							dataType : 'json',
 							success: function (html) 
 							{
+									alert("3");
 								html.forEach(function (mydata) 
 								{
 									map.addMarker({
