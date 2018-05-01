@@ -994,3 +994,20 @@ span.colororange{
 	z-index:100;
 
 }
+#map_canvas {
+      position: absolute;
+      left:-50px;
+      top: -50px;
+      right: -50px;
+      bottom: -50px;
+    }
+	.infos_livraisons{
+		position:fixed;
+		background:#444;
+		width:100%;
+		top:0;
+		left:0;
+		min-height:20px;
+		color:#fff;
+		display:none;
+	}
