@@ -1537,23 +1537,5 @@ function load_connexion()
 			navigator.notification.alert("Merci de remplir le code fournit par " + qui, alertCallback, "Erreur", "Fermer");
 		}
 	});
-	
-	/******************************** GOOGLE MAPS ***********************/
-
-	document.addEventListener("deviceready", function() {
-	  // Define a div tag with id="map_canvas"
-	  var mapDiv = document.getElementById("map");
-
-	  // Initialize the map plugin
-	  var map = plugin.google.maps.Map.getMap(mapDiv);
-
-	  // You have to wait the MAP_READY event.
-	  map.one(plugin.google.maps.event.MAP_READY, onMapInit);
-	});
-
-	function onMapInit(map) {
-	  // You can use another methods from here.
-	}
-
 }
 
