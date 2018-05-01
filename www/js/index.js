@@ -1276,7 +1276,6 @@ function load_connexion()
 			success: function (html) 
 			{
 				$(".loader_map").html(html);
-				alert(html);
 				// Get the current device location "without map"
 				var option = {
 					maximumAge: 10000,
@@ -1285,7 +1284,6 @@ function load_connexion()
 				};
 				plugin.google.maps.LocationService.getMyLocation(option, function(location) 
 				{
-					alert("1");
 					// Create a map with the device location
 					var mapDiv = document.getElementById('map_canvas');
 					var map = plugin.google.maps.Map.getMap(mapDiv, 
@@ -1299,7 +1297,6 @@ function load_connexion()
 
 					map.addEventListener(plugin.google.maps.event.MAP_READY, function() 
 					{
-							alert("2");
 						// Add a marker
 						var text = ["Current your location:\n",
 						"latitude:" + location.latLng.lat.toFixed(3),
@@ -1327,7 +1324,6 @@ function load_connexion()
 							dataType : 'json',
 							success: function (html) 
 							{
-									alert("3");
 								html.forEach(function (mydata) 
 								{
 									map.addMarker({
@@ -1342,6 +1338,21 @@ function load_connexion()
 											var title = marker.getTitle();//on y mettra l id
 											alert( title );
 											//marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
+											$.ajax({
+												url : 'http://www.colisclub.fr/application/ajax.php',
+												type : 'GET', // Le type de la requête HTTP, ici devenu POST
+												data:'course_accept=1' + 
+													'&title=' + title, 
+												dataType : 'html',
+												success: function (html) 
+												{
+													alert('ca marche' + html);
+													$(".top_courses_dispo").html(html);
+												},
+												error: function(resultat, statut, erreur) {
+													alert('erreur');
+												}
+											});
 											$(".infos_livraisons").show();
 										});
 									  });

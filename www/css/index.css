@@ -1001,13 +1001,13 @@ span.colororange{
       right: -50px;
       bottom: -50px;
     }
-	.infos_livraisons{
-		position:fixed;
-		background:#444;
-		width:100%;
-		top:0;
-		left:0;
-		min-height:20px;
-		color:#fff;
-		display:none;
-	}
+.infos_livraisons{
+	position:fixed;
+	background:#444;
+	width:100%;
+	top:0;
+	left:0;
+	min-height:20px;
+	color:#fff;
+	display:none;
+}
