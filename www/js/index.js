@@ -1308,7 +1308,8 @@ function load_connexion()
 						var marker = map.addMarker(
 						{
 							title: text,
-							position: location.latLng
+							position: location.latLng,
+							'icon': {url: 'img/pointer_livreur.png', size: { width: 40, height: 54 }}
 						}, function(marker) 
 						{
 						  marker.showInfoWindow();
