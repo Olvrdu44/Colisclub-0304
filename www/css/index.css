@@ -509,7 +509,7 @@ input.error{
 	padding-bottom:100px;
 }
 
-.menu_informations{
+.menu_informations, .feuille_route{
 	width:100%;
 	float:left;
 }
