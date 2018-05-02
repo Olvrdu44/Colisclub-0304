@@ -1309,7 +1309,7 @@ function load_connexion()
 						{
 							title: text,
 							position: location.latLng,
-							'icon': {url: 'img/pointer_livreur.png', size: { width: 40, height: 54 }}
+							'icon': {url: 'img/pointer_livreur.png', size: { width: 40, height: 90 }}
 						}, function(marker) 
 						{
 						  marker.showInfoWindow();
