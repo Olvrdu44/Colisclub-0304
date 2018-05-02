@@ -1353,6 +1353,7 @@ function load_connexion()
 													
 													$(".accept_course").click(function()
 													{
+														alert('ca marche');
 														var id_course = $(this).attr("data-course");
 														var id_coursier = $("input[name='id_coursier']").val();
 														//$("input[name='acceptation_course']").val( id_course );
