@@ -928,8 +928,8 @@ label.switch {
     padding: 3px 10px;
     font-size: 12px;
     text-align: center;
-    width: 100px;
-    margin-left: calc(50% - 50px);
+    width: 200px;
+    margin-left: calc(50% - 100px);
     font-weight: bold;
     line-height: 1.4;
 }
