@@ -1336,7 +1336,7 @@ function load_connexion()
 										marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
 										{
 											var id_course = marker.getTitle();//on y mettra l id
-											//marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
+											marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
 											$.ajax({
 												url : 'http://www.colisclub.fr/application/ajax.php',
 												type : 'GET', // Le type de la requête HTTP, ici devenu POST
