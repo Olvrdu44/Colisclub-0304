@@ -881,7 +881,7 @@ label.switch {
 	margin-left: 0;
 	background: #444;
 	float: left;
-	margin-top: 20px;
+	margin-top: -20px;
 }
 .courses_dispo .entete_course_map p {
 	text-transform:none;
@@ -985,15 +985,6 @@ span.colororange{
 	padding:20px;
 }
 
-.loader_map{
-	position:fixed;
-	width:100%;
-	left:0;
-	height:100%;
-	top:0;
-	z-index:100;
-
-}
 #map_canvas {
       position: absolute;
       left:-50px;
