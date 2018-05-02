@@ -884,7 +884,11 @@ label.switch {
 	margin-left: 0;
 	background: #444;
 	float: left;
-	margin-top: 0px;
+	margin-top: -20px;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:1000;
 }
 .courses_dispo .entete_course_map p {
 	text-transform:none;
