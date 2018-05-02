@@ -1336,16 +1336,53 @@ function load_connexion()
 										marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
 										{
 											var id_course = marker.getTitle();//on y mettra l id
+											
+											//animation
 											marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
+											
+											//on cahrge la fenetre de la course
 											$.ajax({
 												url : 'http://www.colisclub.fr/application/ajax.php',
-												type : 'GET', // Le type de la requête HTTP, ici devenu POST
+												type : 'GET', 
 												data:'affiche_course=1' + 
 													'&id_course=' + id_course, 
 												dataType : 'html',
 												success: function (html) 
 												{
 													$(".top_courses_dispo").html(html);
+													
+													$(".accept_course").click(function()
+													{
+														var id_course = $(this).attr("data-course");
+														var id_coursier = $("input[name='id_coursier']").val();
+														//$("input[name='acceptation_course']").val( id_course );
+														
+														/* AJAX */
+														$.ajax({
+															url : 'http://www.colisclub.fr/application/ajax.php',
+															type : 'GET', // Le type de la requête HTTP, ici devenu POST
+															data:'accept_course=' + id_course +
+																'&coursier=' + id_coursier, 
+															dataType : 'html',
+															success: function (html) 
+															{
+																$(".top_courses_dispo").hide();
+																marker.remove();
+																if(html == 'DEJAPRIS')
+																{
+																	navigator.notification.alert("Désolé mais la course n'est plus disponible ! Un autre coursier semble déjà avoir acceptée cette livraison. Il doit y en avoir une autre a proximité !", alertCallback, "Course refusée", "Fermer");
+																}
+																else if(html == 'REUSSITE')
+																{
+																	navigator.notification.alert("La course a été acceptée, elle apparait désormait dans vos livraisons a effectuée !", alertCallback, "Course acceptée", "Fermer");
+																}
+																
+															},
+															error: function(resultat, statut, erreur) {
+																navigator.notification.alert("erreur", alertCallback, "accepter la course", "Fermer");
+															}
+														});
+													});
 												},
 												error: function(resultat, statut, erreur) {
 													alert('erreur');
@@ -1416,6 +1453,16 @@ function load_connexion()
 		/***************************************************/
 		
 	});
+	
+	/************* ACCEPTATION DE LIVRAISON ****************/
+	/*$("input[name='acceptation_course']").change(function()
+	{
+		var id_course = $(this).val(); //on récupere l id de la course
+		var id_coursier = $("input[name='id_coursier']").val(); //on récupere l id de la course
+		
+		
+	});*/
+	/*******************************************************/
 	
 	$(".go_to_bank_account").click(function()
 	{
