@@ -1332,21 +1332,18 @@ function load_connexion()
 										'icon': mydata.icon
 									  }, function(marker) {
 										// Show the infoWindow
-										<!-- marker.showInfoWindow(); -->
 										marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
 										{
-											var title = marker.getTitle();//on y mettra l id
-											alert( title );
+											var id_course = marker.getTitle();//on y mettra l id
 											//marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
 											$.ajax({
 												url : 'http://www.colisclub.fr/application/ajax.php',
 												type : 'GET', // Le type de la requête HTTP, ici devenu POST
-												data:'course_accept=1' + 
-													'&title=' + title, 
+												data:'affiche_course=1' + 
+													'&id_course=' + id_course, 
 												dataType : 'html',
 												success: function (html) 
 												{
-													alert('ca marche' + html);
 													$(".top_courses_dispo").html(html);
 												},
 												error: function(resultat, statut, erreur) {
