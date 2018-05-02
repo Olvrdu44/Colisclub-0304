@@ -1369,6 +1369,7 @@ function load_connexion()
 															{
 																$(".top_courses_dispo").hide();
 																marker.remove();
+																alert('la: ' + html);
 																if(html == 'DEJAPRIS')
 																{
 																	navigator.notification.alert("Désolé mais la course n'est plus disponible ! Un autre coursier semble déjà avoir acceptée cette livraison. Il doit y en avoir une autre a proximité !", alertCallback, "Course refusée", "Fermer");
@@ -1376,10 +1377,6 @@ function load_connexion()
 																else if(html == 'REUSSITE')
 																{
 																	navigator.notification.alert("La course a été acceptée, elle apparait désormait dans vos livraisons a effectuée !", alertCallback, "Course acceptée", "Fermer");
-																}
-																else
-																{
-																	alert('la: ' + html);
 																}
 																
 															},
