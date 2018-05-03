@@ -1407,11 +1407,13 @@ function load_connexion()
 				{
 					var lat = position.coords.latitude;//latitude actuelle
 					var longi = position.coords.longitude;//longitude actuelle
+					var id_coursier = $("input[name='id_coursier']").val();
 				
 					$.ajax({
 						url : 'http://www.colisclub.fr/application/ajax.php',
 						type : 'GET', // Le type de la requête HTTP, ici devenu POST
 						data:'lat=' + lat +
+							'&id_coursier=' + id_coursier +
 							'&longi=' + longi,
 						dataType : 'html',
 						success: function (html) 
