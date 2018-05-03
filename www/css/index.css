@@ -751,12 +751,12 @@ label.switch {
 
 .feuille_route p.commande {
 	text-align:center;
-	color:#fff;
+	color:#1fb5ac;
 	font-weight:bold;
 }
 .feuille_route .entour_commande {
 	width: calc(100% + 40px);
-	background:rgba(255, 255, 255, 0.2);
+	background:#1fb5ac;
 	margin-left: -20px;	
 	border-bottom:1px solid rgba(255, 255, 255, 0.2);
 	float: left;
