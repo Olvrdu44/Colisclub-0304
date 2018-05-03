@@ -1365,19 +1365,19 @@ function load_connexion()
 															data:'accept_course=' + id_course +
 																'&coursier=' + id_coursier, 
 															dataType : 'html',
-															success: function (html) 
+															success: function (result) 
 															{
 																$(".top_courses_dispo").hide();
 																marker.remove();
-																alert('la: ' + html);
+																alert('la: ' + result);
 																
-																if(html == 'reussite')
+																if(result == 'reussite')
 																{
 																	navigator.notification.alert("La course a été acceptée, elle apparait désormait dans vos livraisons a effectuée !", alertCallback, "Course acceptée", "Fermer");
 																}
 																else
 																{
-																	navigator.notification.alert(html, alertCallback, "hop", "Fermer");
+																	navigator.notification.alert(result, alertCallback, "hop", "Fermer");
 																}
 																
 															},
