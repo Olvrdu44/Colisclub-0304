@@ -1371,13 +1371,13 @@ function load_connexion()
 																marker.remove();
 																alert('la: ' + result);
 																
-																if(result.indexOf("reussite") != -1)
-																{
-																	navigator.notification.alert("La course a été acceptée, elle apparait désormait dans vos livraisons a effectuée !", alertCallback, "Course acceptée", "Fermer");
-																}
-																else if(result.indexOf("dejapris") != -1)
+																if(result.indexOf("dejapris") != -1)
 																{
 																	navigator.notification.alert("La course n'est plus disponible, il semble qu'un autre coursier en sois en charge, il doit surement y avoir une autre livraison a proximité !", alertCallback, "Course refusée", "Fermer");
+																}
+																else if(result.indexOf("reussite") != -1)
+																{
+																	navigator.notification.alert("La course a été acceptée, elle apparait désormait dans vos livraisons a effectuée !", alertCallback, "Course acceptée", "Fermer");
 																}
 																else
 																{
