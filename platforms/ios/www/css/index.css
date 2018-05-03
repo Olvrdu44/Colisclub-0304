@@ -31,8 +31,9 @@ body {
     padding:0px;
     text-transform:uppercase;
     width:100%;
-	background:#1fb5ac;
+	background:#1fb5ac!important;
 }
+
 
 /* Portrait layout (default) */
 .app {
@@ -1004,10 +1005,10 @@ span.colororange{
 
 #map_canvas {
       position: absolute;
-      left:-50px;
-      top: -50px;
-      right: -50px;
-      bottom: -50px;
+      left:0px;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
     }
 .infos_livraisons{
 	position:fixed;
@@ -1019,7 +1020,8 @@ span.colororange{
 	color:#fff;
 	display:none;
 }
-
 .bg_color{
-	background:#999;
+	background: #1fb5ac;
+	min-height: 100%;
+	position: fixed;
 }

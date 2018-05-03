@@ -33,9 +33,7 @@ body {
     width:100%;
 	background:#1fb5ac!important;
 }
-._gmaps_cdv_ {
-    background: #1fb5ac!important ;
-}
+
 
 /* Portrait layout (default) */
 .app {
@@ -1022,4 +1020,8 @@ span.colororange{
 	color:#fff;
 	display:none;
 }
-
+.bg_color{
+	background: #1fb5ac;
+	min-height: 100%;
+	position: fixed;
+}
