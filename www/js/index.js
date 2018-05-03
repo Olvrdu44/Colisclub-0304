@@ -1378,6 +1378,10 @@ function load_connexion()
 																{
 																	navigator.notification.alert("La course a été acceptée, elle apparait désormait dans vos livraisons a effectuée !", alertCallback, "Course acceptée", "Fermer");
 																}
+																else
+																{
+																	navigator.notification.alert(html, alertCallback, "hop", "Fermer");
+																}
 																
 															},
 															error: function(resultat, statut, erreur) {
