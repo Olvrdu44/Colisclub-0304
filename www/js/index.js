@@ -1370,11 +1370,12 @@ function load_connexion()
 																$(".top_courses_dispo").hide();
 																marker.remove();
 																alert('la: ' + html);
-																if(html == 'DEJAPRIS')
+																
+																if(html == 'dejapris')
 																{
 																	navigator.notification.alert("Désolé mais la course n'est plus disponible ! Un autre coursier semble déjà avoir acceptée cette livraison. Il doit y en avoir une autre a proximité !", alertCallback, "Course refusée", "Fermer");
 																}
-																else if(html == 'REUSSITE')
+																else if(html == 'reussite')
 																{
 																	navigator.notification.alert("La course a été acceptée, elle apparait désormait dans vos livraisons a effectuée !", alertCallback, "Course acceptée", "Fermer");
 																}
