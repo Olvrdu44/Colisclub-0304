@@ -1240,6 +1240,7 @@ function load_connexion()
 	});
 	$(".go_livraison").click(function()
 	{
+		alert('yeap');
 		//on selectionne l icone en deselectionnant le reste
 		$(".menu_fix_bas a").removeClass('selected');
 		$(this).addClass('selected');
@@ -1262,6 +1263,7 @@ function load_connexion()
 			dataType : 'html',
 			success: function (html) 
 			{
+					alert('yeap2');
 				$(".load_commandes").html(html);
 			},
 			error: function(resultat, statut, erreur) 
