@@ -31,7 +31,10 @@ body {
     padding:0px;
     text-transform:uppercase;
     width:100%;
-	background:#1fb5ac;
+	background:#1fb5ac!important;
+}
+._gmaps_cdv_ {
+    background: #1fb5ac!important ;
 }
 
 /* Portrait layout (default) */
@@ -1020,6 +1023,3 @@ span.colororange{
 	display:none;
 }
 
-.bgcolor{
-	background:#1fb5ac !important;
-}
