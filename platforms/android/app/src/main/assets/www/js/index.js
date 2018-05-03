@@ -1251,6 +1251,25 @@ function load_connexion()
 		//on change le titre de la page
 		$("p.titre_page").text("Mes livraisons");
 		
+		id_coursier = $("input[name='id_coursier']").val();
+		
+		//on charge les commandes en course
+		$.ajax({
+			url : 'http://www.colisclub.fr/application/ajax.php',
+			type : 'GET', // Le type de la requête HTTP, ici devenu POST
+			data:'load_commandes=1' +
+				'&id_coursier=' + id_coursier,
+			dataType : 'html',
+			success: function (html) 
+			{
+				$(".load_commandes").html(html);
+			},
+			error: function(resultat, statut, erreur) 
+			{
+				navigator.notification.alert("Une erreur est survenue lors du chargement de vos livraison en cours", alertCallback, "Erreur", "Fermer");
+			}
+		});
+		
 	});
 	$(".go_map").click(function()
 	{
@@ -1353,7 +1372,6 @@ function load_connexion()
 													
 													$(".accept_course").click(function()
 													{
-														alert('ca marche');
 														var id_course = $(this).attr("data-course");
 														var id_coursier = $("input[name='id_coursier']").val();
 														//$("input[name='acceptation_course']").val( id_course );
@@ -1369,7 +1387,6 @@ function load_connexion()
 															{
 																$(".top_courses_dispo").hide();
 																marker.remove();
-																alert('la: ' + result);
 																
 																if(result.indexOf("dejapris") != -1)
 																{
@@ -1399,10 +1416,9 @@ function load_connexion()
 								alert('erreur');
 							}
 						});
-											
-						
 					});
 				});
+				
 				function onSuccess(position) 
 				{
 					var lat = position.coords.latitude;//latitude actuelle
@@ -1418,11 +1434,11 @@ function load_connexion()
 						dataType : 'html',
 						success: function (html) 
 						{
-							alert("position enregistrée");
+							//alert("position enregistrée");
 						},
 						error: function(resultat, statut, erreur) 
 						{
-							navigator.notification.alert("erreur", alertCallback, "Géolocalisation", "Fermer");
+							navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
 						}
 					});		
 				}

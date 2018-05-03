@@ -519,9 +519,7 @@ input.error{
 .mes_livraisons{
 	padding-top:0;
 }
-.feuille_route p.commande{
-	color:#1fb5ac;
-}
+
 
 .go_infos, .go_securite, .go_paiement, .go_statut, .go_vehicules{
 	width:45%;
@@ -760,7 +758,7 @@ label.switch {
 
 .feuille_route p.commande {
 	text-align:center;
-	color:#1fb5ac;
+	color:#fff;
 	font-weight:bold;
 	margin-top:0;
 	padding-top:0;
