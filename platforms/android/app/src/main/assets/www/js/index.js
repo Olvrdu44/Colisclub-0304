@@ -1308,7 +1308,8 @@ function load_connexion()
 						var marker = map.addMarker(
 						{
 							title: text,
-							position: location.latLng
+							position: location.latLng,
+							'icon': {url: 'img/pointer_livreur.png', size: { width: 30, height: 68 }}
 						}, function(marker) 
 						{
 						  marker.showInfoWindow();
@@ -1332,22 +1333,58 @@ function load_connexion()
 										'icon': mydata.icon
 									  }, function(marker) {
 										// Show the infoWindow
-										<!-- marker.showInfoWindow(); -->
 										marker.on(plugin.google.maps.event.MARKER_CLICK, function() 
 										{
-											var title = marker.getTitle();//on y mettra l id
-											alert( title );
-											//marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
+											var id_course = marker.getTitle();//on y mettra l id
+											
+											//animation
+											marker.setAnimation(plugin.google.maps.Animation.BOUNCE);
+											
+											//on cahrge la fenetre de la course
 											$.ajax({
 												url : 'http://www.colisclub.fr/application/ajax.php',
-												type : 'GET', // Le type de la requête HTTP, ici devenu POST
-												data:'course_accept=1' + 
-													'&title=' + title, 
+												type : 'GET', 
+												data:'affiche_course=1' + 
+													'&id_course=' + id_course, 
 												dataType : 'html',
 												success: function (html) 
 												{
-													alert('ca marche' + html);
 													$(".top_courses_dispo").html(html);
+													
+													$(".accept_course").click(function()
+													{
+														alert('ca marche');
+														var id_course = $(this).attr("data-course");
+														var id_coursier = $("input[name='id_coursier']").val();
+														//$("input[name='acceptation_course']").val( id_course );
+														
+														/* AJAX */
+														$.ajax({
+															url : 'http://www.colisclub.fr/application/ajax.php',
+															type : 'GET', // Le type de la requête HTTP, ici devenu POST
+															data:'accept_course=' + id_course +
+																'&coursier=' + id_coursier, 
+															dataType : 'html',
+															success: function (result) 
+															{
+																$(".top_courses_dispo").hide();
+																marker.remove();
+																alert('la: ' + result);
+																
+																if(result.indexOf("dejapris") != -1)
+																{
+																	navigator.notification.alert("La course n'est plus disponible, il semble qu'un autre coursier en sois en charge, il doit surement y avoir une autre livraison a proximité !", alertCallback, "Course refusée", "Fermer");
+																}
+																else if(result.indexOf("reussite") != -1)
+																{
+																	navigator.notification.alert("La course a été acceptée, elle apparait désormait dans vos livraisons a effectuée !", alertCallback, "Course acceptée", "Fermer");
+																}
+															},
+															error: function(resultat, statut, erreur) {
+																navigator.notification.alert("erreur", alertCallback, "accepter la course", "Fermer");
+															}
+														});
+													});
 												},
 												error: function(resultat, statut, erreur) {
 													alert('erreur');
@@ -1418,6 +1455,16 @@ function load_connexion()
 		/***************************************************/
 		
 	});
+	
+	/************* ACCEPTATION DE LIVRAISON ****************/
+	/*$("input[name='acceptation_course']").change(function()
+	{
+		var id_course = $(this).val(); //on récupere l id de la course
+		var id_coursier = $("input[name='id_coursier']").val(); //on récupere l id de la course
+		
+		
+	});*/
+	/*******************************************************/
 	
 	$(".go_to_bank_account").click(function()
 	{

@@ -322,12 +322,12 @@ input.cb_radio[type="checkbox"] + label.cb_radio span {
     height:19px;
     margin:-2px 10px 0 0;
     vertical-align:middle;
-    background:url(../img/check_radio_sheet_2.png) left top no-repeat;
+    background:url("../img/check_radio_sheet_2.png") left top no-repeat;
     cursor:pointer;
 }
 
 input.cb_radio[type="checkbox"]:checked + label.cb_radio span {
-    background:url(../img/check_radio_sheet_2.png) -19px top no-repeat;
+    background:url("../img/check_radio_sheet_2.png") -19px top no-repeat;
 }
 
 input.cb_radio[type="radio"] {
@@ -346,12 +346,12 @@ input.cb_radio[type="radio"] + label.cb_radio span {
     height:19px;
     margin:-2px 10px 0 0;
     vertical-align:middle;
-    background:url(../img/check_radio_sheet_2.png) -38px top no-repeat;
+    background:url("../img/check_radio_sheet_2.png") -38px top no-repeat;
     cursor:pointer;
 }
 
 input.cb_radio[type="radio"]:checked + label.cb_radio span {
-    background:url(../img/check_radio_sheet_2.png) -57px top no-repeat;
+    background:url("../img/check_radio_sheet_2.png") -57px top no-repeat;
 }
 /**************************   GOOGLE AUTOCOMPLETE ***************************/
 #locationField, #controls {
@@ -509,9 +509,18 @@ input.error{
 	padding-bottom:100px;
 }
 
-.menu_informations{
+.menu_informations, .feuille_route{
 	width:100%;
 	float:left;
+}
+.feuille_route{
+	padding-top:0;
+}
+.mes_livraisons{
+	padding-top:0;
+}
+.feuille_route p.commande{
+	color:#1fb5ac;
 }
 
 .go_infos, .go_securite, .go_paiement, .go_statut, .go_vehicules{
@@ -568,6 +577,7 @@ input.error{
     max-width: 600px;
     margin-left: 0px;
 	min-height:30px;
+	max-height:30px;
 	background:#fff;
 	padding-top:20px;
 	z-index:200;
@@ -604,6 +614,7 @@ input.error{
 	left:0;
 	background:#e16e28;
 	min-height:50px;
+	max-height:50px;
 }
 
 .go_profil, .go_planning, .go_map, .go_livraison{
@@ -748,12 +759,14 @@ label.switch {
 
 .feuille_route p.commande {
 	text-align:center;
-	color:#fff;
+	color:#1fb5ac;
 	font-weight:bold;
+	margin-top:0;
+	padding-top:0;
 }
 .feuille_route .entour_commande {
 	width: calc(100% + 40px);
-	background:rgba(255, 255, 255, 0.2);
+	background:#1fb5ac;
 	margin-left: -20px;	
 	border-bottom:1px solid rgba(255, 255, 255, 0.2);
 	float: left;
@@ -881,7 +894,11 @@ label.switch {
 	margin-left: 0;
 	background: #444;
 	float: left;
-	margin-top: -20px;
+	margin-top: 20px;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:1000;
 }
 .courses_dispo .entete_course_map p {
 	text-transform:none;
@@ -925,8 +942,8 @@ label.switch {
     padding: 3px 10px;
     font-size: 12px;
     text-align: center;
-    width: 100px;
-    margin-left: calc(50% - 50px);
+    width: 200px;
+    margin-left: calc(50% - 100px);
     font-weight: bold;
     line-height: 1.4;
 }
