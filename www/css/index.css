@@ -753,6 +753,8 @@ label.switch {
 	text-align:center;
 	color:#1fb5ac;
 	font-weight:bold;
+	margin-top:0;
+	padding-top:0;
 }
 .feuille_route .entour_commande {
 	width: calc(100% + 40px);
