@@ -1389,7 +1389,6 @@ function load_connexion()
 	});
 	$(".go_livraison").click(function()
 	{
-		alert('yeap');
 		//on selectionne l icone en deselectionnant le reste
 		$(".menu_fix_bas a").removeClass('selected');
 		$(this).addClass('selected');
@@ -1451,12 +1450,13 @@ function load_connexion()
 					map.addEventListener(plugin.google.maps.event.MAP_READY, function() 
 					{
 						// Add a marker
-						var text = ["Ma position:\n",
+						var text = "Ma position";
+						/*var text = ["Ma position:\n",
 						"latitude:" + location.latLng.lat.toFixed(3),
 						"longitude:" + location.latLng.lng.toFixed(3),
 						"vitesse:" + location.speed,
 						"time:" + location.time,
-						"bearing:" + location.bearing].join("\n");
+						"bearing:" + location.bearing].join("\n");*/
 
 						var marker = map.addMarker(
 						{

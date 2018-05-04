@@ -21,6 +21,7 @@
   <allow-intent href="mailto:*"/>
   <allow-intent href="geo:*"/>
   <platform name="android">
+	<plugin name="Geolocation" value="org.apache.cordova.GeoBroker" />
     <allow-intent href="market:*"/>
 	<icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
 	<icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
@@ -36,6 +37,7 @@
 	<splash density="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
   </platform>
   <platform name="ios">
+	<plugin name="Geolocation" value="CDVLocation" />
     <allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>
 		<icon height="57" platform="ios" src="res/icon/ios/icon-57.png" width="57" />
@@ -73,9 +75,12 @@
     <!-- these are optional settings -->
     <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
     <variable name="ANDROID_SUPPORT_V4_VERSION" value="24.1.0" />
-    <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="(your custom message)" />
-    <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="(your custom message)" />
+    <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="L'application colis club a besoin d'accéder au gps afin de vous géolocaliser et de vous proposer les courses autour de vous" />
+    <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="L'application colis club a besoin d'accéder au gps afin de vous géolocaliser et de vous proposer les courses autour de vous !" />
   </plugin>
+  <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+    <string>need location access to find things nearby</string>
+</edit-config>
 	<preference name="android-build-tool" value="gradle" />
 <preference name="phonegap-version" value="cli-8.0.0" />
 </widget>
