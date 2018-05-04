@@ -1569,6 +1569,7 @@ function load_connexion()
 						success: function (html) 
 						{
 							alert("position enregistrée");
+							alert("lat" + lat + " - id_coursier" + id_coursier + " - longi" + longi);
 						},
 						error: function(resultat, statut, erreur) 
 						{
@@ -1595,7 +1596,7 @@ function load_connexion()
 						navigator.geolocation.getCurrentPosition(onSuccess, onError);
 						retourneMaPosition();
 					}
-					, 240000);
+					, 15000);
 				}
 			},
 			error: function(resultat, statut, erreur) 
