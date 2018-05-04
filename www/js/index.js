@@ -1568,7 +1568,7 @@ function load_connexion()
 						dataType : 'html',
 						success: function (html) 
 						{
-							//alert("position enregistrée");
+							alert("position enregistrée");
 						},
 						error: function(resultat, statut, erreur) 
 						{
