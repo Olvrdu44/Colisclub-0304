@@ -1271,7 +1271,6 @@ function load_connexion()
 				navigator.notification.alert("Une erreur est survenue lors du chargement de vos livraison en cours", alertCallback, "Erreur", "Fermer");
 			}
 		});
-		
 	});
 	$(".go_map").click(function()
 	{
