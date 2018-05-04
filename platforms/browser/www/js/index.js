@@ -724,8 +724,157 @@ function alertCallback()
 {
 	//pour l'alert de cordova (obligatoire d avoir une fonction mais rien a y faire perso :) )
 }
+function load_commandes()
+{
+	id_coursier = $("input[name='id_coursier']").val();
+	//on charge les commandes en course
+	$.ajax({
+		url : 'http://www.colisclub.fr/application/ajax.php',
+		type : 'GET', // Le type de la requête HTTP, ici devenu POST
+		data:'load_commandes=1' +
+			'&id_coursier=' + id_coursier,
+		dataType : 'html',
+		success: function (html) 
+		{
+			$(".load_commandes").html(html);
+			
+			/********************** PAGE LIVRAISON *********************/
+	
+			//J'ouvre la popup pour entrer un code sur la feuille de route d'un coursier 
+			$(".valide_etape_code").click(function()
+			{
+				var suivi = $(this).attr("data-suivi"); // vaut soit go/enlevement/livraison
+				var id_livraison = $(this).attr("data-livraison"); // vaut soit go/enlevement/livraison
+
+				if(suivi == 'nothing')
+				{
+					next_step = "enlevement";
+					next_btn = "J'ai le colis";
+					
+					$.ajax({
+						url : 'http://www.colisclub.fr/application/ajax.php',
+						type : 'GET', // Le type de la requête HTTP, ici devenu POST
+						data:'livraison=' + id_livraison +
+							'&code=' + 'aucun' + 
+							'&suivi=' + suivi, // vaut soit go/enlevement/livraison
+						dataType : 'html',
+						success: function (html) 
+						{
+							navigator.notification.alert(html, alertCallback, "Suvi", "Fermer");
+							
+							$(".popup_code").hide('blind');
+							$(".commande_" + id_livraison + " .valide_etape_code").text( next_btn );
+							$(".commande_" + id_livraison + " .valide_etape_code").attr( "data-suivi", next_step );
+						
+						},
+						error: function(resultat, statut, erreur) 
+						{
+							navigator.notification.alert("Une erreur est survenue merci de réésayer", alertCallback, "Erreur", "Fermer");
+						}
+					});
+				}
+				else
+				{
+					$(".popup_code").show('blind');
+					$("input[name='suivi']").val( suivi );
+					$("input[name='id_livraison']").val( id_livraison );
+				}
+			});
+			
+			/**** FERME LA POPUP *******/
+			$(".popup_code i.close").click(function()
+			{
+				$(".popup_code").hide('blind');
+			});
+			
+			/*************** SOUMISSION DU CODE EXP OU DEST *****************/
+			$("form#suvi_livraison").submit(function(e)
+			{
+				e.preventDefault();
+				
+				verif_form = true;
+				var code = $("form#suvi_livraison input[name='code']").val();
+				var suivi = $("form#suvi_livraison input[name='suivi']").val(); // vaut soit go/enlevement/livraison
+				var id_livraison = $("form#suvi_livraison input[name='id_livraison']").val();
+				
+				if(suivi == 'enlevement')
+				{
+					next_step = "livraison";
+					next_btn = "Le colis est livré";
+					qui = "l'expéditeur";
+				}
+				else if(suivi == 'livraison')
+				{
+					next_step = "livre";
+					next_btn = "Commande terminée";
+					qui = 'le destinataire';
+				}
+				
+				if(code == '')
+				{
+					$("form#suvi_livraison input[name='code']").addClass('error');
+					verif_form = false;
+				}
+				else
+				{
+					$("form#suvi_livraison input[name='code']").removeClass('error');
+				}
+				
+				if(verif_form == true)
+				{
+					$.ajax({
+						url : 'http://www.colisclub.fr/application/ajax.php',
+						type : 'GET', // Le type de la requête HTTP, ici devenu POST
+						data:'livraison=' + id_livraison +
+							'&code=' + code + 
+							'&suivi=' + suivi, // vaut soit go/enlevement/livraison
+						dataType : 'html',
+						success: function (html) 
+						{
+							navigator.notification.alert(html, alertCallback, "Avancée du Suivi", "Fermer");
+							
+							if(html == "Le code est incorrect")
+							{
+								$("input[name='code']").addClass('error');
+							}
+							else
+							{
+								$("input[name='code']").val('');
+								$(".popup_code").hide('blind');
+								$(".commande_" + id_livraison + " .valide_etape_code").text( next_btn );
+								$(".commande_" + id_livraison + " .valide_etape_code").attr( "data-suivi", next_step );
+								
+								if(next_step == "livre")
+								{
+									$(".commande_" + id_livraison).hide('blind');
+									nb_commandes_restantes = parseInt( $("p.commande span").html() );
+									nb_commandes_restantes = nb_commandes_restantes - 1;
+									$("p.commande span").html(nb_commandes_restantes);
+								}
+							}
+						},
+						error: function(resultat, statut, erreur) 
+						{
+							navigator.notification.alert("Une erreur est survenue merci de réésayer ! ", alertCallback, "Erreur", "Fermer");
+						}
+					});
+				}
+				else
+				{
+					navigator.notification.alert("Merci de remplir le code fournit par " + qui, alertCallback, "Erreur", "Fermer");
+				}
+			});
+		},
+		error: function(resultat, statut, erreur) 
+		{
+			navigator.notification.alert("Une erreur est survenue lors du chargement de vos livraison en cours", alertCallback, "Erreur", "Fermer");
+		}
+	});
+}
 function load_connexion()
 {
+	load_commandes();
+	
 	function back_to_profil()
 	{
 		$(".menu_infos").show('blind');
@@ -1254,23 +1403,7 @@ function load_connexion()
 		
 		id_coursier = $("input[name='id_coursier']").val();
 		
-		//on charge les commandes en course
-		$.ajax({
-			url : 'http://www.colisclub.fr/application/ajax.php',
-			type : 'GET', // Le type de la requête HTTP, ici devenu POST
-			data:'load_commandes=1' +
-				'&id_coursier=' + id_coursier,
-			dataType : 'html',
-			success: function (html) 
-			{
-					alert('yeap2');
-				$(".load_commandes").html(html);
-			},
-			error: function(resultat, statut, erreur) 
-			{
-				navigator.notification.alert("Une erreur est survenue lors du chargement de vos livraison en cours", alertCallback, "Erreur", "Fermer");
-			}
-		});
+		load_commandes();
 	});
 	$(".go_map").click(function()
 	{
@@ -1318,10 +1451,10 @@ function load_connexion()
 					map.addEventListener(plugin.google.maps.event.MAP_READY, function() 
 					{
 						// Add a marker
-						var text = ["Current your location:\n",
+						var text = ["Ma position:\n",
 						"latitude:" + location.latLng.lat.toFixed(3),
 						"longitude:" + location.latLng.lng.toFixed(3),
-						"speed:" + location.speed,
+						"vitesse:" + location.speed,
 						"time:" + location.time,
 						"bearing:" + location.bearing].join("\n");
 
@@ -1492,131 +1625,6 @@ function load_connexion()
 		cordova.InAppBrowser.open('https://www.colisclub.fr/espace-coursier/compte-bancaire.php?key=' + key + '&coursier=' + coursier, '_blank', 'location=no');
 	});
 	
-	/********************** PAGE LIVRAISON *********************/
 	
-	//J'ouvre la popup pour entrer un code sur la feuille de route d'un coursier 
-	$(".valide_etape_code").click(function()
-	{
-		var suivi = $(this).attr("data-suivi"); // vaut soit go/enlevement/livraison
-		var id_livraison = $(this).attr("data-livraison"); // vaut soit go/enlevement/livraison
-
-		if(suivi == 'nothing')
-		{
-			next_step = "enlevement";
-			next_btn = "J'ai le colis";
-			
-			$.ajax({
-				url : 'http://www.colisclub.fr/application/ajax.php',
-				type : 'GET', // Le type de la requête HTTP, ici devenu POST
-				data:'livraison=' + id_livraison +
-					'&code=' + 'aucun' + 
-					'&suivi=' + suivi, // vaut soit go/enlevement/livraison
-				dataType : 'html',
-				success: function (html) 
-				{
-					navigator.notification.alert(html, alertCallback, "Suvi", "Fermer");
-					
-					$(".popup_code").hide('blind');
-					$(".commande_" + id_livraison + " .valide_etape_code").text( next_btn );
-					$(".commande_" + id_livraison + " .valide_etape_code").attr( "data-suivi", next_step );
-				
-				},
-				error: function(resultat, statut, erreur) 
-				{
-					navigator.notification.alert("Une erreur est survenue merci de réésayer", alertCallback, "Erreur", "Fermer");
-				}
-			});
-		}
-		else
-		{
-			$(".popup_code").show('blind');
-			$("input[name='suivi']").val( suivi );
-			$("input[name='id_livraison']").val( id_livraison );
-		}
-	});
-	
-	/**** FERME LA POPUP *******/
-	$(".popup_code i.close").click(function()
-	{
-		$(".popup_code").hide('blind');
-	});
-	
-	/*************** SOUMISSION DU CODE EXP OU DEST *****************/
-	$("form#suvi_livraison").submit(function(e)
-	{
-		e.preventDefault();
-		
-		verif_form = true;
-		var code = $("form#suvi_livraison input[name='code']").val();
-		var suivi = $("form#suvi_livraison input[name='suivi']").val(); // vaut soit go/enlevement/livraison
-		var id_livraison = $("form#suvi_livraison input[name='id_livraison']").val();
-		
-		if(suivi == 'enlevement')
-		{
-			next_step = "livraison";
-			next_btn = "Le colis est livré";
-			qui = "l'expéditeur";
-		}
-		else if(suivi == 'livraison')
-		{
-			next_step = "livre";
-			next_btn = "Commande terminée";
-			qui = 'le destinataire';
-		}
-		
-		if(code == '')
-		{
-			$("form#suvi_livraison input[name='code']").addClass('error');
-			verif_form = false;
-		}
-		else
-		{
-			$("form#suvi_livraison input[name='code']").removeClass('error');
-		}
-		
-		if(verif_form == true)
-		{
-			$.ajax({
-				url : 'http://www.colisclub.fr/application/ajax.php',
-				type : 'GET', // Le type de la requête HTTP, ici devenu POST
-				data:'livraison=' + id_livraison +
-					'&code=' + code + 
-					'&suivi=' + suivi, // vaut soit go/enlevement/livraison
-				dataType : 'html',
-				success: function (html) 
-				{
-					navigator.notification.alert(html, alertCallback, "Avancée du Suivi", "Fermer");
-					
-					if(html == "Le code est incorrect")
-					{
-						$("input[name='code']").addClass('error');
-					}
-					else
-					{
-						$("input[name='code']").val('');
-						$(".popup_code").hide('blind');
-						$(".commande_" + id_livraison + " .valide_etape_code").text( next_btn );
-						$(".commande_" + id_livraison + " .valide_etape_code").attr( "data-suivi", next_step );
-						
-						if(next_step == "livre")
-						{
-							$(".commande_" + id_livraison).hide('blind');
-							nb_commandes_restantes = parseInt( $("p.commande span").html() );
-							nb_commandes_restantes = nb_commandes_restantes - 1;
-							$("p.commande span").html(nb_commandes_restantes);
-						}
-					}
-				},
-				error: function(resultat, statut, erreur) 
-				{
-					navigator.notification.alert("Une erreur est survenue merci de réésayer ! ", alertCallback, "Erreur", "Fermer");
-				}
-			});
-		}
-		else
-		{
-			navigator.notification.alert("Merci de remplir le code fournit par " + qui, alertCallback, "Erreur", "Fermer");
-		}
-	});
 }
 

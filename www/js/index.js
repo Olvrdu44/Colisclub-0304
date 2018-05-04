@@ -726,6 +726,7 @@ function alertCallback()
 }
 function load_commandes()
 {
+	id_coursier = $("input[name='id_coursier']").val();
 	//on charge les commandes en course
 	$.ajax({
 		url : 'http://www.colisclub.fr/application/ajax.php',
