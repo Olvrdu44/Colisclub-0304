@@ -1468,8 +1468,6 @@ function load_connexion()
 						  marker.showInfoWindow();
 						});
 
-						retourneMaPosition();
-						
 						/* AJAX */
 						$.ajax({
 							url : 'http://www.colisclub.fr/application/ajax.php',
@@ -1568,8 +1566,7 @@ function load_connexion()
 						dataType : 'html',
 						success: function (html) 
 						{
-							alert("position enregistrée");
-							alert("lat" + lat + " - id_coursier" + id_coursier + " - longi" + longi);
+							alert(html);
 						},
 						error: function(resultat, statut, erreur) 
 						{
@@ -1596,7 +1593,7 @@ function load_connexion()
 						navigator.geolocation.getCurrentPosition(onSuccess, onError);
 						retourneMaPosition();
 					}
-					, 15000);
+					, 240000);
 				}
 			},
 			error: function(resultat, statut, erreur) 
@@ -1625,6 +1622,8 @@ function load_connexion()
 		var coursier = $(this).attr('data-coursier');
 		cordova.InAppBrowser.open('https://www.colisclub.fr/espace-coursier/compte-bancaire.php?key=' + key + '&coursier=' + coursier, '_blank', 'location=no');
 	});
+	
+	retourneMaPosition();
 	
 	
 }
