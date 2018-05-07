@@ -1582,7 +1582,7 @@ function load_connexion()
 	
 	/**************    DISPO    ************/
 	/***************************************/
-	$("input[name=dispo]").change(function()
+	$(".switch_dispo").click(function()
 	{
 		alert("clic");
 		var id_coursier = $("input[name='id_coursier']").val();
