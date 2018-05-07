@@ -1566,7 +1566,7 @@ function load_connexion()
 						dataType : 'html',
 						success: function (html) 
 						{
-							alert(html);
+							//alert(html);
 						},
 						error: function(resultat, statut, erreur) 
 						{
@@ -1624,6 +1624,40 @@ function load_connexion()
 	});
 	
 	retourneMaPosition();
+	
+	/**************    DISPO    ************/
+	/***************************************/
+	$("input[name=dispo]").click(function()
+	{
+		var id_coursier = $("input[name='id_coursier']").val();
+		
+		if( $('input[name=dispo]').is(':checked') )
+		{
+			var dispo = 1;
+		} 
+		else 
+		{
+			var dispo = 0;
+		}
+		
+		$.ajax({
+			url : 'http://www.colisclub.fr/application/ajax.php',
+			type : 'GET', // Le type de la requête HTTP, ici devenu POST
+			data:'dispo=' + dispo +
+				'&id_coursier=' + id_coursier,  
+			dataType : 'html',
+			success: function (html) 
+			{
+				navigator.notification.alert(html, alertCallback, "Dispo", "Fermer");
+			},
+			error: function(resultat, statut, erreur) 
+			{
+				navigator.notification.alert("erreur lors de l'appel au serveur", alertCallback, "Dispo", "Fermer");
+			}
+		});
+	});
+	/***************************************/
+	/***************************************/
 	
 	
 }
