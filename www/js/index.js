@@ -24,8 +24,6 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 		$(function()
 		{
-			load_connexion();
-			
 			function checkConnection() 
 			{
 				var networkState = navigator.connection.type;
@@ -726,6 +724,12 @@ function alertCallback()
 }
 function load_commandes()
 {
+	$(".avatar").click(function()
+	{
+		// on remplit un input hidden pour le récuperer dans la fonction uploadphoto
+		$("input[name='uploadphoto']").val('avatar'); 
+		getImage();
+	});
 	id_coursier = $("input[name='id_coursier']").val();
 	//on charge les commandes en course
 	$.ajax({
