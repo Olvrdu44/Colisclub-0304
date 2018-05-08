@@ -1578,13 +1578,13 @@ function load_connexion()
 		cordova.InAppBrowser.open('https://www.colisclub.fr/espace-coursier/compte-bancaire.php?key=' + key + '&coursier=' + coursier, '_blank', 'location=no');
 	});
 	
-	retourneMaPosition();
+	navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
+	retourneMaPosition(); //pour la récupérer tous les X temps
 	
 	/**************    DISPO    ************/
 	/***************************************/
-	$("input[name=dispo]").change(function()
+	$(".switch_dispo").click(function()
 	{
-		alert("clic");
 		var id_coursier = $("input[name='id_coursier']").val();
 		
 		if( $('input[name=dispo]').is(':checked') )
@@ -1596,17 +1596,15 @@ function load_connexion()
 			var dispo = 0;
 		}
 		
-		alert("dispo = " + dispo + " - id_coursier = " + id_coursier);
-		
 		$.ajax({
 			url : 'http://www.colisclub.fr/application/ajax.php',
 			type : 'GET', 
-			data:'dispo=' + dispo +
+			data:'coursier_dispo=' + dispo +
 				'&id_coursier=' + id_coursier,  
 			dataType : 'html',
 			success: function (html) 
 			{
-				navigator.notification.alert(html, alertCallback, "Dispo", "Fermer");
+				//navigator.notification.alert(html, alertCallback, "Dispo", "Fermer");
 			},
 			error: function(resultat, statut, erreur) 
 			{
@@ -1661,7 +1659,5 @@ function load_connexion()
 		}
 		, 240000);
 	}
-	
-	
 }
 
