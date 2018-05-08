@@ -1578,7 +1578,8 @@ function load_connexion()
 		cordova.InAppBrowser.open('https://www.colisclub.fr/espace-coursier/compte-bancaire.php?key=' + key + '&coursier=' + coursier, '_blank', 'location=no');
 	});
 	
-	retourneMaPosition();
+	navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
+	retourneMaPosition(); //pour la récupérer tous les X temps
 	
 	/**************    DISPO    ************/
 	/***************************************/
@@ -1661,6 +1662,8 @@ function load_connexion()
 		}
 		, 240000);
 	}
+	
+	
 	
 	
 }
