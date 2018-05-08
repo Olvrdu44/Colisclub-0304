@@ -1599,12 +1599,12 @@ function load_connexion()
 		$.ajax({
 			url : 'http://www.colisclub.fr/application/ajax.php',
 			type : 'GET', 
-			data:'dispo=' + dispo +
+			data:'coursier_dispo=' + dispo +
 				'&id_coursier=' + id_coursier,  
 			dataType : 'html',
 			success: function (html) 
 			{
-				navigator.notification.alert(html, alertCallback, "Dispo", "Fermer");
+				//navigator.notification.alert(html, alertCallback, "Dispo", "Fermer");
 			},
 			error: function(resultat, statut, erreur) 
 			{
