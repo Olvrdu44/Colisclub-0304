@@ -1585,7 +1585,6 @@ function load_connexion()
 	/***************************************/
 	$(".switch_dispo").click(function()
 	{
-		alert("clic");
 		var id_coursier = $("input[name='id_coursier']").val();
 		
 		if( $('input[name=dispo]').is(':checked') )
@@ -1596,8 +1595,6 @@ function load_connexion()
 		{
 			var dispo = 0;
 		}
-		
-		alert("dispo = " + dispo + " - id_coursier = " + id_coursier);
 		
 		$.ajax({
 			url : 'http://www.colisclub.fr/application/ajax.php',
@@ -1662,9 +1659,5 @@ function load_connexion()
 		}
 		, 240000);
 	}
-	
-	
-	
-	
 }
 
