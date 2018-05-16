@@ -76,7 +76,6 @@
         <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="L'application colis club a besoin d'accéder au gps afin de vous géolocaliser et de vous proposer les courses autour de vous" />
         <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="L'application colis club a besoin d'accéder au gps afin de vous géolocaliser et de vous proposer les courses autour de vous !" />
     </plugin>
-    <preference name="android-build-tool" value="gradle" />
     <preference name="phonegap-version" value="cli-8.0.0" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="L'application colis club souhaite accéder a votre position afin de vous géolocaliser pour permettre le suivi des livraisons et donner votre position a l'administrateur colisclub" />
