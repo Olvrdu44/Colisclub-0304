@@ -13,7 +13,9 @@ dependencies {
 
 android {
   compileSdkVersion 26
-
+  minSdkVersion 19  
+  targetSdkVersion 26
+  
   packagingOptions {
     exclude 'README'
     exclude 'LICENSE'
