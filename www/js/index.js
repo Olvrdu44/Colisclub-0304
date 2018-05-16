@@ -507,26 +507,26 @@ var app = {
 								load_connexion();
 								
 								/*******************   NOTIFS ONE SIGNAL     ***********/
-								// var notificationOpenedCallback = function(jsonData) {
-									// console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-								// };
+								var notificationOpenedCallback = function(jsonData) {
+									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+								};
 								
-								// window.plugins.OneSignal
-								// .startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
-								// .handleNotificationOpened(notificationOpenedCallback)
-								// .endInit();
+								window.plugins.OneSignal
+								.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
+								.handleNotificationOpened(notificationOpenedCallback)
+								.endInit();
 								
-								// window.plugins.OneSignal.addSubscriptionObserver(function (state) 
-								// {
-									// if (!state.from.subscribed && state.to.subscribed) 
-									// {
+								window.plugins.OneSignal.addSubscriptionObserver(function (state) 
+								{
+									if (!state.from.subscribed && state.to.subscribed) 
+									{
 										
-										// var coursier_id = state.to.userId;
-										// window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
-										// window.plugins.OneSignal.sendTag("email", email);
-									// }
-									// console.log("Push Subscription state changed: " + JSON.stringify(state));
-								// });
+										var coursier_id = state.to.userId;
+										window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
+										window.plugins.OneSignal.sendTag("email", email);
+									}
+									console.log("Push Subscription state changed: " + JSON.stringify(state));
+								});
 								/*********************************************************/
 							}
 						},
