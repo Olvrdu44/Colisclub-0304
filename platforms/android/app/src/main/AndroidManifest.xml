@@ -28,6 +28,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
     <uses-feature android:name="android.hardware.location" />
-	<preference name="android-minSdkVersion"    value="9" />
-	<preference name="android-targetSdkVersion" value="14" />
+	<preference name="android-minSdkVersion"    value="16" />
+	<preference name="android-targetSdkVersion" value="19" />
 </manifest>
