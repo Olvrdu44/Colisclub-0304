@@ -83,6 +83,7 @@
     </plugin>
     <engine name="ios" spec="^4.5.4" />
     <engine name="android" spec="^7.0.0" />
+	
     <preference name="android-minSdkVersion"        value="19" />            
     <preference name="android-targetSdkVersion"     value="26" />  
 </widget>
