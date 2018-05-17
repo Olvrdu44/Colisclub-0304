@@ -1463,14 +1463,13 @@ function load_connexion()
 
 				plugin.google.maps.LocationService.getMyLocation(option, function(location) 
 				{
-					alert("3");
 					// Create a map with the device location
 					var mapDiv = document.getElementById('map_canvas');
 					var map = plugin.google.maps.Map.getMap(mapDiv, 
 					{
 						'camera': 
 						{
-							target: {lat:48, lng:5}, //location.latLng
+							target: location.latLng,
 							zoom: 16
 						}
 					});
@@ -1489,7 +1488,7 @@ function load_connexion()
 						var marker = map.addMarker(
 						{
 							title: text,
-							position: {lat:48, lng:5}, //location.latLng
+							position: location.latLng, 
 							'icon': {url: 'img/pointer_livreur.png', size: { width: 30, height: 68 }}
 						}, function(marker) 
 						{
