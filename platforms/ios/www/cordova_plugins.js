@@ -364,6 +364,14 @@ module.exports = [
       "cordova.InAppBrowser.open",
       "window.open"
     ]
+  },
+  {
+    "id": "onesignal-cordova-plugin.OneSignal",
+    "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
+    "pluginId": "onesignal-cordova-plugin",
+    "clobbers": [
+      "OneSignal"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -378,7 +386,8 @@ module.exports.metadata =
   "cordova-plugin-network-information": "2.0.1",
   "cordova-plugin-camera": "4.0.2",
   "cordova-plugin-file-transfer": "1.7.1",
-  "cordova-plugin-inappbrowser": "2.0.2"
+  "cordova-plugin-inappbrowser": "2.0.2",
+  "onesignal-cordova-plugin": "2.4.0"
 };
 // BOTTOM OF METADATA
 });

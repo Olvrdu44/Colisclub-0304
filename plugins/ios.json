@@ -37,6 +37,9 @@
     },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
   },
   "dependent_plugins": {}

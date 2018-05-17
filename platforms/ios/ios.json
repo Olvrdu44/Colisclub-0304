@@ -51,6 +51,40 @@
             {
               "xml": "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"OneSignalPush\"><param name=\"ios-package\" value=\"OneSignalPush\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "*-Info.plist": {
+        "parents": {
+          "UIBackgroundModes": [
+            {
+              "xml": "<array><string>remote-notification</string></array>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "*-Debug.plist": {
+        "parents": {
+          "aps-environment": [
+            {
+              "xml": "<string>development</string>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "*-Release.plist": {
+        "parents": {
+          "aps-environment": [
+            {
+              "xml": "<string>production</string>",
+              "count": 1
             }
           ]
         }
@@ -87,6 +121,9 @@
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
     },
     "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
   },
@@ -456,6 +493,14 @@
         "cordova.InAppBrowser.open",
         "window.open"
       ]
+    },
+    {
+      "id": "onesignal-cordova-plugin.OneSignal",
+      "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
+      "pluginId": "onesignal-cordova-plugin",
+      "clobbers": [
+        "OneSignal"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -468,6 +513,7 @@
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-camera": "4.0.2",
     "cordova-plugin-file-transfer": "1.7.1",
-    "cordova-plugin-inappbrowser": "2.0.2"
+    "cordova-plugin-inappbrowser": "2.0.2",
+    "onesignal-cordova-plugin": "2.4.0"
   }
 }

@@ -560,6 +560,14 @@ module.exports = [
     "clobbers": [
       "plugin.google.maps"
     ]
+  },
+  {
+    "id": "onesignal-cordova-plugin.OneSignal",
+    "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
+    "pluginId": "onesignal-cordova-plugin",
+    "clobbers": [
+      "OneSignal"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -576,7 +584,8 @@ module.exports.metadata =
   "cordova-plugin-file-transfer": "1.7.1",
   "cordova-plugin-console": "1.1.0",
   "cordova-plugin-inappbrowser": "2.0.2",
-  "cordova-plugin-googlemaps": "2.2.9"
+  "cordova-plugin-googlemaps": "2.2.9",
+  "onesignal-cordova-plugin": "2.4.0"
 };
 // BOTTOM OF METADATA
 });

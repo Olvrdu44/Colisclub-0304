@@ -45,6 +45,9 @@
       "PLAY_SERVICES_VERSION": "12.0.0",
       "ANDROID_SUPPORT_V4_VERSION": "24.1.0",
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
   },
   "dependent_plugins": {}

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="fr.rainetcom.colisclub" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" >
+<widget id="fr.rainetcom.colisclub" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>ColisClub</name>
     <description>
         L'application colis club pour les coursiers
@@ -14,9 +14,9 @@
     <access origin="http://maps.google.com" />
     <access origin="http://*.google.com" />
     <access origin="http://www.colisclub.fr" />
-	<access origin="tel:*" launch-external="yes"/>
-	<access origin="geo:*" launch-external="yes"/>
-	<access origin="maps:*" launch-external="yes"/>
+    <access launch-external="yes" origin="tel:*" />
+    <access launch-external="yes" origin="geo:*" />
+    <access launch-external="yes" origin="maps:*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -77,6 +77,7 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="L'application colis club souhaite accéder a votre position afin de vous géolocaliser pour permettre le suivi des livraisons et donner votre position a l'administrateur colisclub" />
     </plugin>
-	<preference name="android-minSdkVersion" value="19" />
-	<preference name="android-targetSdkVersion" value="27" />
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-targetSdkVersion" value="27" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.4.0" />
 </widget>

@@ -101,5 +101,13 @@
       "LOCATION_WHEN_IN_USE_DESCRITPION": "descritpion quand j utilise la geoloc",
       "LOCATION_ALWAYS_USAGE_DESCRIPTION": "description geoloc 2"
     }
+  },
+  "onesignal-cordova-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "onesignal-cordova-plugin@^2.2.2"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

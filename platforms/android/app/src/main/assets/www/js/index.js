@@ -22,10 +22,9 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+
 		$(function()
 		{
-			load_connexion();
-			
 			function checkConnection() 
 			{
 				var networkState = navigator.connection.type;
@@ -506,9 +505,30 @@ var app = {
 							{
 								$('#interchangeable').html(html);
 								load_connexion();
-							}
 								
-
+								/*******************   NOTIFS ONE SIGNAL     ***********/
+								var notificationOpenedCallback = function(jsonData) {
+									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+								};
+								
+								window.plugins.OneSignal
+								.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
+								.handleNotificationOpened(notificationOpenedCallback)
+								.endInit();
+								
+								window.plugins.OneSignal.addSubscriptionObserver(function (state) 
+								{
+									if (!state.from.subscribed && state.to.subscribed) 
+									{
+										
+										var coursier_id = state.to.userId;
+										window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
+										window.plugins.OneSignal.sendTag("email", email);
+									}
+									console.log("Push Subscription state changed: " + JSON.stringify(state));
+								});
+								/*********************************************************/
+							}
 						},
 						error: function(resultat, statut, erreur) {
 							$("html, body").animate({scrollTop: 0},"slow");
@@ -726,6 +746,12 @@ function alertCallback()
 }
 function load_commandes()
 {
+	$(".avatar").click(function()
+	{
+		// on remplit un input hidden pour le récuperer dans la fonction uploadphoto
+		$("input[name='uploadphoto']").val('avatar'); 
+		getImage();
+	});
 	id_coursier = $("input[name='id_coursier']").val();
 	//on charge les commandes en course
 	$.ajax({

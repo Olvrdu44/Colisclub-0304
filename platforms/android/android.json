@@ -103,6 +103,10 @@
             {
               "xml": "<feature name=\"MarkerCluster\"><param name=\"android-package\" value=\"plugin.google.maps.PluginMarkerCluster\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"OneSignalPush\"><param name=\"android-package\" value=\"com.plugin.gcm.OneSignalPush\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -165,6 +169,18 @@
             {
               "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />",
               "count": 1
+            },
+            {
+              "xml": "<amazon:enable-feature android:name=\"com.amazon.device.messaging\" android:required=\"false\" xmlns:amazon=\"http://schemas.amazon.com/apk/res/android\" />",
+              "count": 1
+            },
+            {
+              "xml": "<service android:exported=\"false\" android:name=\"com.onesignal.ADMMessageHandler\" />",
+              "count": 1
+            },
+            {
+              "xml": "<receiver android:name=\"com.onesignal.ADMMessageHandler$Receiver\" android:permission=\"com.amazon.device.messaging.permission.SEND\"><intent-filter><action android:name=\"com.amazon.device.messaging.intent.REGISTRATION\" /><action android:name=\"com.amazon.device.messaging.intent.RECEIVE\" /><category android:name=\"fr.rainetcom.colisclub\" /></intent-filter></receiver>",
+              "count": 1
             }
           ],
           "/manifest": [
@@ -194,6 +210,18 @@
             },
             {
               "xml": "<uses-feature android:name=\"android.hardware.location.gps\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"com.amazon.device.messaging.permission.RECEIVE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<permission android:name=\"fr.rainetcom.colisclub.permission.RECEIVE_ADM_MESSAGE\" android:protectionLevel=\"signature\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"fr.rainetcom.colisclub.permission.RECEIVE_ADM_MESSAGE\" />",
               "count": 1
             }
           ]
@@ -257,6 +285,9 @@
       "API_KEY_FOR_ANDROID": "AIzaSyDI9IqV1J3MutLrIUU4g6TACjyxzLllUb8",
       "PLAY_SERVICES_VERSION": "12.0.0",
       "ANDROID_SUPPORT_V4_VERSION": "24.1.0",
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
   },
@@ -822,6 +853,14 @@
       "clobbers": [
         "plugin.google.maps"
       ]
+    },
+    {
+      "id": "onesignal-cordova-plugin.OneSignal",
+      "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
+      "pluginId": "onesignal-cordova-plugin",
+      "clobbers": [
+        "OneSignal"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -836,6 +875,7 @@
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-console": "1.1.0",
     "cordova-plugin-inappbrowser": "2.0.2",
-    "cordova-plugin-googlemaps": "2.2.9"
+    "cordova-plugin-googlemaps": "2.2.9",
+    "onesignal-cordova-plugin": "2.4.0"
   }
 }
