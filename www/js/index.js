@@ -1462,6 +1462,15 @@ function load_connexion()
 					timeout: 10000,
 					enableHighAccuracy: true // use GPS as much as possible
 				};
+				var mapDiv = document.getElementById('map_canvas');
+					var map = plugin.google.maps.Map.getMap(mapDiv, 
+					{
+						'camera': 
+						{
+							target: {lat:48, lng:5},
+							zoom: 16
+						}
+					});
 				plugin.google.maps.LocationService.getMyLocation(option, function(location) 
 				{
 					alert("3");
