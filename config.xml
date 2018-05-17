@@ -79,7 +79,5 @@
     </plugin>
     <preference name="android-minSdkVersion" value="19" />
     <preference name="android-targetSdkVersion" value="27" />
-	<plugin name="onesignal-cordova-plugin" spec="^2.4.0" >
-		<variable name="PLAY_SERVICES_VERSION" value="15.0.1" />
-	</plugin>
+	
 </widget>
