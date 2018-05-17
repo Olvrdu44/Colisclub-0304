@@ -55,6 +55,10 @@ document.addEventListener("deviceready", function() {
 
 				// The MAP_READY event notifies the native map view is fully ready to use.
 				map.one(plugin.google.maps.event.MAP_READY, onMapInit);
+				
+				function onMapInit(map) {
+					alert("hey");
+				}
 			},
 			error: function(resultat, statut, erreur) {
 				alert('erreur');
@@ -66,9 +70,7 @@ document.addEventListener("deviceready", function() {
 
 });
 
-function onMapInit(map) {
-	alert("hey");
-}
+
 	
 	
     </script>
