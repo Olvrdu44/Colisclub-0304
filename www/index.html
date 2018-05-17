@@ -28,52 +28,26 @@
     </style>
     <script >
 document.addEventListener("deviceready", function() {
-  var div = document.getElementById("map_canvas");
+  // Define a div tag with id="map_canvas"
+  var mapDiv = document.getElementById("map_canvas");
 
-  // Initialize the map view
-  var map = plugin.google.maps.Map.getMap(div);
+  // Initialize the map plugin
+  var map = plugin.google.maps.Map.getMap(mapDiv);
 
+  // The MAP_READY event notifies the native map view is fully ready to use.
+  map.one(plugin.google.maps.event.MAP_READY, onMapInit);
+});
 
-  var button = document.getElementById("button");
-  button.addEventListener("click", function() {
-
-    // Move to the position with animation
-    map.animateCamera({
-      target: {lat: 37.422359, lng: -122.084344},
-      zoom: 17,
-      tilt: 60,
-      bearing: 140,
-      duration: 5000
-    });
-
-    // Add a maker
-    var marker = map.addMarker({
-      position: {lat: 37.422359, lng: -122.084344},
-      title: "Welcome to \n" +
-             "Cordova GoogleMaps plugin for iOS and Android",
-      snippet: "This plugin is awesome!",
-      animation: plugin.google.maps.Animation.BOUNCE
-    });
-
-    // Show the info window
-    marker.showInfoWindow();
-
-    // Catch the click event
-    marker.on(plugin.google.maps.event.INFO_CLICK, function() {
-
-      // To do something...
-      alert("Hello world!");
-
-    });
-  }
-}, false);
+function onMapInit(map) {
+	alert("hey");
+}
 	
 	
     </script>
 </head>
 
 <body>
-	<h1>test</h1>
+	<h1>testmap</h1>
 	<button class="charge">charge</button>
 
 	<div id="map_canvas"></div>
