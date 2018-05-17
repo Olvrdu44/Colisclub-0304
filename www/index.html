@@ -14,6 +14,7 @@
       top: -50px;
       right: -50px;
       bottom: -50px;
+	  z-index:100;
     }
 	.infos_livraisons{
 		position:fixed;
@@ -26,8 +27,8 @@
 		display:none;
 	}
 	#chargemoi{
-	position:fixed;
-	z-index:10000;
+		position:absolute;
+		z-index:200;
 	}
     </style>
     <script >
@@ -37,14 +38,7 @@ document.addEventListener("deviceready", function() {
 		alert('clic');
 	});
 		
-		// Define a div tag with id="map_canvas"
-		var mapDiv = document.getElementById("map_canvas");
-
-		// Initialize the map plugin
-		var map = plugin.google.maps.Map.getMap(mapDiv);
-
-		// The MAP_READY event notifies the native map view is fully ready to use.
-		map.one(plugin.google.maps.event.MAP_READY, onMapInit);
+		
 });
 
 function onMapInit(map) {
