@@ -79,8 +79,5 @@
     </plugin>
     <preference name="android-minSdkVersion" value="19" />
     <preference name="android-targetSdkVersion" value="27" />
-    <plugin name="onesignal-cordova-plugin" spec="^2.4.0" >
-		 <preference name="com.google.android.gms" value="12.0.1" />
-		 <preference name="com.google.firebase" value="12.0.1" />
-	</plugin>
+    <plugin name="onesignal-cordova-plugin" spec="^2.4.0" />
 </widget>
