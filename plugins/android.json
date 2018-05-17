@@ -48,6 +48,10 @@
     },
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-android-play-services-gradle-release": {
+      "PLAY_SERVICES_VERSION": "15.0.1",
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
   },
   "dependent_plugins": {}

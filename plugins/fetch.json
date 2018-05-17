@@ -109,5 +109,15 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-android-play-services-gradle-release": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-android-play-services-gradle-release"
+    },
+    "is_top_level": true,
+    "variables": {
+      "PLAY_SERVICES_VERSION": "15.0.1"
+    }
   }
 }

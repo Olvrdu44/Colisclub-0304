@@ -92,6 +92,7 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "../onesignal-cordova-plugin/colisclub-build-extras-onesignal.gradle"
+apply from: "../cordova-android-play-services-gradle-release/colisclub-cordova-android-play-services-gradle-release.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -260,8 +261,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    compile "com.google.android.gms:play-services-maps:11.8.0"
-    compile "com.google.android.gms:play-services-location:11.8.0"
+    compile "com.google.android.gms:play-services-maps:15.0.1"
+    compile "com.google.android.gms:play-services-location:15.0.1"
     compile "com.onesignal:OneSignal:3.9.0"
     // SUB-PROJECT DEPENDENCIES END
 }

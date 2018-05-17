@@ -585,7 +585,8 @@ module.exports.metadata =
   "cordova-plugin-console": "1.1.0",
   "cordova-plugin-inappbrowser": "2.0.2",
   "cordova-plugin-googlemaps": "2.2.9",
-  "onesignal-cordova-plugin": "2.4.0"
+  "onesignal-cordova-plugin": "2.4.0",
+  "cordova-android-play-services-gradle-release": "1.4.1"
 };
 // BOTTOM OF METADATA
 });

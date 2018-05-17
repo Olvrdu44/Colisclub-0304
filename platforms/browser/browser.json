@@ -56,6 +56,9 @@
     },
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-android-play-services-gradle-release": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
   },
   "dependent_plugins": {},
@@ -832,6 +835,7 @@
     "cordova-plugin-console": "1.1.0",
     "cordova-plugin-inappbrowser": "2.0.2",
     "cordova-plugin-googlemaps": "2.2.9",
-    "onesignal-cordova-plugin": "2.4.0"
+    "onesignal-cordova-plugin": "2.4.0",
+    "cordova-android-play-services-gradle-release": "1.4.1"
   }
 }

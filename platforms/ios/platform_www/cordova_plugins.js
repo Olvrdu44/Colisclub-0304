@@ -387,7 +387,8 @@ module.exports.metadata =
   "cordova-plugin-camera": "4.0.2",
   "cordova-plugin-file-transfer": "1.7.1",
   "cordova-plugin-inappbrowser": "2.0.2",
-  "onesignal-cordova-plugin": "2.4.0"
+  "onesignal-cordova-plugin": "2.4.0",
+  "cordova-android-play-services-gradle-release": "1.4.1"
 };
 // BOTTOM OF METADATA
 });
