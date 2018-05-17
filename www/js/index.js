@@ -1462,17 +1462,9 @@ function load_connexion()
 					timeout: 10000,
 					enableHighAccuracy: true // use GPS as much as possible
 				};
-				var mapDiv = document.getElementById('map_canvas');
-					var map = plugin.google.maps.Map.getMap(mapDiv, 
-					{
-						'camera': 
-						{
-							target: {lat:48, lng:5},
-							zoom: 16
-						}
-					});
-				plugin.google.maps.LocationService.getMyLocation(option, function(location) 
-				{
+
+				// plugin.google.maps.LocationService.getMyLocation(option, function(location) 
+				// {
 					alert("3");
 					// Create a map with the device location
 					var mapDiv = document.getElementById('map_canvas');
@@ -1480,7 +1472,7 @@ function load_connexion()
 					{
 						'camera': 
 						{
-							target: location.latLng,
+							target: {lat:48, lng:5}, //location.latLng
 							zoom: 16
 						}
 					});
@@ -1499,7 +1491,7 @@ function load_connexion()
 						var marker = map.addMarker(
 						{
 							title: text,
-							position: location.latLng,
+							position: {lat:48, lng:5}, //location.latLng
 							'icon': {url: 'img/pointer_livreur.png', size: { width: 30, height: 68 }}
 						}, function(marker) 
 						{
@@ -1587,7 +1579,7 @@ function load_connexion()
 							}
 						});
 					});
-				});
+				// });
 			},
 			error: function(resultat, statut, erreur) 
 			{
