@@ -1461,30 +1461,19 @@ function load_connexion()
 					enableHighAccuracy: true // use GPS as much as possible
 				};
 
-				// plugin.google.maps.LocationService.getMyLocation(option, function(location) 
-				// {
-					
+				plugin.google.maps.LocationService.getMyLocation(option, function(location) 
+				{
+					alert("3");
 					// Create a map with the device location
-					function initMap() {
-
 					var mapDiv = document.getElementById('map_canvas');
-					var map = new google.maps.Map(document.getElementById('map'), {
-					  center: {lat: -34.397, lng: 150.644},
-					  zoom: 8
+					var map = plugin.google.maps.Map.getMap(mapDiv, 
+					{
+						'camera': 
+						{
+							target: {lat:48, lng:5}, //location.latLng
+							zoom: 16
+						}
 					});
-
-					
-					
-					
-					// plugin.google.maps.Map.getMap(mapDiv, 
-					// {
-						// 'camera': 
-						// {
-							// target: {lat:48, lng:5}, //location.latLng
-							// zoom: 16
-						// }
-					// });
-					alert("4");
 
 					map.addEventListener(plugin.google.maps.event.MAP_READY, function() 
 					{
@@ -1588,8 +1577,7 @@ function load_connexion()
 							}
 						});
 					});
-				// });
-				}
+				});
 			},
 			error: function(resultat, statut, erreur) 
 			{
