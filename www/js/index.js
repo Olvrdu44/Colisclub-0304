@@ -1432,6 +1432,7 @@ function load_connexion()
 	});
 	$(".go_map").click(function()
 	{
+		alert("1");
 		//on selectionne l icone en deselectionnant le reste
 		$(".menu_fix_bas a").removeClass('selected');
 		$(this).addClass('selected');
@@ -1453,6 +1454,7 @@ function load_connexion()
 			dataType : 'html',
 			success: function (html) 
 			{
+				alert("2");
 				$(".loader_map").html(html);
 				// Get the current device location "without map"
 				var option = {
@@ -1462,6 +1464,7 @@ function load_connexion()
 				};
 				plugin.google.maps.LocationService.getMyLocation(option, function(location) 
 				{
+					alert("3");
 					// Create a map with the device location
 					var mapDiv = document.getElementById('map_canvas');
 					var map = plugin.google.maps.Map.getMap(mapDiv, 
