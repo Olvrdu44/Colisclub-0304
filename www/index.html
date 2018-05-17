@@ -15,8 +15,6 @@
       right: -50px;
       bottom: -50px;
 	  z-index:100;
-	  width:100%;
-	  height:100%;
     }
 	.infos_livraisons{
 		position:fixed;
@@ -46,7 +44,7 @@ document.addEventListener("deviceready", function() {
 			success: function (html) 
 			{
 				alert('ca marche' + html);
-				$(".insertion").html(html);
+				
 				// Define a div tag with id="map_canvas"
 				var mapDiv = document.getElementById("map_canvas");
 
@@ -56,9 +54,7 @@ document.addEventListener("deviceready", function() {
 				// The MAP_READY event notifies the native map view is fully ready to use.
 				map.one(plugin.google.maps.event.MAP_READY, onMapInit);
 				
-				function onMapInit(map) {
-					alert("hey");
-				}
+				
 			},
 			error: function(resultat, statut, erreur) {
 				alert('erreur');
@@ -70,6 +66,10 @@ document.addEventListener("deviceready", function() {
 
 });
 
+function onMapInit(map) {
+		alert("hey");
+	}
+
 
 	
 	
@@ -80,7 +80,7 @@ document.addEventListener("deviceready", function() {
 	<h1>testmap</h1>
 	<div style="background:#f60;color:#fff;padding:20px" id="chargemoi">charge</button>
 
-	<div class="insertion"></div>
+	<div id='map_canvas'></div>
 	
     
 	
