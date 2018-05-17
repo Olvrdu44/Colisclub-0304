@@ -79,9 +79,6 @@
     </plugin>
     <preference name="android-minSdkVersion" value="19" />
     <preference name="android-targetSdkVersion" value="27" />
-    <plugin name="cordova-android-play-services-gradle-release" spec="^1.4.1">
-        <variable name="PLAY_SERVICES_VERSION" value="15.0.1" />
-    </plugin>
 	<plugin name="onesignal-cordova-plugin" spec="^2.4.0" >
 		<variable name="PLAY_SERVICES_VERSION" value="15.0.1" />
 	</plugin>
