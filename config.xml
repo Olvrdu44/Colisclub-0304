@@ -5,7 +5,7 @@
         L'application colis club pour les coursiers
     </description>
     <author email="olivier@rainetcom.fr" href="http:www.rainetcom.fr">
-        Apache Cordova Team
+        L'équipe Rainet'COm
     </author>
     <content src="index.html" />
     <access origin="*" />
