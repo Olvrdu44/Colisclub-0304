@@ -36,16 +36,22 @@ document.addEventListener("deviceready", function() {
 
 	$("#chargemoi").click(function(){
 		alert('clic');
-		$.ajax({
-			url : 'http://www.colisclub.fr/application/ajax.php',
-			type : 'GET', // Le type de la requête HTTP, ici devenu POST
-			data:'testolivier=1', 
-			dataType : 'html',
-			success: function (html) 
-			{
-				alert('ca marche' + html);
+		<!-- $.ajax({ -->
+			<!-- url : 'http://www.colisclub.fr/application/ajax.php', -->
+			<!-- type : 'GET', -->
+			<!-- data:'testolivier=1',  -->
+			<!-- dataType : 'html', -->
+			<!-- success: function (html)  -->
+			<!-- { -->
 				
-				// Define a div tag with id="map_canvas"
+				
+				
+			<!-- }, -->
+			<!-- error: function(resultat, statut, erreur) { -->
+				<!-- alert('erreur'); -->
+			<!-- } -->
+		<!-- }); -->
+		// Define a div tag with id="map_canvas"
 				var mapDiv = document.getElementById("map_canvas");
 
 				// Initialize the map plugin
@@ -53,17 +59,7 @@ document.addEventListener("deviceready", function() {
 
 				// The MAP_READY event notifies the native map view is fully ready to use.
 				map.one(plugin.google.maps.event.MAP_READY, onMapInit);
-				
-				
-			},
-			error: function(resultat, statut, erreur) {
-				alert('erreur');
-			}
-		});
-		
 	});
-		
-
 });
 
 function onMapInit(map) {
