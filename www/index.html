@@ -9,11 +9,12 @@
 		<style type="text/css">
 		#map_canvas {
 		  position: absolute;
-		  left:0px;
-		  top: 0px;
-		  right: 0px;
-		  bottom:0px;
+		  left:-50px;
+		  top: -50px;
+		  right: -50px;
+		  bottom: -50px;
 		  z-index:100;
+		  width:100%;
 		}
 		.infos_livraisons{
 			position:fixed;
@@ -28,12 +29,6 @@
 		#chargemoi{
 			position:absolute;
 			z-index:200;
-		}
-		.madiv{
-		position:fixed;
-		position:relative;
-		width:100%;
-		height:100%;
 		}
 		</style>
 		<script >
@@ -71,10 +66,8 @@
 		<h1>testmap</h1>
 		<div style="background:#f60;color:#fff;padding:20px" id="chargemoi">charge</button>
 
-		<div class="madiv">
-			</div><div id='map_canvas'></div>
-		</div>
+		<div id='map_canvas'></div>
+
 		<script type="text/javascript" src="jquery.js"></script>
 	</body>
-
 </html>
