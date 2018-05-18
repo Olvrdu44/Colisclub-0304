@@ -1460,6 +1460,7 @@ function load_connexion()
 					timeout: 10000,
 					enableHighAccuracy: true // use GPS as much as possible
 				};
+
 				plugin.google.maps.LocationService.getMyLocation(option, function(location) 
 				{
 					// Create a map with the device location
@@ -1487,7 +1488,7 @@ function load_connexion()
 						var marker = map.addMarker(
 						{
 							title: text,
-							position: location.latLng,
+							position: location.latLng, 
 							'icon': {url: 'img/pointer_livreur.png', size: { width: 30, height: 68 }}
 						}, function(marker) 
 						{
