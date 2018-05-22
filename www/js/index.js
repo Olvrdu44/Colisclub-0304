@@ -23,6 +23,26 @@ var app = {
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 
+		$(".hophop").click(function()
+		{
+			$('.windows').show();
+			
+			$.ajax({
+				url : 'https://www.colisclub.fr/application/ajax.php',
+				type : 'GET',
+				data:'testolivier=1', 
+				dataType : 'html',
+				success: function (html) 
+				{
+					$(".windows").html(html);
+				},
+				error: function(resultat, statut, erreur) {
+					alert("erreur");
+				}
+			});
+		});
+		
+		
 		$(function()
 		{
 			function checkConnection() 
@@ -504,7 +524,9 @@ var app = {
 							else
 							{
 								$('#interchangeable').html(html);
+								$('.menu_fix_bas').show();
 								load_connexion();
+								
 								
 								/*******************   NOTIFS ONE SIGNAL     ***********/
 								var notificationOpenedCallback = function(jsonData) {
@@ -520,7 +542,6 @@ var app = {
 								{
 									if (!state.from.subscribed && state.to.subscribed) 
 									{
-										
 										var coursier_id = state.to.userId;
 										window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
 										window.plugins.OneSignal.sendTag("email", email);
@@ -1398,9 +1419,11 @@ function load_connexion()
 			navigator.notification.alert("le formulaire comporte des erreurs", alertCallback, "Erreur", "Fermer");
 		}
 	});
+	
 	/********************** MENU DU BAS *********************/
 	$(".go_profil").click(function()
 	{
+		$(".windows").hide('blind');
 		//on selectionne l icone en deselectionnant le reste
 		$(".menu_fix_bas a").removeClass('selected');
 		$(this).addClass('selected');
@@ -1415,6 +1438,7 @@ function load_connexion()
 	});
 	$(".go_livraison").click(function()
 	{
+		$(".windows").hide('blind');
 		//on selectionne l icone en deselectionnant le reste
 		$(".menu_fix_bas a").removeClass('selected');
 		$(this).addClass('selected');
@@ -1438,7 +1462,7 @@ function load_connexion()
 		
 		//on charge le planning
 		$(".mes_informations, .mon_planning, .courses_dispo, .mes_livraisons").hide();
-		$(".courses_dispo").show('blind');
+		$(".windows").show('blind');
 		
 		//on change le titre de la page
 		$("p.titre_page").text("Courses disponibles");
@@ -1590,7 +1614,7 @@ function load_connexion()
 		/**************         MAP WEB      ***************/
 		/***************************************************/
 		
-		$.ajax({
+		/*$.ajax({
 			url : 'https://www.colisclub.fr/application/ajax.php',
 			type : 'GET',
 			data:'testolivier=1', 
@@ -1598,13 +1622,17 @@ function load_connexion()
 			success: function (html) 
 			{
 				alert('ca marche');
+				alert(html);
 				
 				$(".loader_map").html(html);
+				
+				
 			},
 			error: function(resultat, statut, erreur) {
 				alert("erreur");
 			}
-		});
+		});*/
+		
 		
 		/***************************************************/
 		/***************************************************/
@@ -1612,6 +1640,7 @@ function load_connexion()
 		
 		
 	});
+	
 	
 	/************* ACCEPTATION DE LIVRAISON ****************/
 	/*$("input[name='acceptation_course']").change(function()

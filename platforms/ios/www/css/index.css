@@ -815,6 +815,7 @@ label.switch {
 	width:100%;
 	float:left;
 	text-align:center;
+	line
 }
 .feuille_route .entour_commande a.btn {
     float: left;
@@ -845,6 +846,11 @@ label.switch {
 	float:left;
 	width:100%;
 	text-align:center;
+    margin-top: -5px;
+}
+.feuille_route .entour_commande p.destinataire
+{
+	margin-top:-5px;
 }
 .feuille_route .popup {
 	position: fixed;
@@ -893,7 +899,8 @@ label.switch {
 	margin-left: 0;
 	background: #444;
 	float: left;
-	margin-top: 20px;
+	margin-top: 0px;
+	padding-top:20px;
 	position:fixed;
 	top:0;
 	left:0;
@@ -1025,6 +1032,8 @@ span.colororange{
     width: 100%;
 	overflow-x: scroll;
 	max-height: 100%;
+	top:0;
+	z-index:100;
 }
 .mes_informations, .mes_livraisons{
 	padding-bottom:50px:
@@ -1039,4 +1048,17 @@ span.colororange{
     width: 100%;
     height: 600px;
     background: #fff;
+}
+
+.windows{
+	position:fixed;
+	width:100%;
+	height:100%;
+	z-index:150;
+}
+
+.ferme_course{
+	float:right;
+	color:#fff;
+	margin-right:10px;
 }
