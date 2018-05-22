@@ -1,36 +1,108 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
-  <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI9IqV1J3MutLrIUU4g6TACjyxzLllUb8&callback=initMap"
-    async defer></script>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+
+		<!-- <script type="text/javascript" src="cordova.js"></script> -->
+
+		<style>
+		/* Always set the map height explicitly to define the size of the div
+		* element that contains the map. */
+		#map {
+			height: 100%;
+		}
+		/* Optional: Makes the sample page fill the window. */
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		.decal{
+			margin-left:-1000px;
+		}
+		.test{
+			position:absolute;
+			top:50px;
+			background:#f60;
+			color:#fff
+			padding:10px;
+			left:50px;
+			z-index:1000;
+		}
+		.windows{
+			float:left;
+			width:100%;
+			height:100%;
+		}
+		</style>
+		
+	</head>
+
+	<body>
+		<input name="id_coursier" type="hidden" value="16"/>
+		<div class="windows"></div>
+		<button class="hophop">appuie2</button>
+
+		<script type="text/javascript" src="jquery.js"></script>
+		<script>
+		
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
+		$(".hophop").click(function()
+		{
+			alert('aie3');
+			
+			$.ajax({
+				url : 'https://www.colisclub.fr/application/ajax.php',
+				type : 'GET',
+				data:'testolivier=1', 
+				dataType : 'html',
+				success: function (html) 
+				{
+					alert('ca marche');
+					
+					$(".windows").html(html);
+				},
+				error: function(resultat, statut, erreur) {
+					alert("erreur");
+				}
+			});
+		});
+			
+	function onSuccess(position) 
+	{
+		var lat = position.coords.latitude;//latitude actuelle
+		var longi = position.coords.longitude;//longitude actuelle
+		var id_coursier = $("input[name='id_coursier']").val();
+		
+		alert("location: " + lat + " - " + longi);
+	
+		$.ajax({
+			url : 'http://www.colisclub.fr/application/ajax.php',
+			type : 'GET', // Le type de la requête HTTP, ici devenu POST
+			data:'lat=' + lat +
+				'&id_coursier=' + id_coursier +
+				'&longi=' + longi,
+			dataType : 'html',
+			success: function (html) 
+			{
+				//alert(html);
+			},
+			error: function(resultat, statut, erreur) 
+			{
+				navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
+			}
+		});		
+	}
+
+	// onError Callback receives a PositionError object
+	function onError(error) 
+	{
+		alert('code: '    + error.code    + '\n' +
+			  'message: ' + error.message + '\n');
+	}
+		</script>
+	</body>
 </html>
