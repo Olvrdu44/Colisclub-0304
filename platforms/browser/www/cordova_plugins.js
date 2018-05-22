@@ -764,7 +764,6 @@ module.exports.metadata =
 {
     "cordova-plugin-dialogs": "2.0.1",
     "cordova-plugin-file": "6.0.1",
-    "cordova-plugin-geolocation": "4.0.1",
     "cordova-plugin-media": "5.0.2",
     "cordova-plugin-media-capture": "3.0.1",
     "cordova-plugin-network-information": "2.0.1",

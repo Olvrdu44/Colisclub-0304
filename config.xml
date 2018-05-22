@@ -5,7 +5,7 @@
         L'application colis club pour les coursiers
     </description>
     <author email="olivier@rainetcom.fr" href="http:www.rainetcom.fr">
-        L'équipe Rainet'Com
+        L'équipe Rainet'COm
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -70,7 +70,8 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="L'application colis club souhaite accéder a votre position afin de vous géolocaliser pour permettre le suivi des livraisons et donner votre position a l'administrateur colisclub" />
     </plugin>
-
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-targetSdkVersion" value="27" />
 	<plugin name="onesignal-cordova-plugin" spec="^2.4.0" />
 	
 </widget>
