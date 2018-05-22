@@ -48,61 +48,66 @@
 
 		<script type="text/javascript" src="jquery.js"></script>
 		<script>
-		
-		navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
-		$(".hophop").click(function()
+		document.addEventListener("deviceready", function() 
 		{
-			alert('aie3');
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
 			
-			$.ajax({
-				url : 'https://www.colisclub.fr/application/ajax.php',
-				type : 'GET',
-				data:'testolivier=1', 
-				dataType : 'html',
-				success: function (html) 
-				{
-					alert('ca marche');
-					
-					$(".windows").html(html);
-				},
-				error: function(resultat, statut, erreur) {
-					alert("erreur");
-				}
+			function onSuccess(position) 
+			{
+				var lat = position.coords.latitude;//latitude actuelle
+				var longi = position.coords.longitude;//longitude actuelle
+				var id_coursier = $("input[name='id_coursier']").val();
+				
+				alert("location: " + lat + " - " + longi);
+			
+				$.ajax({
+					url : 'http://www.colisclub.fr/application/ajax.php',
+					type : 'GET', // Le type de la requête HTTP, ici devenu POST
+					data:'lat=' + lat +
+						'&id_coursier=' + id_coursier +
+						'&longi=' + longi,
+					dataType : 'html',
+					success: function (html) 
+					{
+						//alert(html);
+					},
+					error: function(resultat, statut, erreur) 
+					{
+						navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
+					}
+				});		
+			}
+
+			// onError Callback receives a PositionError object
+			function onError(error) 
+			{
+				alert('code: '    + error.code    + '\n' +
+					  'message: ' + error.message + '\n');
+			}
+		
+			$(".hophop").click(function()
+			{
+				alert('aie3');
+				
+				$.ajax({
+					url : 'https://www.colisclub.fr/application/ajax.php',
+					type : 'GET',
+					data:'testolivier=1', 
+					dataType : 'html',
+					success: function (html) 
+					{
+						alert('ca marche');
+						
+						$(".windows").html(html);
+					},
+					error: function(resultat, statut, erreur) {
+						alert("erreur");
+					}
+				});
 			});
 		});
 			
-	function onSuccess(position) 
-	{
-		var lat = position.coords.latitude;//latitude actuelle
-		var longi = position.coords.longitude;//longitude actuelle
-		var id_coursier = $("input[name='id_coursier']").val();
-		
-		alert("location: " + lat + " - " + longi);
 	
-		$.ajax({
-			url : 'http://www.colisclub.fr/application/ajax.php',
-			type : 'GET', // Le type de la requête HTTP, ici devenu POST
-			data:'lat=' + lat +
-				'&id_coursier=' + id_coursier +
-				'&longi=' + longi,
-			dataType : 'html',
-			success: function (html) 
-			{
-				//alert(html);
-			},
-			error: function(resultat, statut, erreur) 
-			{
-				navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
-			}
-		});		
-	}
-
-	// onError Callback receives a PositionError object
-	function onError(error) 
-	{
-		alert('code: '    + error.code    + '\n' +
-			  'message: ' + error.message + '\n');
-	}
 		</script>
 	</body>
 </html>
