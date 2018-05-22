@@ -59,19 +59,15 @@
     <plugin name="cordova-plugin-media-capture" spec="^3.0.1" />
     <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
-    <plugin name="cordova-plugin-file" spec="^6.0.1" />
-    <plugin name="cordova-plugin-camera" spec="^4.0.2" />
-    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
-    <plugin name="cordova-plugin-console" spec="^1.1.0" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.2" >
+		 <variable name="CAMERA_USAGE_DESCRIPTION" value="L'application ColisClub aimerait accéder a votre caméra pour vous permattre de changer de photo de profil" />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="L'application ColisClub aimerait accéder a vos photos pour vous permettre de choisir une photo de profil" />
+	</plugin>
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
-
-    <preference name="android-build-tool" value="gradle" />
     <preference name="phonegap-version" value="cli-8.0.0" />
-    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
+    <plugin name="cordova-plugin-geolocation" spec="^2.1.0">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="L'application colis club souhaite accéder a votre position afin de vous géolocaliser pour permettre le suivi des livraisons et donner votre position a l'administrateur colisclub" />
     </plugin>
-    <preference name="android-minSdkVersion" value="19" />
-    <preference name="android-targetSdkVersion" value="27" />
 	<plugin name="onesignal-cordova-plugin" spec="^2.4.0" />
 	
 </widget>
