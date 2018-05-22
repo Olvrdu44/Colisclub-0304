@@ -1444,8 +1444,8 @@ function load_connexion()
 		$("p.titre_page").text("Courses disponibles");
 		
 		/***************************************************/
-		/**************         MAP      *******************/
-		/***************************************************/
+		/**************         MAP PLUGIN      *******************/
+		/***************************************************
 		$.ajax({
 			url : 'http://www.colisclub.fr/application/ajax.php',
 			type : 'GET', // Le type de la requête HTTP, ici devenu GET
@@ -1478,12 +1478,12 @@ function load_connexion()
 					{
 						// Add a marker
 						var text = "Ma position";
-						/*var text = ["Ma position:\n",
-						"latitude:" + location.latLng.lat.toFixed(3),
-						"longitude:" + location.latLng.lng.toFixed(3),
-						"vitesse:" + location.speed,
-						"time:" + location.time,
-						"bearing:" + location.bearing].join("\n");*/
+						//var text = ["Ma position:\n",
+						//"latitude:" + location.latLng.lat.toFixed(3),
+						//"longitude:" + location.latLng.lng.toFixed(3),
+						//"vitesse:" + location.speed,
+						//"time:" + location.time,
+						//"bearing:" + location.bearing].join("\n");
 
 						var marker = map.addMarker(
 						{
@@ -1495,7 +1495,7 @@ function load_connexion()
 						  marker.showInfoWindow();
 						});
 
-						/* AJAX */
+						//AJAX 
 						$.ajax({
 							url : 'http://www.colisclub.fr/application/ajax.php',
 							type : 'GET', // Le type de la requête HTTP, ici devenu POST
@@ -1535,7 +1535,7 @@ function load_connexion()
 														var id_coursier = $("input[name='id_coursier']").val();
 														//$("input[name='acceptation_course']").val( id_course );
 														
-														/* AJAX */
+														//AJAX 
 														$.ajax({
 															url : 'http://www.colisclub.fr/application/ajax.php',
 															type : 'GET', // Le type de la requête HTTP, ici devenu POST
@@ -1582,9 +1582,34 @@ function load_connexion()
 			{
 				navigator.notification.alert("erreur", alertCallback, "Géolocalisation", "Fermer");
 			}
-		});	
+		});
+		***************************************************/
+		/***************************************************/
+		
+		/***************************************************/
+		/**************         MAP WEB      ***************/
+		/***************************************************/
+		
+		$.ajax({
+			url : 'https://www.colisclub.fr/application/ajax.php',
+			type : 'GET',
+			data:'testolivier=1', 
+			dataType : 'html',
+			success: function (html) 
+			{
+				alert('ca marche');
+				
+				$(".loader_map").html(html);
+			},
+			error: function(resultat, statut, erreur) {
+				alert("erreur");
+			}
+		});
+		
 		/***************************************************/
 		/***************************************************/
+		
+		
 		
 	});
 	
@@ -1647,7 +1672,7 @@ function load_connexion()
 		var lat = position.coords.latitude;//latitude actuelle
 		var longi = position.coords.longitude;//longitude actuelle
 		var id_coursier = $("input[name='id_coursier']").val();
-		alert("loc: " + lat + '-' + longi);
+		
 		$.ajax({
 			url : 'http://www.colisclub.fr/application/ajax.php',
 			type : 'GET', // Le type de la requête HTTP, ici devenu POST

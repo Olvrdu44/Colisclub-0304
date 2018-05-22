@@ -100,8 +100,5 @@
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="KeepAVAudioSessionAlwaysActive" value="NO" />
     <preference name="CameraUsesGeolocation" value="false" />
-    <preference name="android-build-tool" value="gradle" />
     <preference name="phonegap-version" value="cli-8.0.0" />
-    <preference name="android-minSdkVersion" value="19" />
-    <preference name="android-targetSdkVersion" value="27" />
 </widget>
