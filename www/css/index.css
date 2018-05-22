@@ -1033,3 +1033,9 @@ span.colororange{
 	background:#1fb5ac;
 	padding-bottom:50px;
 }
+
+.loader_map{
+	float:left;
+	width:100%;
+	height:100%;
+}
