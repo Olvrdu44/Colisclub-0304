@@ -1702,7 +1702,7 @@ function load_connexion()
 		var longi = position.coords.longitude;//longitude actuelle
 		var id_coursier = $("input[name='id_coursier']").val();
 		
-		alert("loc: " + lat + " - " + longi + " - " + id_coursier);
+		//alert("loc: " + lat + " - " + longi + " - " + id_coursier);
 		
 		$.ajax({
 			url : 'http://www.colisclub.fr/application/ajax.php',
@@ -1740,7 +1740,7 @@ function load_connexion()
 			navigator.geolocation.getCurrentPosition(onSuccess, onError);
 			retourneMaPosition();
 		}
-		, 10000);
+		, 240000);
 	}
 }
 
