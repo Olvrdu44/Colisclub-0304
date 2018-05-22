@@ -51,45 +51,29 @@
 		<script>
 		document.addEventListener("deviceready", function() 
 		{
-			
-			
-			function onSuccess(position) 
-			{
-				var lat = position.coords.latitude;//latitude actuelle
-				var longi = position.coords.longitude;//longitude actuelle
-				var id_coursier = $("input[name='id_coursier']").val();
-				
-				alert("location: " + lat + " - " + longi);
-			
-				$.ajax({
-					url : 'http://www.colisclub.fr/application/ajax.php',
-					type : 'GET', // Le type de la requête HTTP, ici devenu POST
-					data:'lat=' + lat +
-						'&id_coursier=' + id_coursier +
-						'&longi=' + longi,
-					dataType : 'html',
-					success: function (html) 
-					{
-						//alert(html);
-					},
-					error: function(resultat, statut, erreur) 
-					{
-						navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
-					}
-				});		
-			}
+			var onSuccess = function(position) {
+				alert('Latitude: '          + position.coords.latitude          + '\n' +
+					  'Longitude: '         + position.coords.longitude         + '\n' +
+					  'Altitude: '          + position.coords.altitude          + '\n' +
+					  'Accuracy: '          + position.coords.accuracy          + '\n' +
+					  'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+					  'Heading: '           + position.coords.heading           + '\n' +
+					  'Speed: '             + position.coords.speed             + '\n' +
+					  'Timestamp: '         + position.timestamp                + '\n');
+			};
 
 			// onError Callback receives a PositionError object
-			function onError(error) 
-			{
+			//
+			function onError(error) {
 				alert('code: '    + error.code    + '\n' +
 					  'message: ' + error.message + '\n');
 			}
-		
+
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);
+			
 			$(".hophop").click(function()
 			{
 				alert('aie3');
-				navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
 				
 				$.ajax({
 					url : 'https://www.colisclub.fr/application/ajax.php',
