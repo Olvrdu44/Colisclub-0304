@@ -1702,6 +1702,8 @@ function load_connexion()
 		var longi = position.coords.longitude;//longitude actuelle
 		var id_coursier = $("input[name='id_coursier']").val();
 		
+		alert("loc: " + lat + " - " + longi + " - " + id_coursier);
+		
 		$.ajax({
 			url : 'http://www.colisclub.fr/application/ajax.php',
 			type : 'GET', // Le type de la requête HTTP, ici devenu POST
