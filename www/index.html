@@ -51,7 +51,7 @@
 		<script>
 		document.addEventListener("deviceready", function() 
 		{
-			navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
+			
 			
 			function onSuccess(position) 
 			{
@@ -89,6 +89,7 @@
 			$(".hophop").click(function()
 			{
 				alert('aie3');
+				navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
 				
 				$.ajax({
 					url : 'https://www.colisclub.fr/application/ajax.php',
