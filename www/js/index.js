@@ -470,7 +470,6 @@ var app = {
 			$("#login form").submit(function(e)
 			{
 				e.preventDefault();
-				alert("clic ok");
 				// var email = $("input[name='email_connec']").val();
 				var tel = $("input[name='tel_connec']").val();
 				var pass = $("input[name='pass_connec']").val();
@@ -507,7 +506,6 @@ var app = {
 						dataType : 'html',
 						success: function (html) 
 						{
-							alert(html);
 							// si il y a une erreur avec le mot de passe
 							if(html.indexOf('erreur_validation') > 0)
 							{
@@ -544,8 +542,8 @@ var app = {
 								{
 									if (!state.from.subscribed && state.to.subscribed) 
 									{
-										var coursier_id = state.to.userId;
-										window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
+										// var coursier_id = state.to.userId;
+										// window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
 										window.plugins.OneSignal.sendTag("tel", tel);
 									}
 									console.log("Push Subscription state changed: " + JSON.stringify(state));

@@ -70,5 +70,5 @@
 		<variable name="NSLocationWhenInUseUsageDescription" value="L'application colis club souhaite accéder a votre position afin de vous géolocaliser pour permettre le suivi des livraisons et donner votre position a l'administrateur colisclub" />
     </plugin>
 	
-	<plugin name="onesignal-cordova-plugin" spec="2.1.0" />
+	<plugin name="onesignal-cordova-plugin" spec="2.3.2" />
 </widget>
