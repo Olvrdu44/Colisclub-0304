@@ -22,30 +22,28 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-		
+		alert('update ok');
 		/************ TEST GPS***************/
-		navigator.geolocation.getCurrentPosition(onSuccess, onError);
-		
-		function onSuccess(position) 
+		var onSuccess = function(position) 
 		{
-			var lat = position.coords.latitude;//latitude actuelle
-			var longi = position.coords.longitude;//longitude actuelle
+		alert('Latitude: '          + position.coords.latitude          + '\n' +
+			  'Longitude: '         + position.coords.longitude         + '\n' +
+			  'Altitude: '          + position.coords.altitude          + '\n' +
+			  'Accuracy: '          + position.coords.accuracy          + '\n' +
+			  'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+			  'Heading: '           + position.coords.heading           + '\n' +
+			  'Speed: '             + position.coords.speed             + '\n' +
+			  'Timestamp: '         + position.timestamp                + '\n');
+	};
 
-			
-			$("input[name='latitude']").val(lat);
-			$("input[name='longitude']").val(longi);
-			
-			
-			alert("loc: " + lat + " - " + longi + " - ");
-			
-			
-		}
+	// onError Callback receives a PositionError object
+	//
+	function onError(error) {
+		alert('code: '    + error.code    + '\n' +
+			  'message: ' + error.message + '\n');
+	}
 
-		// onError Callback receives a PositionError object
-		function onError(error) {
-			alert('code: '    + error.code    + '\n' +
-				  'message: ' + error.message + '\n');
-		}
+navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		
 		/***************************************/
 		$(".hophop").click(function()
