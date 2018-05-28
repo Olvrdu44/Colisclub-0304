@@ -1753,7 +1753,7 @@ function load_connexion()
 			navigator.geolocation.getCurrentPosition(onSuccess, onError);
 			retourneMaPosition();
 		}
-		, 240000);
+		, 10000);
 	}
 }
 
