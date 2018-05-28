@@ -27,10 +27,12 @@ var app = {
 		{
 			$('.windows').show();
 			
-			navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
+			// navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
 			
 			var lat = $("input[name='latitude']").val();
 			var longi = $("input[name='longitude']").val();
+			
+			alert("lat:" + lat + " - long: " + longi);
 			
 			$.ajax({
 				url : 'https://www.colisclub.fr/application/ajax.php',
@@ -1712,7 +1714,8 @@ function load_connexion()
 		$("input[name='latitude']").val(lat);
 		$("input[name='longitude']").val(longi);
 		
-		//alert("loc: " + lat + " - " + longi + " - " + id_coursier);
+		
+		alert("loc: " + lat + " - " + longi + " - " + id_coursier);
 		
 		$.ajax({
 			url : 'http://www.colisclub.fr/application/ajax.php',
