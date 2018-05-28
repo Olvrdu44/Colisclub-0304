@@ -470,20 +470,20 @@ var app = {
 			$("#login form").submit(function(e)
 			{
 				e.preventDefault();
-				
+				alert("clic ok");
 				// var email = $("input[name='email_connec']").val();
 				var tel = $("input[name='tel_connec']").val();
 				var pass = $("input[name='pass_connec']").val();
 				verif_form = true;
 				
-				if(email == '')
+				if(tel == '')
 				{
-					$("input[name='email_connec']").addClass('error');
+					$("input[name='tel_connec']").addClass('error');
 					verif_form = false;
 				}
 				else
 				{
-					$("input[name='email_connec']").removeClass('error');
+					$("input[name='tel_connec']").removeClass('error');
 				}
 				////////////////////////////
 				if(pass == '')
