@@ -1,0 +1,1035 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    width:100%;
+	background:#1fb5ac!important;
+}
+
+
+/* Portrait layout (default) */
+.app {
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+/******************     FORMULAIRE DE CONNEXION INSCRIPTION *************************/
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #e16c26;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+a:hover {
+  color: #179b77;
+}
+
+.form {
+  background: rgba(19, 35, 47, 0.9);
+  padding: 20px;
+  max-width: 600px;
+  margin: 0px auto;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+.tab-group {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+.tab-group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.tab-group li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 14px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+.tab-group li a:hover {
+  background: #9a4615;
+  color: #ffffff;
+}
+.tab-group .active a {
+  background: #e16c26;
+  color: #ffffff;
+}
+
+.tab-content > div:nth-last-child(1), .tab-content > div:nth-last-child(2){
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 300;
+  margin: 0 0 40px;
+}
+
+label {
+  position: absolute;
+  -webkit-transform: translateY(6px);
+          transform: translateY(6px);
+  left: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+  font-size: 12px;
+  line-height:2;
+}
+label .req {
+  margin: 2px;
+  color: #e16c26;
+}
+
+label.active {
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  left: 2px;
+  font-size: 12px;
+}
+label.active .req {
+  opacity: 0;
+}
+
+label.highlight {
+  color: #ffffff;
+}
+
+input[type=date]
+{
+	min-height:40px
+}
+
+input, textarea {
+  font-size: 22px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  background: none;
+  background-image: none;
+  border: 1px solid #a0b3b0;
+  color: #ffffff;
+  border-radius: 0;
+  -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+input:focus, textarea:focus {
+  outline: 0;
+  border-color: #e16c26;
+}
+
+textarea {
+  border: 2px solid #a0b3b0;
+  resize: vertical;
+  margin-top:30px
+}
+
+.field-wrap {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.top-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.top-row > div {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+}
+.top-row > div:last-child {
+  margin: 0;
+}
+
+.button {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 15px 0;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #e16c26;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+.button:hover, .button:focus {
+  background: #9a4615;
+}
+
+.button-block {
+  display: block;
+  width: 100%;
+}
+
+.forgot {
+  margin-top: 0px;
+  text-align: right;
+}
+/**********************************************************************/
+
+/************************IMAGE DE PROFIL CREATION DE PROFIL / CASIER / PERMIS ***************************/
+.avatar{
+	width:128px;
+	height:128px;
+	border-radius:50%;
+	overflow:hidden;
+	margin-left:calc(50% - 64px);
+	float:left;
+}
+.casier, .permis{
+	width:128px;
+	height:128px;
+	border-radius:0px;
+	overflow:hidden;
+	margin-left:calc(50% - 64px);
+	float:left;
+}
+.avatar img, .casier img, .permis img{
+	width:100%;
+	height:100%;
+}
+
+.avatar img.up, .casier img.up, .permis img.up{
+	width:150%;
+	margin-left:-25%;
+}
+/************************      RADIO ET CHECKBOX ***************************/
+
+input.cb_radio[type="checkbox"] {
+    display:none;
+}
+
+input.cb_radio[type="checkbox"] + label.cb_radio {
+    color:#f2f2f2;
+}
+
+input.cb_radio[type="checkbox"] + label.cb_radio span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-2px 10px 0 0;
+    vertical-align:middle;
+    background:url("../img/check_radio_sheet_2.png") left top no-repeat;
+    cursor:pointer;
+}
+
+input.cb_radio[type="checkbox"]:checked + label.cb_radio span {
+    background:url("../img/check_radio_sheet_2.png") -19px top no-repeat;
+}
+
+input.cb_radio[type="radio"] {
+    display:none;
+}
+
+input.cb_radio[type="radio"] + label.cb_radio {
+    color:#f2f2f2;
+    font-family:Arial, sans-serif;
+	
+}
+
+input.cb_radio[type="radio"] + label.cb_radio span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-2px 10px 0 0;
+    vertical-align:middle;
+    background:url("../img/check_radio_sheet_2.png") -38px top no-repeat;
+    cursor:pointer;
+}
+
+input.cb_radio[type="radio"]:checked + label.cb_radio span {
+    background:url("../img/check_radio_sheet_2.png") -57px top no-repeat;
+}
+/**************************   GOOGLE AUTOCOMPLETE ***************************/
+#locationField, #controls {
+	position: relative;
+	width: 480px;
+}
+
+.label {
+	text-align: right;
+	font-weight: bold;
+	width: 100px;
+	color: #303030;
+}
+#address {
+	border: 1px solid #000090;
+	background-color: #f0f0ff;
+	width: 480px;
+	padding-right: 2px;
+}
+#address td {
+	font-size: 10pt;
+}
+.field {
+	width: 99%;
+	color:#444;
+}
+.slimField {
+	width: 80px;
+}
+.wideField {
+	width: 200px;
+}
+#locationField {
+	height: 20px;
+	margin-bottom: 2px;
+}
+
+
+/*************************** RAJOUT PERSO CONNEXION/INSCRIPTION ***********************************/
+
+.clear{
+	clear:both;
+	width:100%
+}
+
+.cacher{
+	display:none;
+}
+
+img.logo_cc_connexion{
+	width:25%;
+	float:left;
+	margin:0 37.5%;
+	margin-top:10px;
+	margin-bottom:0px;
+}
+
+p.titre_form{
+	color: #aaa;
+	border-top: 1px solid #fff;
+	padding-top: 10px;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+label.cb_radio {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    float: left;
+    width: 100%;
+	position:static;
+	line-height:1;
+	pointer-events: auto;
+}
+
+input.cb_radio{
+    font-size: 22px;
+	display: block;
+	width: 50%;
+	height: 100%;
+	color: #ffffff;
+	border-radius: 0;
+	float: left;
+	padding: 0;
+	border: 0;
+	margin: 0;
+}
+
+.ligne, .ligne_grisee{
+	width: 100%;
+	float: left;
+	border-top: 1px solid #263139;
+	min-height: 30px;
+	padding-top: 5px;
+}
+
+.ligne_grisee{
+	background:#263139;
+}
+
+input[name='num_permis']{
+	margin-top:30px;
+}
+
+button[type="submit"]
+{
+	margin-top:30px;
+}
+
+.cacher_label{
+	opacity:0;
+}
+
+input.error{
+	border: 2px solid #c10;
+}
+
+.inscription_validee p, .pass_perdu p{
+	float:left;
+	padding:20px;
+	background:#096;
+	border:2px solid #060;
+	color:#fff;
+	width:80%;
+	margin-left:10%;
+}
+
+.indic_etoile{
+	margin-top:20px;
+}
+.indic_etoile span{
+	float:left;
+	font-size:22px;
+	color:#fff;
+	margin-top:7px;
+	margin-right:5px
+}
+
+.indic_etoile p {
+	color:#fff;;
+	float:left;
+}
+
+.info_company{
+	margin-top:20px;
+}
+
+/*************************** RAJOUT PERSO ESPACE COURSIER ***********************************/
+
+.espace_coursier {
+    max-width: 600px;
+    margin: 0px auto;
+    /*box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);*/
+    padding-bottom: 100px;
+}
+
+.menu_informations, .feuille_route{
+	width:100%;
+	float:left;
+}
+.feuille_route{
+	padding-top:0;
+}
+.mes_livraisons{
+	padding-top:0;
+}
+
+
+.go_infos, .go_securite, .go_paiement, .go_statut, .go_vehicules{
+	width:45%;
+	margin-left:2.5%;
+	margin-right:2.5%;
+	float:left;
+	color:#fff;
+	text-align:center;
+	min-height:50px;
+	line-height:2;
+	font-size:28px;
+	margin-top:20px;
+}
+
+.go_infos p, .go_securite p, .go_paiement p, .go_statut p, .go_vehicules p{
+	font-size:14px;
+	margin:0;
+	font-weight:bold;
+}
+.go_infos:hover, .go_securite:hover, .go_paiement:hover, .go_statut:hover, .go_vehicules:hover{
+	color:#fff;
+}
+
+.go_infos{
+	background:#e12444;
+}
+
+.go_securite{
+	background:#1fb538;
+}
+
+.go_paiement{
+	background:#e0c124;
+}
+
+.go_statut{
+	background:#152056;
+}
+
+.go_vehicules{
+	background:#444;
+}
+.menu_fix_bas{
+	position:fixed;
+	bottom:0;
+	width:100%;
+	z-index:200;
+}
+.menu_fix_haut {
+    top: 0;
+    width: 100%;
+    max-width: 600px;
+    margin-left: 0px;
+    min-height: 30px;
+    background: #fff;
+    padding-top: 20px;
+    z-index: 200;
+    float: left;
+    margin-top: 0px;
+}
+
+.menu_fix_haut img{
+	float:left;
+	width:50px;
+	margin-left:20px;
+}
+
+.menu_fix_haut p {
+    float: left;
+    width: calc(100% - 140px);
+    text-align: center;
+    color: #1fb5ac;
+    font-weight: bold;
+    line-height: 2;
+    font-size: 12px;
+}
+
+.nom_coursier{
+	color:#FFF;
+	width:100%;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+}
+
+.menu_fix_bas{
+	position:fixed;
+	bottom:0;
+	max-width:600px;
+	width:100%;
+	left:0;
+	background:#e16e28;
+	min-height:50px;
+	max-height:50px;
+}
+
+.go_profil, .go_planning, .go_map, .go_livraison{
+	float:left;
+	width:23%;
+	margin-left:1%;
+	margin-right:1%;
+	color:#fff;
+	text-align:center;
+	font-size:28px;
+	line-height:2;
+}
+
+.menu_fix_bas .selected{
+	color:#444;
+}
+
+.form_dejaco h1{
+	color:#444;
+	margin-top:20px;
+}
+
+.form_dejaco input{
+	font-size:12px;
+}
+
+.form_dejaco .back_profil{
+	float:left;
+	width:100px;
+	padding:5px;
+	background:#444;
+	border:0;	
+	color:#fff;
+	font-size:16px;
+}
+
+.form_dejaco input[type='submit']{
+	-webkit-appearance: none;
+	background:none;
+	float:right;
+	width:100px;
+	color:#fff;
+	padding:5px;
+	background:#1fb5ac;	
+	border:0;
+	margin-top:0;
+	font-size:16px;
+	cursor:pointer;
+	border-radius:0px;
+	
+}
+
+.popup_confirm{
+	background:#0C6;
+	border:1px solid #060;
+	color:#fff;
+	margin-top:10px;
+}
+
+.popup_confirm p{
+	padding:5px;
+	font-weight:bold;
+	font-size:12px;
+	text-align:center;
+}
+
+.popup_confirm p i{
+	font-size:20px;
+}
+
+/********************BOUTON ON/OFF ***************/
+label.switch {
+  align-items: center;
+  display: flex;
+  pointer-events:auto;
+  position:static;
+  float: left;
+	width: 23%;
+	margin: 0px 1%;
+	margin-top:-15px;
+}
+
+.switch__input {
+  display: none;
+}
+.switch__input:checked + .switch__checkbox {
+  background-color: #1fb5ac;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.21);
+}
+.switch__input:checked + .switch__checkbox::before {
+  transform: scale(0);
+}
+.switch__input:checked + .switch__checkbox::after {
+  left: 20px;
+}
+
+.switch__checkbox {
+  background-color: #dedede;
+  border-radius: 40px;
+  cursor: pointer;
+  height: 20px;
+  position: relative;
+  transition: all 300ms ease;
+  width: 40px;
+}
+.switch__checkbox::before, .switch__checkbox::after {
+  content: '';
+  bottom: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 300ms ease;
+}
+.switch__checkbox::before {
+  background-color: #fff;
+  box-shadow: none;
+  border-radius: inherit;
+  right: 0;
+  transform: scale(1);
+  margin: 2px;
+}
+.switch__checkbox::after {
+  background-color: #fff;
+  border: 0 solid #dedede;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  height: 20px;
+  margin-bottom: auto;
+  margin-top: auto;
+  position: absolute;
+  margin: auto 0;
+  width: 20px;
+}
+
+.switch__text {
+  margin-top: 40px;
+  margin-left: -40px;
+  color:#fff;
+}
+
+/*** FEUILLE DE ROUTE *****/
+
+.feuille_route p.commande {
+	text-align:center;
+	color:#fff;
+	font-weight:bold;
+	margin-top:0;
+	padding-top:0;
+}
+.feuille_route .entour_commande {
+	width: calc(100% + 40px);
+	background:#1fb5ac;
+	margin-left: -20px;	
+	border-bottom:1px solid rgba(255, 255, 255, 0.2);
+	float: left;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+.feuille_route .entour_commande h3 {
+	text-transform: none;
+	font-size: 11px;
+	width: 100%;
+	text-align: center;	
+	background: rgba(0, 0, 0, 0.5);	
+	color: #fff;	
+	margin-top: 0;
+	padding: 5px 0;
+}
+.feuille_route .entour_commande p {
+	text-transform: none;
+	font-size: 13px;
+	color: #fff;
+	margin: 0;
+	width: calc(100% - 20px);
+	float: left;
+	margin-left: 10px;
+	margin-bottom:10px;
+}
+.feuille_route .entour_commande span.poids {
+	padding: 3px 10px;
+	background: #e0c124;
+	border-radius: 4px;
+	float: left;
+	margin-top: -2.5px;
+	margin-left:10px;
+}
+.feuille_route .entour_commande p i {
+	width: 25px;
+	color: #1fb5ac;
+	font-size: 20px;
+	margin-top: 5px;
+	text-align: center;
+}
+.feuille_route .entour_commande p i.tel {
+	color:#e16c26;
+	font-size:16px;
+}
+.feuille_route .entour_commande p span.qui{
+	width:100%;
+	float:left;
+	text-align:center;
+}
+.feuille_route .entour_commande a.btn {
+    float: left;
+    width: 80%;
+    margin-left: 10%;
+    text-transform: none;
+    background: #e16c26;
+    color: #fff;
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 13px;
+	margin-bottom:10px;
+	font-weight:bold;
+}
+.feuille_route .entour_commande p.info{
+	float:left;
+	width:100%;
+	text-align:center;
+	margin-left:0;
+}
+.feuille_route .entour_commande p.info i{
+	color:#444;
+}
+.feuille_route .entour_commande p.info span{
+	margin:0px 5px;
+}
+.feuille_route .entour_commande p span.adresse{
+	float:left;
+	width:100%;
+	text-align:center;
+}
+.feuille_route .popup {
+	position: fixed;
+	top: 65px;
+	left: 0;	
+	width: 100%;	
+	height: 100%;	
+	background: rgba(19, 35, 47, 0.9);
+}
+.feuille_route .popup p {
+	font-size: 12px;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	margin-top: 50px;
+	font-weight: bold;
+}
+.feuille_route .popup input[type=text] {
+	width:60%;
+	height:35px;
+	margin-left:20%;
+}
+.feuille_route .popup input[type=submit] {
+	width: 60%;
+	height: 35px;
+	margin-left: 20%;	
+	background: #1fb5ac;	
+	color: #fff;	
+	text-align: center;	
+	margin-top: 20px;	
+	border-color: #1fb5ac;	
+	font-size: 16px;
+	-webkit-appearance: none;
+	
+}
+.feuille_route .popup i.close {
+	position:absolute;
+	top:0;
+	right:0;
+	padding:10px;
+	color:rgba(255, 255, 255, 0.5);
+	font-size:18px;
+}
+.courses_dispo .entete_course_map {
+	width: 100%;
+	margin-left: 0;
+	background: #444;
+	float: left;
+	margin-top: 20px;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:1000;
+}
+.courses_dispo .entete_course_map p {
+	text-transform:none;
+	float:left;
+	font-size:12px;
+	color:#fff;
+	line-height: 12px;
+	margin-bottom:0;
+	margin-top:5px;
+	width: 100%;
+	text-align: center;
+}
+.courses_dispo .entete_course_map p i{
+	color:#e16c26;
+	font-size:16px;
+}
+.courses_dispo .entete_course_map .infos p.client {
+	text-align: center;
+	border-bottom: 1px solid #555;
+	width:100%;
+	padding-bottom:5px;
+}
+.courses_dispo .entete_course_map .infos p.client i {
+	font-size: 16px;
+	margin-right: 5px;
+	margin-top: 4px;
+	color:#e16c26;
+}
+.courses_dispo .entete_course_map .infos {
+	float: left;
+	width: 100%;
+	margin-left: 0;
+}
+
+
+.courses_dispo .entete_course_map .infos p.prix {
+    margin-top: 7px;
+    margin-bottom: 0;
+    background: #e0c124;
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 12px;
+    text-align: center;
+    width: 200px;
+    margin-left: calc(50% - 100px);
+    font-weight: bold;
+    line-height: 1.4;
+}
+.courses_dispo .entete_course_map p.location {
+	width:calc(100% - 20px);
+	margin-left:10px;
+}
+.courses_dispo .entete_course_map p.location span.depart {
+	float:left;
+	text-align:center;
+	width:100%;
+}
+.courses_dispo .entete_course_map p.location span.arrive {
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+.courses_dispo .entete_course_map p.location i {
+	float: left;
+	width: 100%;
+	text-align: center;
+	font-size: 20px;
+	color:#e16c26;
+	margin:5px 0px;
+}
+.courses_dispo .entete_course_map a {
+    width: 90%;
+    text-align: center;
+    background: #e16e28;
+    color: #fff;
+    float: left;
+    margin-top: 10px;
+    padding: 12px 0;
+    margin-left: 5%;
+    margin-bottom: 10px;
+}
+
+span.horaire{
+	color:#e16c26;
+	margin-left:10px
+}
+
+.logo_connec{
+	float:left;
+	width:100%;
+	background:#fff;
+	margin-top:20px;
+}
+
+span.colororange{
+	color:#e16c26;
+	
+}
+
+.padding_20{
+	padding:20px;
+}
+
+#map_canvas {
+      position: absolute;
+      left:0px;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+    }
+.infos_livraisons{
+	position:fixed;
+	background:#444;
+	width:100%;
+	top:0;
+	left:0;
+	min-height:20px;
+	color:#fff;
+	display:none;
+}
+.bg_color {
+    background: #1fb5ac;
+    min-height: 100%;
+    position: fixed;
+    width: 100%;
+	overflow-x: scroll;
+	max-height: 100%;
+}
+.mes_informations, .mes_livraisons{
+	padding-bottom:50px:
+}
+.mes_informations{
+	background:#1fb5ac;
+	padding-bottom:50px;
+}

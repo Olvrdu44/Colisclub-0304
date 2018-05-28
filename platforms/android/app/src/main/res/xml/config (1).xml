@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="fr.rainetcom.colisclub" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="Media">
+        <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
+    <feature name="Capture">
+        <param name="android-package" value="org.apache.cordova.mediacapture.Capture" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="CordovaGoogleMaps">
+        <param name="android-package" value="plugin.google.maps.CordovaGoogleMaps" />
+        <param name="onload" value="true" />
+        <param name="onreset" value="true" />
+    </feature>
+    <feature name="Map">
+        <param name="android-package" value="plugin.google.maps.PluginMap" />
+    </feature>
+    <feature name="Polyline">
+        <param name="android-package" value="plugin.google.maps.PluginPolyline" />
+    </feature>
+    <feature name="Polygon">
+        <param name="android-package" value="plugin.google.maps.PluginPolygon" />
+    </feature>
+    <feature name="Marker">
+        <param name="android-package" value="plugin.google.maps.PluginMarker" />
+    </feature>
+    <feature name="Circle">
+        <param name="android-package" value="plugin.google.maps.PluginCircle" />
+    </feature>
+    <feature name="TileOverlay">
+        <param name="android-package" value="plugin.google.maps.PluginTileOverlay" />
+    </feature>
+    <feature name="GroundOverlay">
+        <param name="android-package" value="plugin.google.maps.PluginGroundOverlay" />
+    </feature>
+    <feature name="KmlOverlay">
+        <param name="android-package" value="plugin.google.maps.PluginKmlOverlay" />
+    </feature>
+    <feature name="Geocoder">
+        <param name="android-package" value="plugin.google.maps.PluginGeocoder" />
+    </feature>
+    <feature name="LocationService">
+        <param name="android-package" value="plugin.google.maps.PluginLocationService" />
+    </feature>
+    <feature name="Environment">
+        <param name="android-package" value="plugin.google.maps.Environment" />
+    </feature>
+    <feature name="MarkerCluster">
+        <param name="android-package" value="plugin.google.maps.PluginMarkerCluster" />
+    </feature>
+    <name>ColisClub</name>
+    <description>
+        L'application colis club pour les coursiers
+    </description>
+    <author email="olivier@rainetcom.fr" href="http:www.rainetcom.fr">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <access origin="http://google.com" />
+    <access origin="https://google.com" />
+    <access origin="http://maps.google.com" />
+    <access origin="http://*.google.com" />
+    <access origin="http://www.colisclub.fr" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <icon density="ldpi" src="res/icon/android/icon-36-ldpi.png" />
+    <icon density="mdpi" src="res/icon/android/icon-48-mdpi.png" />
+    <icon density="hdpi" src="res/icon/android/icon-72-hdpi.png" />
+    <icon density="xhdpi" src="res/icon/android/icon-96-xhdpi.png" />
+    <splash density="land-ldpi" src="res/screen/android/screen-ldpi-landscape.png" />
+    <splash density="land-mdpi" src="res/screen/android/screen-mdpi-landscape.png" />
+    <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
+    <splash density="land-xhdpi" src="res/screen/android/screen-xhdpi-landscape.png" />
+    <splash density="port-ldpi" src="res/screen/android/screen-ldpi-portrait.png" />
+    <splash density="port-mdpi" src="res/screen/android/screen-mdpi-portrait.png" />
+    <splash density="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
+    <splash density="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="xwalkZOrderOnTop" value="true" />
+    <preference name="BackgroundColor" value="0" />
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-build-tool" value="gradle" />
+    <preference name="phonegap-version" value="cli-8.0.0" />
+</widget>

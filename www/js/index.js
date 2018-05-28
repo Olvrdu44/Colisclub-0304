@@ -471,7 +471,8 @@ var app = {
 			{
 				e.preventDefault();
 				
-				var email = $("input[name='email_connec']").val();
+				// var email = $("input[name='email_connec']").val();
+				var tel = $("input[name='tel_connec']").val();
 				var pass = $("input[name='pass_connec']").val();
 				verif_form = true;
 				
@@ -501,21 +502,21 @@ var app = {
 						url : 'http://www.colisclub.fr/application/ajax.php',
 						type : 'GET', 
 						data:'connec=1' +
-						'&email=' + email +						
+						'&tel=' + tel +						
 						'&pass=' + pass,						
 						dataType : 'html',
 						success: function (html) 
 						{
 							// si il y a une erreur avec le mot de passe
-							if(html == 'erreur_valide')
+							if(html.indexOf('erreur_validation') > 0)
 							{
 								navigator.notification.alert("Votre compte n'a pas été validé ! merci de cliquer sur le lien de validation dans le mail reçu lors de votre inscritpion", alertCallback, "Email non confirmé", "Fermer");
 							}
-							else if(html == 'erreur_pass')
+							else if(html.indexOf('erreur_pass') > 0)
 							{
 								navigator.notification.alert("Mot de passe incorrect !", alertCallback, "Erreur mot de passe", "Fermer");
 							}
-							else if(html == 'erreur_compte')
+							else if(html.indexOf('erreur_compte') > 0)
 							{
 								
 								navigator.notification.alert("L'email n'est pas connu sur notre base de données. Assurez vous d'avoir taper le bon email sinon veuillez vous inscrire", alertCallback, "Email inconnu", "Fermer");
@@ -544,7 +545,7 @@ var app = {
 									{
 										var coursier_id = state.to.userId;
 										window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
-										window.plugins.OneSignal.sendTag("email", email);
+										window.plugins.OneSignal.sendTag("tel", tel);
 									}
 									console.log("Push Subscription state changed: " + JSON.stringify(state));
 								});
