@@ -27,6 +27,8 @@ var app = {
 		{
 			$('.windows').show();
 			
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
+			
 			var lat = $("input[name='latitude']").val();
 			var longi = $("input[name='longitude']").val();
 			
