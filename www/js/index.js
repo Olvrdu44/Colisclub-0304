@@ -43,7 +43,7 @@ var app = {
 			  'message: ' + error.message + '\n');
 	}
 
-navigator.geolocation.getCurrentPosition(onSuccess, onError);
+navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 		
 		/***************************************/
 		$(".hophop").click(function()
