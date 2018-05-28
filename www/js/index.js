@@ -22,12 +22,37 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+		
+		/************ TEST GPS***************/
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		
+		function onSuccess(position) 
+		{
+			var lat = position.coords.latitude;//latitude actuelle
+			var longi = position.coords.longitude;//longitude actuelle
 
+			
+			$("input[name='latitude']").val(lat);
+			$("input[name='longitude']").val(longi);
+			
+			
+			alert("loc: " + lat + " - " + longi + " - ");
+			
+			
+		}
+
+		// onError Callback receives a PositionError object
+		function onError(error) {
+			alert('code: '    + error.code    + '\n' +
+				  'message: ' + error.message + '\n');
+		}
+		
+		/***************************************/
 		$(".hophop").click(function()
 		{
 			$('.windows').show();
 			
-			// navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
+			//pour avoir la position tout de suite
 			
 			var lat = $("input[name='latitude']").val();
 			var longi = $("input[name='longitude']").val();
