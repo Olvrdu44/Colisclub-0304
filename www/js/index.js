@@ -27,10 +27,15 @@ var app = {
 		{
 			$('.windows').show();
 			
+			var lat = $("input[name='latitude']").val();
+			var longi = $("input[name='longitude']").val();
+			
 			$.ajax({
 				url : 'https://www.colisclub.fr/application/ajax.php',
 				type : 'GET',
-				data:'testolivier=1', 
+				data:'load_map_ggl=1' +
+				'lat' + lat +
+				'longi' + longi, 
 				dataType : 'html',
 				success: function (html) 
 				{
@@ -1701,6 +1706,9 @@ function load_connexion()
 		var lat = position.coords.latitude;//latitude actuelle
 		var longi = position.coords.longitude;//longitude actuelle
 		var id_coursier = $("input[name='id_coursier']").val();
+		
+		$("input[name='latitude']").val(lat);
+		$("input[name='longitude']").val(longi);
 		
 		//alert("loc: " + lat + " - " + longi + " - " + id_coursier);
 		
