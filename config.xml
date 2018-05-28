@@ -56,5 +56,6 @@
         <splash height="320" platform="ios" src="res/screen/ios/screen-iphone-landscape.png" width="480" />
     </platform>
 
+	<preference name="phonegap-version" value="cli-8.0.0" />
 	<plugin name="onesignal-cordova-plugin" spec="^2.4.1" />
 </widget>
