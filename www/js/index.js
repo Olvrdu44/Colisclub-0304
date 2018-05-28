@@ -507,6 +507,7 @@ var app = {
 						dataType : 'html',
 						success: function (html) 
 						{
+							alert(html);
 							// si il y a une erreur avec le mot de passe
 							if(html.indexOf('erreur_validation') > 0)
 							{
