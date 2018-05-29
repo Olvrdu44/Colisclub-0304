@@ -16,36 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ 
 var app = {
     // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        console.log('Received Device Ready Event');
-        console.log('calling setup push');
-        app.setupPush();
-    },
-};
-
-app.initialize();
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-function onDeviceReady() {
-   
-   $(".hophop").click(function()
+    initialize: function() 
+	{
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+ var ref = cordova.InAppBrowser.open('https://www.gestion-sports.com/gestion-sports/application/index.php?club=lemas&playerid=' + playerid , '_blank', 'location=no,hardwareback=no,toolbar=no, disallowoverscroll=yes, suppressesIncrementalRendering=yes, zoom=no');
+		$(".hophop").click(function()
 		{
 			navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 			
@@ -95,7 +73,7 @@ function onDeviceReady() {
 				
 				if( states[networkState] == "No network connection")
 				{
-					navigator.notification.alert("Vous n'Ãªtes pas connectÃ© au rÃ©seau", alertCallback, "Aucune connexion", "Fermer");
+					navigator.notification.alert("Vous n'êtes pas connecté au réseau", alertCallback, "Aucune connexion", "Fermer");
 				}
 			}
 			/************************ FORMULAIRE CONNEXION INSCRIPTION ***************************/
@@ -184,7 +162,7 @@ function onDeviceReady() {
 				num_permis = $("input[name='num_permis']").val();
 				permis = $("input[name='permis']").val();
 				
-				//on crÃ©e un tableau avec tous les vehicules (correpond aux id dans le html)
+				//on crée un tableau avec tous les vehicules (correpond aux id dans le html)
 				var vehicules = [
 				  "a_pied",
 				  "velo",
@@ -201,7 +179,7 @@ function onDeviceReady() {
 					if( $("#" + vehicule).is(':checked'))
 					{
 						verif_vehicule = true;
-						//on enregistre le vÃ©hicule dans la var a envoyer
+						//on enregistre le véhicule dans la var a envoyer
 						vehicule_a_envoyer += vehicule + '-';
 						
 						//si c est un vehicule motorise on cree une variable pour derriere verifier le permis 
@@ -257,14 +235,14 @@ function onDeviceReady() {
 					}
 				}
 				
-				//si on a pas de vÃ©hicule
+				//si on a pas de véhicule
 				if(verif_vehicule == false)
 				{
-					navigator.notification.alert("Merci de choisir au moins 1 vÃ©hicule", alertCallback, "Erreur vÃ©hicule", "Fermer");
+					navigator.notification.alert("Merci de choisir au moins 1 véhicule", alertCallback, "Erreur véhicule", "Fermer");
 					verif_form = false;
 				}
 				
-				//on vÃ©rifie tous les autres champs
+				//on vérifie tous les autres champs
 				if(nom == '')
 				{
 					$("input[name='nom']").addClass('error');
@@ -347,7 +325,7 @@ function onDeviceReady() {
 				/////////////////////////
 				if(ville == '')
 				{
-					navigator.notification.alert("Merci de prÃ©ciser votre adresse en sÃ©lectionnant une suggestion", alertCallback, "Erreur adresse", "Fermer");
+					navigator.notification.alert("Merci de préciser votre adresse en sélectionnant une suggestion", alertCallback, "Erreur adresse", "Fermer");
 					$("input[name='adresse']").addClass('error');
 					verif_form = false;
 				}
@@ -409,7 +387,7 @@ function onDeviceReady() {
 							else if (html == "dejainscrit")
 							{
 								$("html, body").animate({scrollTop: 0},"slow");
-								navigator.notification.alert("l'email est dÃ©jÃ  inscrit sur ce site merci de vous connecter", alertCallback, "Compte existant", "Fermer");
+								navigator.notification.alert("l'email est déjà inscrit sur ce site merci de vous connecter", alertCallback, "Compte existant", "Fermer");
 							}
 							//sinon c est bon
 							else if(html == 'reussite')
@@ -472,7 +450,7 @@ function onDeviceReady() {
 							else if(html == 'erreur_compte')
 							{
 								$("html, body").animate({scrollTop: 0},"slow");
-								navigator.notification.alert("L'email n'est pas connu sur notre base de donnÃ©es. Assurez vous d'avoir taper le bon email sinon veuillez vous inscrire", alertCallback, "Email inconnu", "Fermer");
+								navigator.notification.alert("L'email n'est pas connu sur notre base de données. Assurez vous d'avoir taper le bon email sinon veuillez vous inscrire", alertCallback, "Email inconnu", "Fermer");
 								$("input[name='mailpassforgot']").addClass('error');
 							}
 							// sinon c est bon
@@ -543,7 +521,7 @@ function onDeviceReady() {
 							// si il y a une erreur avec le mot de passe
 							if(html.indexOf('erreur_validation') > 0)
 							{
-								navigator.notification.alert("Votre compte n'a pas Ã©tÃ© validÃ© ! merci de cliquer sur le lien de validation dans le mail reÃ§u lors de votre inscritpion", alertCallback, "Email non confirmÃ©", "Fermer");
+								navigator.notification.alert("Votre compte n'a pas été validé ! merci de cliquer sur le lien de validation dans le mail reçu lors de votre inscritpion", alertCallback, "Email non confirmé", "Fermer");
 							}
 							else if(html.indexOf('erreur_pass') > 0)
 							{
@@ -552,7 +530,7 @@ function onDeviceReady() {
 							else if(html.indexOf('erreur_compte') > 0)
 							{
 								
-								navigator.notification.alert("L'email n'est pas connu sur notre base de donnÃ©es. Assurez vous d'avoir taper le bon email sinon veuillez vous inscrire", alertCallback, "Email inconnu", "Fermer");
+								navigator.notification.alert("L'email n'est pas connu sur notre base de données. Assurez vous d'avoir taper le bon email sinon veuillez vous inscrire", alertCallback, "Email inconnu", "Fermer");
 							}
 							// sinon c est bon
 							else
@@ -633,19 +611,19 @@ function onDeviceReady() {
 			/********************     AVATAR ***********************/
 			$(".avatar").click(function()
 			{
-				// on remplit un input hidden pour le rÃ©cuperer dans la fonction uploadphoto
+				// on remplit un input hidden pour le récuperer dans la fonction uploadphoto
 				$("input[name='uploadphoto']").val('avatar'); 
 				getImage();
 			});
 			$(".casier").click(function()
 			{
-				// on remplit un input hidden pour le rÃ©cuperer dans la fonction uploadphoto
+				// on remplit un input hidden pour le récuperer dans la fonction uploadphoto
 				$("input[name='uploadphoto']").val('casier'); 
 				getImage();
 			});
 			$(".permis").click(function()
 			{
-				// on remplit un input hidden pour le rÃ©cuperer dans la fonction uploadphoto
+				// on remplit un input hidden pour le récuperer dans la fonction uploadphoto
 				$("input[name='uploadphoto']").val('permis'); 
 				getImage();
 			});
@@ -653,9 +631,31 @@ function onDeviceReady() {
 			
 		});
 		/********************************************************************/
+    },
 
-}
+    // deviceready Event Handler
+    //
+    // Bind any cordova events here. Common events are:
+    // 'pause', 'resume', etc.
+    onDeviceReady: function() {
+        this.receivedEvent('deviceready');
+		
+    },
 
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+    }
+};
+
+app.initialize();
 
 
 
@@ -668,7 +668,7 @@ function getImage()
 {
 	navigator.camera.getPicture(uploadPhoto, function(message) 
 	{
-		navigator.notification.alert("Aucune image chargÃ©e", alertCallback, "Ã‰chec", "Fermer");
+		navigator.notification.alert("Aucune image chargée", alertCallback, "Échec", "Fermer");
 	}, 
 	{
 		quality: 100,
@@ -700,7 +700,7 @@ function uploadPhoto(imageURI)
 		//console.log(JSON.stringify(result));
 		// alert('ok: ' + result.response);
 			
-		//on remplace le contenu de la class "quelle_photo" par le contenu retournÃ©
+		//on remplace le contenu de la class "quelle_photo" par le contenu retourné
 		$("." + quelle_photo).html(result.response);
 	}, 
 	function(error)
@@ -821,7 +821,7 @@ function load_commandes()
 {
 	$(".avatar").click(function()
 	{
-		// on remplit un input hidden pour le rÃ©cuperer dans la fonction uploadphoto
+		// on remplit un input hidden pour le récuperer dans la fonction uploadphoto
 		$("input[name='uploadphoto']").val('avatar'); 
 		getImage();
 	});
@@ -829,7 +829,7 @@ function load_commandes()
 	//on charge les commandes en course
 	$.ajax({
 		url : 'http://www.colisclub.fr/application/ajax.php',
-		type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+		type : 'GET', // Le type de la requête HTTP, ici devenu POST
 		data:'load_commandes=1' +
 			'&id_coursier=' + id_coursier,
 		dataType : 'html',
@@ -852,7 +852,7 @@ function load_commandes()
 					
 					$.ajax({
 						url : 'http://www.colisclub.fr/application/ajax.php',
-						type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+						type : 'GET', // Le type de la requête HTTP, ici devenu POST
 						data:'livraison=' + id_livraison +
 							'&code=' + 'aucun' + 
 							'&suivi=' + suivi, // vaut soit go/enlevement/livraison
@@ -868,7 +868,7 @@ function load_commandes()
 						},
 						error: function(resultat, statut, erreur) 
 						{
-							navigator.notification.alert("Une erreur est survenue merci de rÃ©Ã©sayer", alertCallback, "Erreur", "Fermer");
+							navigator.notification.alert("Une erreur est survenue merci de réésayer", alertCallback, "Erreur", "Fermer");
 						}
 					});
 				}
@@ -899,13 +899,13 @@ function load_commandes()
 				if(suivi == 'enlevement')
 				{
 					next_step = "livraison";
-					next_btn = "Le colis est livrÃ©";
-					qui = "l'expÃ©diteur";
+					next_btn = "Le colis est livré";
+					qui = "l'expéditeur";
 				}
 				else if(suivi == 'livraison')
 				{
 					next_step = "livre";
-					next_btn = "Commande terminÃ©e";
+					next_btn = "Commande terminée";
 					qui = 'le destinataire';
 				}
 				
@@ -923,14 +923,14 @@ function load_commandes()
 				{
 					$.ajax({
 						url : 'http://www.colisclub.fr/application/ajax.php',
-						type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+						type : 'GET', // Le type de la requête HTTP, ici devenu POST
 						data:'livraison=' + id_livraison +
 							'&code=' + code + 
 							'&suivi=' + suivi, // vaut soit go/enlevement/livraison
 						dataType : 'html',
 						success: function (html) 
 						{
-							navigator.notification.alert(html, alertCallback, "AvancÃ©e du Suivi", "Fermer");
+							navigator.notification.alert(html, alertCallback, "Avancée du Suivi", "Fermer");
 							
 							if(html == "Le code est incorrect")
 							{
@@ -954,7 +954,7 @@ function load_commandes()
 						},
 						error: function(resultat, statut, erreur) 
 						{
-							navigator.notification.alert("Une erreur est survenue merci de rÃ©Ã©sayer ! ", alertCallback, "Erreur", "Fermer");
+							navigator.notification.alert("Une erreur est survenue merci de réésayer ! ", alertCallback, "Erreur", "Fermer");
 						}
 					});
 				}
@@ -1043,7 +1043,7 @@ function load_connexion()
 		code_postal = $("input#postal_code").val();
 		ville = $("input#locality").val();
 		
-		//on vÃ©rifie tous les autres champs
+		//on vérifie tous les autres champs
 		if(nom == '')
 		{
 			$("input[name='nom']").addClass('error');
@@ -1102,7 +1102,7 @@ function load_connexion()
 		/////////////////////////
 		if(ville == '')
 		{
-			navigator.notification.alert("Merci de prÃ©ciser votre adresse en sÃ©lectionnant une suggestion", alertCallback, "Erreur adresse", "Fermer");
+			navigator.notification.alert("Merci de préciser votre adresse en sélectionnant une suggestion", alertCallback, "Erreur adresse", "Fermer");
 			$("input[name='adresse']").addClass('error');
 			verif_form = false;
 		}
@@ -1116,7 +1116,7 @@ function load_connexion()
 			//ajax
 			$.ajax({
 				url : 'http://www.colisclub.fr/application/ajax.php',
-				type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+				type : 'GET', // Le type de la requête HTTP, ici devenu POST
 				data:'id_coursier=' + id_coursier +
 					'&nom=' + nom + 
 					'&prenom=' + prenom + 
@@ -1148,7 +1148,7 @@ function load_connexion()
 				},
 				error: function(resultat, statut, erreur) 
 				{
-					navigator.notification.alert("Une erreur est survenue merci de rÃ©Ã©sayer", alertCallback, "Erreur", "Fermer");
+					navigator.notification.alert("Une erreur est survenue merci de réésayer", alertCallback, "Erreur", "Fermer");
 				}
 			});
 		}
@@ -1204,7 +1204,7 @@ function load_connexion()
 			//ajax
 			$.ajax({
 				url : 'http://www.colisclub.fr/application/ajax.php',
-				type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+				type : 'GET', // Le type de la requête HTTP, ici devenu POST
 				data:'id_coursier=' + id_coursier +
 					'&pass=' + pass + 
 					'&new_pass=' + new_pass + 
@@ -1243,7 +1243,7 @@ function load_connexion()
 				},
 				error: function(resultat, statut, erreur) 
 				{
-					navigator.notification.alert("Une erreur est survenue merci de rÃ©Ã©sayer", alertCallback, "Erreur", "Fermer");
+					navigator.notification.alert("Une erreur est survenue merci de réésayer", alertCallback, "Erreur", "Fermer");
 				}
 			});
 		}
@@ -1266,7 +1266,7 @@ function load_connexion()
 			//ajax
 			$.ajax({
 				url : 'http://www.colisclub.fr/application/ajax.php',
-				type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+				type : 'GET', // Le type de la requête HTTP, ici devenu POST
 				data:'var1=' + var1 +
 					'&var2=' + var2 + 
 					'&var3=' + var3, 
@@ -1277,7 +1277,7 @@ function load_connexion()
 				},
 				error: function(resultat, statut, erreur) 
 				{
-					navigator.notification.alert("Une erreur est survenue merci de rÃ©Ã©sayer", alertCallback, "Erreur", "Fermer");
+					navigator.notification.alert("Une erreur est survenue merci de réésayer", alertCallback, "Erreur", "Fermer");
 				}
 			});
 		}
@@ -1327,7 +1327,7 @@ function load_connexion()
 			//ajax
 			$.ajax({
 				url : 'http://www.colisclub.fr/application/ajax.php',
-				type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+				type : 'GET', // Le type de la requête HTTP, ici devenu POST
 				data:'id_coursier=' + id_coursier +
 					'&statut=' + statut + 
 					'&siret=' + siret + 
@@ -1348,12 +1348,12 @@ function load_connexion()
 					}
 					else
 					{
-						navigator.notification.alert("Une erreur est survenue merci de rÃ©Ã©sayer !", alertCallback, "Erreur", "Fermer");
+						navigator.notification.alert("Une erreur est survenue merci de réésayer !", alertCallback, "Erreur", "Fermer");
 					}
 				},
 				error: function(resultat, statut, erreur) 
 				{
-					navigator.notification.alert("Une erreur est survenue merci de rÃ©Ã©sayer", alertCallback, "Erreur", "Fermer");
+					navigator.notification.alert("Une erreur est survenue merci de réésayer", alertCallback, "Erreur", "Fermer");
 				}
 			});
 		}
@@ -1376,7 +1376,7 @@ function load_connexion()
 		num_permis = $("input[name='num_permis']").val();
 		permis = $("input[name='permis']").val();
 		
-		//on crÃ©e un tableau avec tous les vehicules (correpond aux id dans le html)
+		//on crée un tableau avec tous les vehicules (correpond aux id dans le html)
 		var vehicules = [
 		  "a_pied",
 		  "velo",
@@ -1393,7 +1393,7 @@ function load_connexion()
 			if( $("#" + vehicule).is(':checked'))
 			{
 				verif_vehicule = true;
-				//on enregistre le vÃ©hicule dans la var a envoyer
+				//on enregistre le véhicule dans la var a envoyer
 				vehicule_a_envoyer += vehicule + '-';
 				
 				//si c est un vehicule motorise on cree une variable pour derriere verifier le permis 
@@ -1425,7 +1425,7 @@ function load_connexion()
 		}
 		if(verif_vehicule == false)
 		{
-			navigator.notification.alert("Merci de choisir au moins 1 vÃ©hicule", alertCallback, "Erreur vÃ©hicule", "Fermer");
+			navigator.notification.alert("Merci de choisir au moins 1 véhicule", alertCallback, "Erreur véhicule", "Fermer");
 			verif_form = false;
 		}
 
@@ -1435,7 +1435,7 @@ function load_connexion()
 			//ajax
 			$.ajax({
 				url : 'http://www.colisclub.fr/application/ajax.php',
-				type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+				type : 'GET', // Le type de la requête HTTP, ici devenu POST
 				data:'id_coursier=' + id_coursier +
 					'&vehicule_a_envoyer=' + vehicule_a_envoyer + 
 					'&num_permis=' + num_permis +
@@ -1456,13 +1456,13 @@ function load_connexion()
 					}
 					else
 					{
-						navigator.notification.alert("Une erreur est survenue merci de rÃ©Ã©sayer !", alertCallback, "Erreur", "Fermer");
+						navigator.notification.alert("Une erreur est survenue merci de réésayer !", alertCallback, "Erreur", "Fermer");
 						alert(html);
 					}
 				},
 				error: function(resultat, statut, erreur) 
 				{
-					navigator.notification.alert("Une erreur est survenue merci de rÃ©Ã©sayer", alertCallback, "Erreur", "Fermer");
+					navigator.notification.alert("Une erreur est survenue merci de réésayer", alertCallback, "Erreur", "Fermer");
 				}
 			});
 		}
@@ -1524,7 +1524,7 @@ function load_connexion()
 		/***************************************************
 		$.ajax({
 			url : 'http://www.colisclub.fr/application/ajax.php',
-			type : 'GET', // Le type de la requÃªte HTTP, ici devenu GET
+			type : 'GET', // Le type de la requête HTTP, ici devenu GET
 			data:'load_map_init=1',
 			dataType : 'html',
 			success: function (html) 
@@ -1574,7 +1574,7 @@ function load_connexion()
 						//AJAX 
 						$.ajax({
 							url : 'http://www.colisclub.fr/application/ajax.php',
-							type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+							type : 'GET', // Le type de la requête HTTP, ici devenu POST
 							data:'load_marker=1',
 							dataType : 'json',
 							success: function (html) 
@@ -1614,7 +1614,7 @@ function load_connexion()
 														//AJAX 
 														$.ajax({
 															url : 'http://www.colisclub.fr/application/ajax.php',
-															type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+															type : 'GET', // Le type de la requête HTTP, ici devenu POST
 															data:'accept_course=' + id_course +
 																'&coursier=' + id_coursier, 
 															dataType : 'html',
@@ -1625,11 +1625,11 @@ function load_connexion()
 																
 																if(result.indexOf("dejapris") != -1)
 																{
-																	navigator.notification.alert("La course n'est plus disponible, il semble qu'un autre coursier en sois en charge, il doit surement y avoir une autre livraison a proximitÃ© !", alertCallback, "Course refusÃ©e", "Fermer");
+																	navigator.notification.alert("La course n'est plus disponible, il semble qu'un autre coursier en sois en charge, il doit surement y avoir une autre livraison a proximité !", alertCallback, "Course refusée", "Fermer");
 																}
 																else if(result.indexOf("reussite") != -1)
 																{
-																	navigator.notification.alert("La course a Ã©tÃ© acceptÃ©e, elle apparait dÃ©sormait dans vos livraisons a effectuÃ©e !", alertCallback, "Course acceptÃ©e", "Fermer");
+																	navigator.notification.alert("La course a été acceptée, elle apparait désormait dans vos livraisons a effectuée !", alertCallback, "Course acceptée", "Fermer");
 																}
 															},
 															error: function(resultat, statut, erreur) {
@@ -1656,7 +1656,7 @@ function load_connexion()
 			},
 			error: function(resultat, statut, erreur) 
 			{
-				navigator.notification.alert("erreur", alertCallback, "GÃ©olocalisation", "Fermer");
+				navigator.notification.alert("erreur", alertCallback, "Géolocalisation", "Fermer");
 			}
 		});
 		***************************************************/
@@ -1697,8 +1697,8 @@ function load_connexion()
 	/************* ACCEPTATION DE LIVRAISON ****************/
 	/*$("input[name='acceptation_course']").change(function()
 	{
-		var id_course = $(this).val(); //on rÃ©cupere l id de la course
-		var id_coursier = $("input[name='id_coursier']").val(); //on rÃ©cupere l id de la course
+		var id_course = $(this).val(); //on récupere l id de la course
+		var id_coursier = $("input[name='id_coursier']").val(); //on récupere l id de la course
 		
 		
 	});*/
@@ -1712,7 +1712,7 @@ function load_connexion()
 	});
 	
 	navigator.geolocation.getCurrentPosition(onSuccess, onError);//pour avoir la position tout de suite
-	retourneMaPosition(); //pour la rÃ©cupÃ©rer tous les X temps
+	retourneMaPosition(); //pour la récupérer tous les X temps
 	
 	/**************    DISPO    ************/
 	/***************************************/
@@ -1780,7 +1780,7 @@ function onSuccess(position)
 	
 	$.ajax({
 		url : 'http://www.colisclub.fr/application/ajax.php',
-		type : 'GET', // Le type de la requÃªte HTTP, ici devenu POST
+		type : 'GET', // Le type de la requête HTTP, ici devenu POST
 		data:'lat=' + lat +
 			'&id_coursier=' + id_coursier +
 			'&longi=' + longi,
@@ -1791,7 +1791,7 @@ function onSuccess(position)
 		},
 		error: function(resultat, statut, erreur) 
 		{
-			navigator.notification.alert("erreur lors de la rÃ©cupÃ©ration de votre position", alertCallback, "GÃ©olocalisation", "Fermer");
+			navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
 		}
 	});		
 }
@@ -1801,7 +1801,7 @@ function onError(error) {
 	//alert('code: '    + error.code    + '\n' +
 		  //'message: ' + error.message + '\n');
 		  
-	navigator.notification.alert("erreur lors de la rÃ©cupÃ©ration de votre position", alertCallback, "GÃ©olocalisation", "Fermer");
+	navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
 }
 
 document.addEventListener("deviceready", gogogo, false);
