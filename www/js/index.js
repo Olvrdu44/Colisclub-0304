@@ -57,7 +57,10 @@ var app = {
 
 		$(function()
 		{
-			/*window.plugins.OneSignal
+			var notificationOpenedCallback = function(jsonData) {
+									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+								};
+			window.plugins.OneSignal
 			.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
 			.handleNotificationOpened(notificationOpenedCallback)
 			.endInit();
@@ -66,7 +69,7 @@ var app = {
 
 			  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
 
-			});*/
+			});
 			function checkConnection() 
 			{
 				var networkState = navigator.connection.type;
@@ -551,9 +554,9 @@ var app = {
 								
 								
 								/*******************   NOTIFS ONE SIGNAL     ***********/
-								var notificationOpenedCallback = function(jsonData) {
+								/*var notificationOpenedCallback = function(jsonData) {
 									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-								};
+								};*/
 								
 								/*window.plugins.OneSignal
 								.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
