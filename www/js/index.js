@@ -610,12 +610,10 @@ var app = {
 	
 	onPause: function() {
         this.receivedEvent('pause');
-		alert("pause");
     },
 	
 	onPause: function() {
         this.receivedEvent('resume');
-		alert("resume");
     },
 
     // Update DOM on a Received Event
