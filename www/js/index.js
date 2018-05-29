@@ -32,7 +32,7 @@ var app = {
 			var lat = $("input[name='latitude']").val();
 			var longi = $("input[name='longitude']").val();
 			
-			//alert("lat:" + lat + " - long: " + longi);
+			alert("lat:" + lat + " - long: " + longi);
 			
 			$.ajax({
 				url : 'https://www.colisclub.fr/application/ajax.php',
