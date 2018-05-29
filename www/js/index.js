@@ -658,23 +658,29 @@ var app = {
 
 app.initialize();
 
-document.addEventListener('deviceready', function () 
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() 
 {
-	alert("ok1");
+   alert("ok1");
    cordova.plugins.backgroundMode.setEnabled(true);
    alert("ok2");
+   alert("actif:" + cordova.plugins.backgroundMode.isActive());
    
    var notificationOpenedCallback = function(jsonData) {
-									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-								};
-								
-								window.plugins.OneSignal
-								.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
-								.handleNotificationOpened(notificationOpenedCallback)
-								.endInit();
-								
-								alert("ok3");
-}, false);
+		console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+	};
+	
+	window.plugins.OneSignal
+	.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
+	.handleNotificationOpened(notificationOpenedCallback)
+	.endInit();
+	
+	alert("ok3");
+
+}
+
+
 
 
 
