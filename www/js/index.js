@@ -30,7 +30,38 @@ var app = {
 				dataType : 'html',
 				success: function (html) 
 				{
-					alert(html);
+					if(html.indexOf('sorry') > 0)
+					{
+						//il ne se passe rien on a pas d id
+					}
+					else
+					{
+						str = str.split("|");
+						tel = str[0];
+						pass = str[1];
+
+						//on connecte la personne
+						$.ajax({
+							url : 'http://www.colisclub.fr/application/ajax.php',
+							type : 'GET', 
+							data:'connec=1' +
+							'&tel=' + tel +												
+							'&pass=' + pass,												
+							dataType : 'html',
+							success: function (html) 
+							{
+								$('#interchangeable').html(html);
+								$('.menu_fix_bas').show();
+								load_connexion();
+								
+								navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+							},
+							error: function(resultat, statut, erreur) {
+								$("html, body").animate({scrollTop: 0},"slow");
+								alert('erreur');
+							}
+						});
+					}
 				},
 				error: function(resultat, statut, erreur) {
 					alert("erreur");
