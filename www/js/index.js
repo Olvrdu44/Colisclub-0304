@@ -36,7 +36,7 @@ var app = {
 				}
 				else
 				{
-					$("waiting_div").show();
+					$(".waiting_div").show();
 					var str = html.split("|");
 					var tel = str[0];
 					var pass = str[1];
@@ -75,7 +75,7 @@ var app = {
 							navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 							
 						}
-						$("waiting_div").hide();
+						$(".waiting_div").hide();
 					},
 					error: function(resultat, statut, erreur) {
 						$("html, body").animate({scrollTop: 0},"slow");
