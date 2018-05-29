@@ -22,6 +22,17 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+		
+		window.plugins.OneSignal
+		.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
+		.handleNotificationOpened(notificationOpenedCallback)
+		.endInit();
+		
+		window.plugins.OneSignal.getPermissionSubscriptionState(function(status) {
+
+		  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
+
+		});
 
 		$(".hophop").click(function()
 		{
@@ -543,10 +554,10 @@ var app = {
 									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
 								};
 								
-								window.plugins.OneSignal
+								/*window.plugins.OneSignal
 								.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
 								.handleNotificationOpened(notificationOpenedCallback)
-								.endInit();
+								.endInit();*/
 								
 								
 								window.plugins.OneSignal.addSubscriptionObserver(function (state) 
@@ -576,18 +587,14 @@ var app = {
 									
 									if (!state.from.subscribed && state.to.subscribed) 
 									{
-										var onesignal_id = state.to.userId;
+										//var onesignal_id = state.to.userId;
 										// window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
 										window.plugins.OneSignal.sendTag("tel", tel);
 									}
 									console.log("Push Subscription state changed: " + JSON.stringify(state));
 								});
 								
-								window.plugins.OneSignal.getPermissionSubscriptionState(function(status) {
-
-								  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
-
-								});
+								
 								/*********************************************************/
 							}
 						},
