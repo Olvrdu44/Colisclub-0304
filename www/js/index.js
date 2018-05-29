@@ -660,7 +660,7 @@ window.plugins.OneSignal.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
 
   alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
 
-});
+})
 .endInit();
 
 
