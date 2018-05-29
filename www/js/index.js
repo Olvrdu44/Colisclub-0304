@@ -538,6 +538,7 @@ var app = {
 								$('#interchangeable').html(html);
 								$('.menu_fix_bas').show();
 								load_connexion();
+								navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 								
 								
 								
@@ -637,6 +638,10 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+		alert("ok1");
+		cordova.plugins.backgroundMode.enable();
+		alert("ok2");
+		alert("actif:" + cordova.plugins.backgroundMode.isActive());
     },
 
     // Update DOM on a Received Event
@@ -649,10 +654,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-		alert("ok1");
-		cordova.plugins.backgroundMode.enable();
-		alert("ok2");
-		alert("actif:" + cordova.plugins.backgroundMode.isActive());
+		
     }
 };
 
