@@ -541,14 +541,14 @@ var app = {
 								
 								
 								/*******************   NOTIFS ONE SIGNAL     ***********/
-								/*var notificationOpenedCallback = function(jsonData) {
+								var notificationOpenedCallback = function(jsonData) {
 									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-								};*/
+								};
 								
-								/*window.plugins.OneSignal
+								window.plugins.OneSignal
 								.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
 								.handleNotificationOpened(notificationOpenedCallback)
-								.endInit();*/
+								.endInit();
 								
 								
 								window.plugins.OneSignal.addSubscriptionObserver(function (state) 
@@ -566,9 +566,9 @@ var app = {
 										dataType : 'html',
 										success: function (html) 
 										{
-											/*alert("ok");
-											alert("onsesignal2" + onesignal_id);
-											alert(html);*/
+											
+											alert("onsesignal" + onesignal_id);
+											
 										},
 										error: function(resultat, statut, erreur) {
 											alert("erreur");
