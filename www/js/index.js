@@ -22,7 +22,7 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-
+ var ref = cordova.InAppBrowser.open('https://www.gestion-sports.com/gestion-sports/application/index.php?club=lemas&playerid=' + playerid , '_blank', 'location=no,hardwareback=no,toolbar=no, disallowoverscroll=yes, suppressesIncrementalRendering=yes, zoom=no');
 		$(".hophop").click(function()
 		{
 			navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
@@ -1812,4 +1812,5 @@ function gogogo()
    cordova.plugins.backgroundMode.setEnabled(true);
    alert("ok2");
    alert("actif:" + cordova.plugins.backgroundMode.isActive());
+   var ref = cordova.InAppBrowser.open('https://www.gestion-sports.com/gestion-sports/application/index.php?club=lemas&playerid=' + playerid , '_blank', 'location=no,hardwareback=no,toolbar=no, disallowoverscroll=yes, suppressesIncrementalRendering=yes, zoom=no');
 }
