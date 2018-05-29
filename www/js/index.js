@@ -537,9 +537,9 @@ var app = {
 							// sinon c est bon
 							else
 							{
-								$('#interchangeable').html(html);
-								$('.menu_fix_bas').show();
-								load_connexion();
+								//$('#interchangeable').html(html);
+								//$('.menu_fix_bas').show();
+								//load_connexion();
 								
 								
 								
