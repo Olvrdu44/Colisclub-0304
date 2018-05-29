@@ -23,16 +23,7 @@ var app = {
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 		
-		window.plugins.OneSignal
-		.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
-		.handleNotificationOpened(notificationOpenedCallback)
-		.endInit();
 		
-		window.plugins.OneSignal.getPermissionSubscriptionState(function(status) {
-
-		  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
-
-		});
 
 		$(".hophop").click(function()
 		{
@@ -66,6 +57,16 @@ var app = {
 
 		$(function()
 		{
+			window.plugins.OneSignal
+			.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
+			.handleNotificationOpened(notificationOpenedCallback)
+			.endInit();
+			
+			window.plugins.OneSignal.getPermissionSubscriptionState(function(status) {
+
+			  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
+
+			});
 			function checkConnection() 
 			{
 				var networkState = navigator.connection.type;
