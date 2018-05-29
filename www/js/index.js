@@ -25,6 +25,8 @@ var app = {
 
 		$(".hophop").click(function()
 		{
+			navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+			
 			$('.windows').show();
 			
 			//pour avoir la position tout de suite
@@ -50,7 +52,7 @@ var app = {
 				}
 			});
 			
-			navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+			
 		});
 		
 		
