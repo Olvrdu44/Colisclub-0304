@@ -39,9 +39,9 @@ var app = {
 					else
 					{
 						alert("2");
-						str = str.split("|");
-						tel = str[0];
-						pass = str[1];
+						var str = str.split("|");
+						var tel = str[0];
+						var pass = str[1];
 						alert(tel);
 						alert(pass);
 
