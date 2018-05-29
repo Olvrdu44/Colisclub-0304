@@ -24,6 +24,8 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 		
 		
+		
+		
 
 		$(".hophop").click(function()
 		{
@@ -57,6 +59,19 @@ var app = {
 
 		$(function()
 		{
+			var notificationOpenedCallback = function(jsonData) {
+									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+								};
+								
+								window.plugins.OneSignal
+								.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
+								.handleNotificationOpened(notificationOpenedCallback)
+								.endInit();
+								
+								window.plugins.OneSignal.getPermissionSubscriptionState(function(status) 
+								{
+									alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
+								});
 			function checkConnection() 
 			{
 				var networkState = navigator.connection.type;
@@ -537,9 +552,9 @@ var app = {
 							// sinon c est bon
 							else
 							{
-								//$('#interchangeable').html(html);
-								//$('.menu_fix_bas').show();
-								//load_connexion();
+								$('#interchangeable').html(html);
+								$('.menu_fix_bas').show();
+								load_connexion();
 								
 								
 								
