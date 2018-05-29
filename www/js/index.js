@@ -548,10 +548,11 @@ var app = {
 								.handleNotificationOpened(notificationOpenedCallback)
 								.endInit();
 								
+								
 								window.plugins.OneSignal.addSubscriptionObserver(function (state) 
 								{
 									var ONESIGNAL_ID = state.to.userId;
-									alert(ONESIGNAL_ID);
+									alert("onsesignal" + ONESIGNAL_ID);
 									
 									/***************** RESTER CONNECTER MEME EN BACKGROUND ******/
 									$.ajax({
@@ -564,7 +565,8 @@ var app = {
 										success: function (html) 
 										{
 											alert("ok");
-											alert(ONESIGNAL_ID);
+											alert("onsesignal2" + ONESIGNAL_ID);
+											alert(html);
 										},
 										error: function(resultat, statut, erreur) {
 											alert("erreur");
@@ -579,6 +581,12 @@ var app = {
 										window.plugins.OneSignal.sendTag("tel", tel);
 									}
 									console.log("Push Subscription state changed: " + JSON.stringify(state));
+								});
+								
+								window.plugins.OneSignal.getPermissionSubscriptionState(function(status) {
+
+								  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
+
 								});
 								/*********************************************************/
 							}
