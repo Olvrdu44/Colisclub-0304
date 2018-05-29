@@ -42,28 +42,47 @@ var app = {
 						str = str.split("|");
 						tel = str[0];
 						pass = str[1];
+						alert(tel);
+						alert(pass);
 
 						//on connecte la personne
 						$.ajax({
-							url : 'http://www.colisclub.fr/application/ajax.php',
-							type : 'GET', 
-							data:'connec=1' +
-							'&tel=' + tel +												
-							'&pass=' + pass,												
-							dataType : 'html',
-							success: function (html) 
+						url : 'http://www.colisclub.fr/application/ajax.php',
+						type : 'GET', 
+						data:'connec=1' +
+						'&tel=' + tel +						
+						'&pass=' + pass,						
+						dataType : 'html',
+						success: function (html) 
+						{
+							// si il y a une erreur avec le mot de passe
+							if(html.indexOf('erreur_validation') > 0)
+							{
+								navigator.notification.alert("Votre compte n'a pas été validé ! merci de cliquer sur le lien de validation dans le mail reçu lors de votre inscritpion", alertCallback, "Email non confirmé", "Fermer");
+							}
+							else if(html.indexOf('erreur_pass') > 0)
+							{
+								navigator.notification.alert("Mot de passe incorrect !", alertCallback, "Erreur mot de passe", "Fermer");
+							}
+							else if(html.indexOf('erreur_compte') > 0)
+							{
+								
+								navigator.notification.alert("L'email n'est pas connu sur notre base de données. Assurez vous d'avoir taper le bon email sinon veuillez vous inscrire", alertCallback, "Email inconnu", "Fermer");
+							}
+							// sinon c est bon
+							else
 							{
 								$('#interchangeable').html(html);
 								$('.menu_fix_bas').show();
 								load_connexion();
-								
 								navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
-							},
-							error: function(resultat, statut, erreur) {
-								$("html, body").animate({scrollTop: 0},"slow");
-								alert('erreur');
 							}
-						});
+						},
+						error: function(resultat, statut, erreur) {
+							$("html, body").animate({scrollTop: 0},"slow");
+							alert('erreur');
+						}
+					});
 					}
 				},
 				error: function(resultat, statut, erreur) {
