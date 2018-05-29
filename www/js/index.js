@@ -58,17 +58,7 @@ var app = {
 		});
 
 		$(function()
-		{
-
-								
-								window.plugins.OneSignal
-								.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
-								.endInit();
-								
-								//window.plugins.OneSignal.getPermissionSubscriptionState(function(status) 
-								//{
-								//	alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
-								//});
+		{			
 			function checkConnection() 
 			{
 				var networkState = navigator.connection.type;
@@ -565,10 +555,10 @@ var app = {
 								.handleNotificationOpened(notificationOpenedCallback)
 								.endInit();
 								
-								window.plugins.OneSignal.getPermissionSubscriptionState(function(status) 
+								/*window.plugins.OneSignal.getPermissionSubscriptionState(function(status) 
 								{
 									alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
-								});
+								});*/
 								
 								
 								window.plugins.OneSignal.addSubscriptionObserver(function (state) 
@@ -577,7 +567,7 @@ var app = {
 									/*alert("onsesignal" + ONESIGNAL_ID);
 									
 									/***************** RESTER CONNECTER MEME EN BACKGROUND ******/
-									$.ajax({
+									/*$.ajax({
 										url : 'https://www.colisclub.fr/application/ajax.php',
 										type : 'GET',
 										data:'stay_connect=1' +
@@ -586,14 +576,12 @@ var app = {
 										dataType : 'html',
 										success: function (html) 
 										{
-											
-											alert("onsesignal" + onesignal_id);
-											
+
 										},
 										error: function(resultat, statut, erreur) {
 											alert("erreur");
 										}
-									});
+									});*/
 									
 									
 									if (!state.from.subscribed && state.to.subscribed) 
@@ -604,12 +592,7 @@ var app = {
 									}
 									console.log("Push Subscription state changed: " + JSON.stringify(state));
 								});
-								
 
-								
-								
-								
-								
 								/*********************************************************/
 							}
 						},
