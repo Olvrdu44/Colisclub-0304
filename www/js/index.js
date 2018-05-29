@@ -22,28 +22,11 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-		alert('update ok');
+
 		/************ TEST GPS***************/
-		var onSuccess = function(position) 
-		{
-		alert('Latitude: '          + position.coords.latitude          + '\n' +
-			  'Longitude: '         + position.coords.longitude         + '\n' +
-			  'Altitude: '          + position.coords.altitude          + '\n' +
-			  'Accuracy: '          + position.coords.accuracy          + '\n' +
-			  'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-			  'Heading: '           + position.coords.heading           + '\n' +
-			  'Speed: '             + position.coords.speed             + '\n' +
-			  'Timestamp: '         + position.timestamp                + '\n');
-	};
+		
 
-	// onError Callback receives a PositionError object
-	//
-	function onError(error) {
-		alert('code: '    + error.code    + '\n' +
-			  'message: ' + error.message + '\n');
-	}
-
-navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+		navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 		
 		/***************************************/
 		$(".hophop").click(function()
@@ -1728,7 +1711,25 @@ function load_connexion()
 	/***************************************/
 	/***************************************/
 	
-	function onSuccess(position) 
+	
+	
+	function alertCallback()
+	{
+		//pour l'alert de cordova (obligatoire d avoir une fonction mais rien a y faire perso :) )
+	}
+	
+	function retourneMaPosition()
+	{
+		setTimeout(function()
+		{
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);
+			retourneMaPosition();
+		}
+		, 10000);
+	}
+}
+
+function onSuccess(position) 
 	{
 		var lat = position.coords.latitude;//latitude actuelle
 		var longi = position.coords.longitude;//longitude actuelle
@@ -1763,20 +1764,4 @@ function load_connexion()
 		alert('code: '    + error.code    + '\n' +
 			  'message: ' + error.message + '\n');
 	}
-	
-	function alertCallback()
-	{
-		//pour l'alert de cordova (obligatoire d avoir une fonction mais rien a y faire perso :) )
-	}
-	
-	function retourneMaPosition()
-	{
-		setTimeout(function()
-		{
-			navigator.geolocation.getCurrentPosition(onSuccess, onError);
-			retourneMaPosition();
-		}
-		, 10000);
-	}
-}
 
