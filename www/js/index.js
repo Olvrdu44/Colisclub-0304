@@ -22,8 +22,6 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-        document.addEventListener('pause', this.onPause.bind(this), false);
-        document.addEventListener('resume', this.onResume.bind(this), false);
 
 		$(".hophop").click(function()
 		{
@@ -552,9 +550,29 @@ var app = {
 								
 								window.plugins.OneSignal.addSubscriptionObserver(function (state) 
 								{
+									var onesignal_id = state.to.userId;
+									
+									/***************** RESTER CONNECTER MEME EN BACKGROUND ******/
+									$.ajax({
+										url : 'https://www.colisclub.fr/application/ajax.php',
+										type : 'GET',
+										data:'stay_connect=1' +
+										'&onesignal_id=' + onesignal_id +
+										'&tel=' + tel, 
+										dataType : 'html',
+										success: function (html) 
+										{
+											
+										},
+										error: function(resultat, statut, erreur) {
+											alert("erreur");
+										}
+									});
+									
+									
 									if (!state.from.subscribed && state.to.subscribed) 
 									{
-										// var coursier_id = state.to.userId;
+										var onesignal_id = state.to.userId;
 										// window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
 										window.plugins.OneSignal.sendTag("tel", tel);
 									}
@@ -606,14 +624,6 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
-    },
-	
-	onPause: function() {
-        this.receivedEvent('pause');
-    },
-	
-	onPause: function() {
-        this.receivedEvent('resume');
     },
 
     // Update DOM on a Received Event
