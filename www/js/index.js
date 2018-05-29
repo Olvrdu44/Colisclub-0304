@@ -478,13 +478,7 @@ var app = {
 					$("html, body").animate({scrollTop: 0},"slow");
 				}
 			});
-			window.plugins.OneSignal.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
-			.getPermissionSubscriptionState(function(status) {
-
-			  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
-
-			})
-			.endInit();
+			
 			/********************AJAX CONNEXION ***********************/
 			$("#login form").submit(function(e)
 			{
@@ -546,7 +540,13 @@ var app = {
 								$('.menu_fix_bas').show();
 								load_connexion();
 								
-								
+								window.plugins.OneSignal.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
+								.getPermissionSubscriptionState(function(status) {
+
+								  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
+
+								})
+								.endInit();
 								
 								/*******************   NOTIFS ONE SIGNAL     ***********/
 								var notificationOpenedCallback = function(jsonData) {
