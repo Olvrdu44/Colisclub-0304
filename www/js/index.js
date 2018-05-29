@@ -552,7 +552,7 @@ var app = {
 								.handleNotificationOpened(notificationOpenedCallback)
 								.endInit();
 								
-								window.plugins.OneSignal..getPermissionSubscriptionState(function(status) 
+								window.plugins.OneSignal.getPermissionSubscriptionState(function(status) 
 								{
 									alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
 								});
