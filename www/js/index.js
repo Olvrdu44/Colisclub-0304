@@ -585,6 +585,19 @@ var app = {
 									console.log("Push Subscription state changed: " + JSON.stringify(state));
 								});
 								
+								var notificationOpenedCallback = function(jsonData) {
+									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+								};
+								
+								window.plugins.OneSignal.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
+								.handleNotificationOpened(notificationOpenedCallback)
+								.getPermissionSubscriptionState(function(status) {
+
+								  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
+
+								})
+								.endInit();
+								
 								
 								/*********************************************************/
 							}
@@ -623,17 +636,7 @@ var app = {
 				getImage();
 			});
 			/*********************************************************/
-			var notificationOpenedCallback = function(jsonData) {
-				console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-			};
-			window.plugins.OneSignal.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
-			.handleNotificationOpened(notificationOpenedCallback)
-			.getPermissionSubscriptionState(function(status) {
-
-			  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
-
-			})
-			.endInit();
+			
 		});
 		/********************************************************************/
     },
