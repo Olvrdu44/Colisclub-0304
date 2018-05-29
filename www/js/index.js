@@ -39,7 +39,7 @@ var app = {
 					else
 					{
 						alert("2");
-						var str = str.split("|");
+						var str = html.split("|");
 						var tel = str[0];
 						var pass = str[1];
 						alert(tel);
