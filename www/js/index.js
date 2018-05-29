@@ -540,7 +540,7 @@ var app = {
 								load_connexion();
 								navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 								alert("ok1");
-								cordova.plugins.backgroundMode.enable();
+								cordova.plugins.backgroundMode.setEnabled(true);
 								alert("ok2");
 								alert("actif:" + cordova.plugins.backgroundMode.isActive());
 								
