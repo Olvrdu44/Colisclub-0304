@@ -45,6 +45,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
    
+
    $(".hophop").click(function()
 		{
 			navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
@@ -1804,13 +1805,3 @@ function onError(error) {
 	navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
 }
 
-document.addEventListener("deviceready", gogogo, false);
-
-function gogogo() 
-{
-   alert("ok1");
-   cordova.plugins.backgroundMode.setEnabled(true);
-   alert("ok2");
-   alert("actif:" + cordova.plugins.backgroundMode.isActive());
-   var ref = cordova.InAppBrowser.open('https://www.gestion-sports.com/gestion-sports/application/index.php?club=lemas&playerid=' + playerid , '_blank', 'location=no,hardwareback=no,toolbar=no, disallowoverscroll=yes, suppressesIncrementalRendering=yes, zoom=no');
-}
