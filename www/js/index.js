@@ -551,8 +551,8 @@ var app = {
 								
 								window.plugins.OneSignal.addSubscriptionObserver(function (state) 
 								{
-									var ONESIGNAL_ID = state.to.userId;
-									alert("onsesignal" + ONESIGNAL_ID);
+									var onesignal_id = state.to.userId;
+									/*alert("onsesignal" + ONESIGNAL_ID);
 									
 									/***************** RESTER CONNECTER MEME EN BACKGROUND ******/
 									$.ajax({
@@ -564,9 +564,9 @@ var app = {
 										dataType : 'html',
 										success: function (html) 
 										{
-											alert("ok");
-											alert("onsesignal2" + ONESIGNAL_ID);
-											alert(html);
+											/*alert("ok");
+											alert("onsesignal2" + onesignal_id);
+											alert(html);*/
 										},
 										error: function(resultat, statut, erreur) {
 											alert("erreur");
