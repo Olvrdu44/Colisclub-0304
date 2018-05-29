@@ -539,9 +539,6 @@ var app = {
 								$('.menu_fix_bas').show();
 								load_connexion();
 								navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
-								alert("ok1");
-								cordova.plugins.backgroundMode.setEnabled(true);
-								alert("ok2");
 								alert("actif:" + cordova.plugins.backgroundMode.isActive());
 								
 								
@@ -661,7 +658,9 @@ var app = {
 
 app.initialize();
 
-
+document.addEventListener('deviceready', function () {
+   cordova.plugins.backgroundMode.setEnabled(true);
+}, false);
 
 
 
