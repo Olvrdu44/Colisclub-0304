@@ -16,41 +16,28 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ 
 var app = {
     // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        console.log('Received Device Ready Event');
-        console.log('calling setup push');
-        app.setupPush();
-    },
-};
+    initialize: function() 
+	{
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 
-app.initialize();
-
-document.addEventListener("deviceready", onDeviceReady, false);
-
-function onDeviceReady() {
-       alert("ok1");
-   cordova.plugins.backgroundMode.setEnabled(true);
-   alert("ok2");
-   alert("actif:" + cordova.plugins.backgroundMode.isActive());
-   //var ref = cordova.InAppBrowser.open('https://www.gestion-sports.com/gestion-sports/application/index.php?club=lemas&playerid=' + playerid , '_blank', 'location=no,hardwareback=no,toolbar=no, disallowoverscroll=yes, suppressesIncrementalRendering=yes, zoom=no');
-
-   $(".hophop").click(function()
+		$.ajax({
+				url : 'https://www.colisclub.fr/application/ajax.php',
+				type : 'GET',
+				data:'set_cookies=1',
+				dataType : 'html',
+				success: function (html) 
+				{
+					alert(html);
+				},
+				error: function(resultat, statut, erreur) {
+					alert("erreur");
+				}
+			});
+		
+		$(".hophop").click(function()
 		{
 			navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
 			
@@ -658,9 +645,31 @@ function onDeviceReady() {
 			
 		});
 		/********************************************************************/
+    },
 
-}
+    // deviceready Event Handler
+    //
+    // Bind any cordova events here. Common events are:
+    // 'pause', 'resume', etc.
+    onDeviceReady: function() {
+        this.receivedEvent('deviceready');
+		
+    },
 
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
+    }
+};
+
+app.initialize();
 
 
 
