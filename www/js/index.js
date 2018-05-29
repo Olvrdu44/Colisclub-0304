@@ -23,12 +23,6 @@ var app = {
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 
-		/************ TEST GPS***************/
-		
-
-		
-		
-		/***************************************/
 		$(".hophop").click(function()
 		{
 			$('.windows').show();
@@ -38,12 +32,12 @@ var app = {
 			var lat = $("input[name='latitude']").val();
 			var longi = $("input[name='longitude']").val();
 			
-			alert("lat:" + lat + " - long: " + longi);
+			//alert("lat:" + lat + " - long: " + longi);
 			
 			$.ajax({
 				url : 'https://www.colisclub.fr/application/ajax.php',
 				type : 'GET',
-				data:'load_map_ggl=1' +
+				data:'https://build.phonegap.com/apps/3094236/settingsload_map_ggl=1' +
 				'lat' + lat +
 				'longi' + longi, 
 				dataType : 'html',
@@ -1727,7 +1721,7 @@ function load_connexion()
 			navigator.geolocation.getCurrentPosition(onSuccess, onError);
 			retourneMaPosition();
 		}
-		, 10000);
+		, 240000);
 	}
 }
 
@@ -1741,7 +1735,7 @@ function onSuccess(position)
 		$("input[name='longitude']").val(longi);
 		
 		
-		alert("loc: " + lat + " - " + longi + " - " + id_coursier);
+		//alert("loc: " + lat + " - " + longi + " - " + id_coursier);
 		
 		$.ajax({
 			url : 'http://www.colisclub.fr/application/ajax.php',
@@ -1763,7 +1757,9 @@ function onSuccess(position)
 
 	// onError Callback receives a PositionError object
 	function onError(error) {
-		alert('code: '    + error.code    + '\n' +
-			  'message: ' + error.message + '\n');
+		//alert('code: '    + error.code    + '\n' +
+			  //'message: ' + error.message + '\n');
+			  
+		navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
 	}
 
