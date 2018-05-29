@@ -22,16 +22,9 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-		document.addEventListener("resume", onResume, false);
-		 document.addEventListener("pause", onPause, false);
-		function onResume() 
-		{
-			alert("resume");
-		}
-		function onPause() 
-		{
-			alert("pause");
-		}
+        document.addEventListener('pause', this.onPause.bind(this), false);
+        document.addEventListener('resume', this.onResume.bind(this), false);
+
 		$(".hophop").click(function()
 		{
 			navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
@@ -613,6 +606,16 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+    },
+	
+	onPause: function() {
+        this.receivedEvent('pause');
+		alert("pause");
+    },
+	
+	onPause: function() {
+        this.receivedEvent('resume');
+		alert("resume");
     },
 
     // Update DOM on a Received Event
