@@ -22,7 +22,7 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-		cordova.plugins.backgroundMode.enable();
+		//cordova.plugins.backgroundMode.enable();
 
 		$(".hophop").click(function()
 		{
