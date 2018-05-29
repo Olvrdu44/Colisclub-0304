@@ -22,7 +22,16 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-
+		document.addEventListener("resume", onResume, false);
+		 document.addEventListener("pause", onPause, false);
+		function onResume() 
+		{
+			alert("resume");
+		}
+		function onPause() 
+		{
+			alert("pause");
+		}
 		$(".hophop").click(function()
 		{
 			navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
