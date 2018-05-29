@@ -30,7 +30,7 @@ var app = {
 			$('.windows').show();
 			
 			//pour avoir la position tout de suite
-			
+	
 			var lat = $("input[name='latitude']").val();
 			var longi = $("input[name='longitude']").val();
 			
@@ -649,7 +649,10 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+		alert("ok1");
 		cordova.plugins.backgroundMode.enable();
+		alert("ok2");
+		alert("actif:" + cordova.plugins.backgroundMode.isActive());
     }
 };
 
