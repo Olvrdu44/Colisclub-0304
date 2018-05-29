@@ -22,15 +22,30 @@ var app = {
     initialize: function() 
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+		
+		
+		
+		
 
 		$(".hophop").click(function()
 		{
+			navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+			
 			$('.windows').show();
+			
+			//pour avoir la position tout de suite
+			
+			var lat = $("input[name='latitude']").val();
+			var longi = $("input[name='longitude']").val();
+			
+			//alert("lat:" + lat + " - long: " + longi);
 			
 			$.ajax({
 				url : 'https://www.colisclub.fr/application/ajax.php',
 				type : 'GET',
-				data:'testolivier=1', 
+				data:'load_map_ggl=1' +
+				'&lat=' + lat +
+				'&longi=' + longi, 
 				dataType : 'html',
 				success: function (html) 
 				{
@@ -41,10 +56,9 @@ var app = {
 				}
 			});
 		});
-		
-		
+
 		$(function()
-		{
+		{			
 			function checkConnection() 
 			{
 				var networkState = navigator.connection.type;
@@ -466,23 +480,25 @@ var app = {
 					$("html, body").animate({scrollTop: 0},"slow");
 				}
 			});
+								
+								
 			/********************AJAX CONNEXION ***********************/
 			$("#login form").submit(function(e)
 			{
 				e.preventDefault();
-				
-				var email = $("input[name='email_connec']").val();
+				// var email = $("input[name='email_connec']").val();
+				var tel = $("input[name='tel_connec']").val();
 				var pass = $("input[name='pass_connec']").val();
 				verif_form = true;
 				
-				if(email == '')
+				if(tel == '')
 				{
-					$("input[name='email_connec']").addClass('error');
+					$("input[name='tel_connec']").addClass('error');
 					verif_form = false;
 				}
 				else
 				{
-					$("input[name='email_connec']").removeClass('error');
+					$("input[name='tel_connec']").removeClass('error');
 				}
 				////////////////////////////
 				if(pass == '')
@@ -501,21 +517,21 @@ var app = {
 						url : 'http://www.colisclub.fr/application/ajax.php',
 						type : 'GET', 
 						data:'connec=1' +
-						'&email=' + email +						
+						'&tel=' + tel +						
 						'&pass=' + pass,						
 						dataType : 'html',
 						success: function (html) 
 						{
 							// si il y a une erreur avec le mot de passe
-							if(html == 'erreur_valide')
+							if(html.indexOf('erreur_validation') > 0)
 							{
 								navigator.notification.alert("Votre compte n'a pas été validé ! merci de cliquer sur le lien de validation dans le mail reçu lors de votre inscritpion", alertCallback, "Email non confirmé", "Fermer");
 							}
-							else if(html == 'erreur_pass')
+							else if(html.indexOf('erreur_pass') > 0)
 							{
 								navigator.notification.alert("Mot de passe incorrect !", alertCallback, "Erreur mot de passe", "Fermer");
 							}
-							else if(html == 'erreur_compte')
+							else if(html.indexOf('erreur_compte') > 0)
 							{
 								
 								navigator.notification.alert("L'email n'est pas connu sur notre base de données. Assurez vous d'avoir taper le bon email sinon veuillez vous inscrire", alertCallback, "Email inconnu", "Fermer");
@@ -528,6 +544,7 @@ var app = {
 								load_connexion();
 								
 								
+								
 								/*******************   NOTIFS ONE SIGNAL     ***********/
 								var notificationOpenedCallback = function(jsonData) {
 									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
@@ -538,16 +555,44 @@ var app = {
 								.handleNotificationOpened(notificationOpenedCallback)
 								.endInit();
 								
+								/*window.plugins.OneSignal.getPermissionSubscriptionState(function(status) 
+								{
+									alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
+								});*/
+								
+								
 								window.plugins.OneSignal.addSubscriptionObserver(function (state) 
 								{
+									var onesignal_id = state.to.userId;
+									/*alert("onsesignal" + ONESIGNAL_ID);
+									
+									/***************** RESTER CONNECTER MEME EN BACKGROUND ******/
+									/*$.ajax({
+										url : 'https://www.colisclub.fr/application/ajax.php',
+										type : 'GET',
+										data:'stay_connect=1' +
+										'&onesignal_id=' + onesignal_id +
+										'&tel=' + tel, 
+										dataType : 'html',
+										success: function (html) 
+										{
+
+										},
+										error: function(resultat, statut, erreur) {
+											alert("erreur");
+										}
+									});*/
+									
+									
 									if (!state.from.subscribed && state.to.subscribed) 
 									{
-										var coursier_id = state.to.userId;
-										window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
-										window.plugins.OneSignal.sendTag("email", email);
+										//var onesignal_id = state.to.userId;
+										// window.plugins.OneSignal.sendTag("coursier_id", coursier_id);
+										window.plugins.OneSignal.sendTag("tel", tel);
 									}
 									console.log("Push Subscription state changed: " + JSON.stringify(state));
 								});
+
 								/*********************************************************/
 							}
 						},
@@ -584,6 +629,8 @@ var app = {
 				$("input[name='uploadphoto']").val('permis'); 
 				getImage();
 			});
+			/*********************************************************/
+			
 		});
 		/********************************************************************/
     },
@@ -610,6 +657,10 @@ var app = {
 };
 
 app.initialize();
+
+
+
+
 
 /***************************** FONCTION UPLOAD PHOTO ***********************/
 function getImage() 
@@ -1696,11 +1747,33 @@ function load_connexion()
 	/***************************************/
 	/***************************************/
 	
-	function onSuccess(position) 
+	
+	
+	function alertCallback()
+	{
+		//pour l'alert de cordova (obligatoire d avoir une fonction mais rien a y faire perso :) )
+	}
+	
+	function retourneMaPosition()
+	{
+		setTimeout(function()
+		{
+			navigator.geolocation.getCurrentPosition(onSuccess, onError);
+			retourneMaPosition();
+		}
+		, 240000);
+	}
+}
+
+function onSuccess(position) 
 	{
 		var lat = position.coords.latitude;//latitude actuelle
 		var longi = position.coords.longitude;//longitude actuelle
 		var id_coursier = $("input[name='id_coursier']").val();
+		
+		$("input[name='latitude']").val(lat);
+		$("input[name='longitude']").val(longi);
+		
 		
 		//alert("loc: " + lat + " - " + longi + " - " + id_coursier);
 		
@@ -1724,23 +1797,9 @@ function load_connexion()
 
 	// onError Callback receives a PositionError object
 	function onError(error) {
-		alert('code: '    + error.code    + '\n' +
-			  'message: ' + error.message + '\n');
+		//alert('code: '    + error.code    + '\n' +
+			  //'message: ' + error.message + '\n');
+			  
+		navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
 	}
-	
-	function alertCallback()
-	{
-		//pour l'alert de cordova (obligatoire d avoir une fonction mais rien a y faire perso :) )
-	}
-	
-	function retourneMaPosition()
-	{
-		setTimeout(function()
-		{
-			navigator.geolocation.getCurrentPosition(onSuccess, onError);
-			retourneMaPosition();
-		}
-		, 240000);
-	}
-}
 

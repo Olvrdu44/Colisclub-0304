@@ -49,7 +49,14 @@
     "cordova-android-play-services-gradle-release": {
       "PLAY_SERVICES_VERSION": "15.0.1",
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    }
+  }
 }

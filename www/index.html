@@ -345,18 +345,7 @@
         <script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="jquery.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-		<script>
-		 alert("test");
-		window.plugins.OneSignal
-		  .startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
-		  .endInit();
-		  
-		  window.plugins.OneSignal.getPermissionSubscriptionState(function(status) {
-			alert(status.subscriptionStatus.userId); // String: OneSignal Player ID
-		});
 
-		 
-		</script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI9IqV1J3MutLrIUU4g6TACjyxzLllUb8&libraries=places&callback=initAutocomplete"
         async defer></script>

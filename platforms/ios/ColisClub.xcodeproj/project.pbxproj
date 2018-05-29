@@ -38,6 +38,10 @@
 		4B99936DF50C481DB9AE7592 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = 529F4929B87641D98AB82E21 /* CDVFileTransfer.m */; };
 		EABD9C40F1514EE4B8702770 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 707CD857C06641D6BFEEBD43 /* CDVInAppBrowser.m */; };
 		DAE4C51421E34275BE17C957 /* OneSignalPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EC49DB516F94CE4835835CE /* OneSignalPush.m */; };
+		653A8598EF874E43A743C992 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 60C1F9316A7545B4A07FD3CA /* CDVDevice.m */; };
+		0DE6010ED7BC426F9A25DBAE /* APPBackgroundMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 076F7CB4B8FD4EB7B238F0F9 /* APPBackgroundMode.m */; };
+		1793EB04096E4A8EA6ACB3E4 /* APPMethodMagic.m in Sources */ = {isa = PBXBuildFile; fileRef = 6952CE5E69214E1CB35D767A /* APPMethodMagic.m */; };
+		D653A54254D14B5E9103C063 /* appbeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7E9A414A775440FFA24AAB97 /* appbeep.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +119,13 @@
 		805CED4A50BD494BAAF7E9D7 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		0EC49DB516F94CE4835835CE /* OneSignalPush.m */ = {isa = PBXFileReference; name = "OneSignalPush.m"; path = "onesignal-cordova-plugin/OneSignalPush.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		2C718626636245CDBC403722 /* OneSignalPush.h */ = {isa = PBXFileReference; name = "OneSignalPush.h"; path = "onesignal-cordova-plugin/OneSignalPush.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		60C1F9316A7545B4A07FD3CA /* CDVDevice.m */ = {isa = PBXFileReference; name = "CDVDevice.m"; path = "cordova-plugin-device/CDVDevice.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		802E405C33B042B68CCF7B21 /* CDVDevice.h */ = {isa = PBXFileReference; name = "CDVDevice.h"; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		076F7CB4B8FD4EB7B238F0F9 /* APPBackgroundMode.m */ = {isa = PBXFileReference; name = "APPBackgroundMode.m"; path = "cordova-plugin-background-mode/APPBackgroundMode.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		6952CE5E69214E1CB35D767A /* APPMethodMagic.m */ = {isa = PBXFileReference; name = "APPMethodMagic.m"; path = "cordova-plugin-background-mode/APPMethodMagic.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		AA339FCCD71F429B82616852 /* APPBackgroundMode.h */ = {isa = PBXFileReference; name = "APPBackgroundMode.h"; path = "cordova-plugin-background-mode/APPBackgroundMode.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		B8E9B9C1E1484206B32ADB1C /* APPMethodMagic.h */ = {isa = PBXFileReference; name = "APPMethodMagic.h"; path = "cordova-plugin-background-mode/APPMethodMagic.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		7E9A414A775440FFA24AAB97 /* appbeep.wav */ = {isa = PBXFileReference; name = "appbeep.wav"; path = "appbeep.wav"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +204,7 @@
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
 				C97E542CC5044F47AD1BB37C /* CDVCapture.bundle */,
 				4E3B460079C44E22A8988E94 /* CDVNotification.bundle */,
+				7E9A414A775440FFA24AAB97 /* appbeep.wav */,
 			);
 			name = Resources;
 			path = "ColisClub/Resources";
@@ -261,6 +273,12 @@
 				805CED4A50BD494BAAF7E9D7 /* CDVInAppBrowser.h */,
 				0EC49DB516F94CE4835835CE /* OneSignalPush.m */,
 				2C718626636245CDBC403722 /* OneSignalPush.h */,
+				60C1F9316A7545B4A07FD3CA /* CDVDevice.m */,
+				802E405C33B042B68CCF7B21 /* CDVDevice.h */,
+				076F7CB4B8FD4EB7B238F0F9 /* APPBackgroundMode.m */,
+				6952CE5E69214E1CB35D767A /* APPMethodMagic.m */,
+				AA339FCCD71F429B82616852 /* APPBackgroundMode.h */,
+				B8E9B9C1E1484206B32ADB1C /* APPMethodMagic.h */,
 			);
 			name = Plugins;
 			path = "ColisClub/Plugins";
@@ -344,6 +362,7 @@
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
 				B4D42B068DC44101B7682615 /* CDVCapture.bundle in Resources */,
 				483042CAB820495EB4C33482 /* CDVNotification.bundle in Resources */,
+				D653A54254D14B5E9103C063 /* appbeep.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +408,9 @@
 				4B99936DF50C481DB9AE7592 /* CDVFileTransfer.m in Sources */,
 				EABD9C40F1514EE4B8702770 /* CDVInAppBrowser.m in Sources */,
 				DAE4C51421E34275BE17C957 /* OneSignalPush.m in Sources */,
+				653A8598EF874E43A743C992 /* CDVDevice.m in Sources */,
+				0DE6010ED7BC426F9A25DBAE /* APPBackgroundMode.m in Sources */,
+				1793EB04096E4A8EA6ACB3E4 /* APPMethodMagic.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

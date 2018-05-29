@@ -757,6 +757,35 @@ module.exports = [
         "clobbers": [
             "OneSignal"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
+        "id": "cordova-plugin-device.DeviceProxy",
+        "pluginId": "cordova-plugin-device",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+        "id": "cordova-plugin-background-mode.BackgroundMode",
+        "pluginId": "cordova-plugin-background-mode",
+        "clobbers": [
+            "cordova.plugins.backgroundMode",
+            "plugin.backgroundMode"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-background-mode/src/browser/BackgroundModeProxy.js",
+        "id": "cordova-plugin-background-mode.BackgroundMode.Proxy",
+        "pluginId": "cordova-plugin-background-mode",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -774,7 +803,9 @@ module.exports.metadata =
     "cordova-plugin-inappbrowser": "2.0.2",
     "cordova-plugin-googlemaps": "2.2.9",
     "onesignal-cordova-plugin": "2.4.0",
-    "cordova-android-play-services-gradle-release": "1.4.1"
+    "cordova-android-play-services-gradle-release": "1.4.1",
+    "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-background-mode": "0.7.2"
 }
 // BOTTOM OF METADATA
 });

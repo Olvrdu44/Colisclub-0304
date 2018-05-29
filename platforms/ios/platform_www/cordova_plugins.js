@@ -340,6 +340,23 @@ module.exports = [
     "clobbers": [
       "OneSignal"
     ]
+  },
+  {
+    "id": "cordova-plugin-device.device",
+    "file": "plugins/cordova-plugin-device/www/device.js",
+    "pluginId": "cordova-plugin-device",
+    "clobbers": [
+      "device"
+    ]
+  },
+  {
+    "id": "cordova-plugin-background-mode.BackgroundMode",
+    "file": "plugins/cordova-plugin-background-mode/www/background-mode.js",
+    "pluginId": "cordova-plugin-background-mode",
+    "clobbers": [
+      "cordova.plugins.backgroundMode",
+      "plugin.backgroundMode"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -355,7 +372,9 @@ module.exports.metadata =
   "cordova-plugin-file-transfer": "1.7.1",
   "cordova-plugin-inappbrowser": "2.0.2",
   "onesignal-cordova-plugin": "2.4.0",
-  "cordova-android-play-services-gradle-release": "1.4.1"
+  "cordova-android-play-services-gradle-release": "1.4.1",
+  "cordova-plugin-device": "2.0.2",
+  "cordova-plugin-background-mode": "0.7.2"
 };
 // BOTTOM OF METADATA
 });

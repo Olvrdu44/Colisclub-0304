@@ -74,6 +74,12 @@
     <feature name="OneSignalPush">
         <param name="android-package" value="com.plugin.gcm.OneSignalPush" />
     </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="BackgroundMode">
+        <param name="android-package" value="de.appplant.cordova.plugin.background.BackgroundMode" />
+    </feature>
     <name>ColisClub</name>
     <description>
         L'application colis club pour les coursiers
@@ -111,8 +117,9 @@
     <splash density="port-hdpi" src="res/screen/android/screen-hdpi-portrait.png" />
     <splash density="port-xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="AndroidLaunchMode" value="singleInstance" />
     <preference name="xwalkZOrderOnTop" value="true" />
     <preference name="BackgroundColor" value="0" />
     <preference name="android-minSdkVersion" value="19" />
-    <preference name="phonegap-version" value="cli-8.0.0" />
+    <preference name="KeepRunning" value="true" />
 </widget>

@@ -40,7 +40,14 @@
     },
     "cordova-android-play-services-gradle-release": {
       "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "fr.rainetcom.colisclub"
+    }
+  }
 }

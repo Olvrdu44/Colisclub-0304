@@ -47,6 +47,12 @@
     <feature name="OneSignalPush">
         <param name="ios-package" value="OneSignalPush" />
     </feature>
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
+    </feature>
+    <feature name="BackgroundMode">
+        <param name="ios-package" value="APPBackgroundMode" />
+    </feature>
     <name>ColisClub</name>
     <description>
         L'application colis club pour les coursiers
@@ -100,5 +106,5 @@
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="KeepAVAudioSessionAlwaysActive" value="NO" />
     <preference name="CameraUsesGeolocation" value="false" />
-    <preference name="phonegap-version" value="cli-8.0.0" />
+    <preference name="KeepRunning" value="true" />
 </widget>
