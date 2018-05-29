@@ -68,10 +68,10 @@ var app = {
 								.handleNotificationOpened(notificationOpenedCallback)
 								.endInit();
 								
-								window.plugins.OneSignal.getPermissionSubscriptionState(function(status) 
-								{
-									alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
-								});
+								//window.plugins.OneSignal.getPermissionSubscriptionState(function(status) 
+								//{
+								//	alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
+								//});
 			function checkConnection() 
 			{
 				var networkState = navigator.connection.type;
