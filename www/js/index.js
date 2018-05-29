@@ -30,12 +30,15 @@ var app = {
 				dataType : 'html',
 				success: function (html) 
 				{
+					alert(html);
 					if(html.indexOf('sorry') > 0)
 					{
 						//il ne se passe rien on a pas d id
+						alert("1");
 					}
 					else
 					{
+						alert("2");
 						str = str.split("|");
 						tel = str[0];
 						pass = str[1];
@@ -584,10 +587,7 @@ var app = {
 								$('.menu_fix_bas').show();
 								load_connexion();
 								navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
-								alert("actif:" + cordova.plugins.backgroundMode.isActive());
-								
-								
-								
+
 								/*******************   NOTIFS ONE SIGNAL     ***********/
 								var notificationOpenedCallback = function(jsonData) {
 									console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
