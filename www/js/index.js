@@ -24,71 +24,70 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 
 		$.ajax({
-				url : 'https://www.colisclub.fr/application/ajax.php',
-				type : 'GET',
-				data:'set_cookies=1',
-				dataType : 'html',
-				success: function (html) 
+			url : 'https://www.colisclub.fr/application/ajax.php',
+			type : 'GET',
+			data:'set_cookies=1',
+			dataType : 'html',
+			success: function (html) 
+			{
+				if(html.indexOf('sorry') > 0)
 				{
-					alert(html);
-					if(html.indexOf('sorry') > 0)
-					{
-						//il ne se passe rien on a pas d id
-						alert("1");
-					}
-					else
-					{
-						alert("2");
-						var str = html.split("|");
-						var tel = str[0];
-						var pass = str[1];
-						alert(tel);
-						alert(pass);
-
-						//on connecte la personne
-						$.ajax({
-						url : 'http://www.colisclub.fr/application/ajax.php',
-						type : 'GET', 
-						data:'connec=1' +
-						'&tel=' + tel +						
-						'&pass=' + pass,						
-						dataType : 'html',
-						success: function (html) 
-						{
-							// si il y a une erreur avec le mot de passe
-							if(html.indexOf('erreur_validation') > 0)
-							{
-								navigator.notification.alert("Votre compte n'a pas été validé ! merci de cliquer sur le lien de validation dans le mail reçu lors de votre inscritpion", alertCallback, "Email non confirmé", "Fermer");
-							}
-							else if(html.indexOf('erreur_pass') > 0)
-							{
-								navigator.notification.alert("Mot de passe incorrect !", alertCallback, "Erreur mot de passe", "Fermer");
-							}
-							else if(html.indexOf('erreur_compte') > 0)
-							{
-								
-								navigator.notification.alert("L'email n'est pas connu sur notre base de données. Assurez vous d'avoir taper le bon email sinon veuillez vous inscrire", alertCallback, "Email inconnu", "Fermer");
-							}
-							// sinon c est bon
-							else
-							{
-								$('#interchangeable').html(html);
-								$('.menu_fix_bas').show();
-								load_connexion();
-								navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
-							}
-						},
-						error: function(resultat, statut, erreur) {
-							$("html, body").animate({scrollTop: 0},"slow");
-							alert('erreur');
-						}
-					});
-					}
-				},
-				error: function(resultat, statut, erreur) {
-					alert("erreur");
+					//il ne se passe rien on a pas d id
 				}
-			});
+				else
+				{
+					$("waiting_div").show();
+					var str = html.split("|");
+					var tel = str[0];
+					var pass = str[1];
+
+					
+					//on connecte la personne
+					$.ajax({
+					url : 'http://www.colisclub.fr/application/ajax.php',
+					type : 'GET', 
+					data:'connec=1' +
+					'&tel=' + tel +						
+					'&pass=' + pass,						
+					dataType : 'html',
+					success: function (html) 
+					{
+						// si il y a une erreur avec le mot de passe
+						if(html.indexOf('erreur_validation') > 0)
+						{
+							navigator.notification.alert("Votre compte n'a pas été validé ! merci de cliquer sur le lien de validation dans le mail reçu lors de votre inscritpion", alertCallback, "Email non confirmé", "Fermer");
+						}
+						else if(html.indexOf('erreur_pass') > 0)
+						{
+							navigator.notification.alert("Mot de passe incorrect !", alertCallback, "Erreur mot de passe", "Fermer");
+						}
+						else if(html.indexOf('erreur_compte') > 0)
+						{
+							
+							navigator.notification.alert("L'email n'est pas connu sur notre base de données. Assurez vous d'avoir taper le bon email sinon veuillez vous inscrire", alertCallback, "Email inconnu", "Fermer");
+						}
+						// sinon c est bon
+						else
+						{
+							$('#interchangeable').html(html);
+							$('.menu_fix_bas').show();
+							load_connexion();
+							navigator.geolocation.getCurrentPosition(onSuccess, onError, { maximumAge: 3000, timeout: 5000, enableHighAccuracy: true });
+							
+						}
+						$("waiting_div").hide();
+					},
+					error: function(resultat, statut, erreur) {
+						$("html, body").animate({scrollTop: 0},"slow");
+						alert('erreur');
+					}
+				});
+				}
+			},
+			error: function(resultat, statut, erreur) {
+				alert("erreur");
+			}
+		});
 		
 		$(".hophop").click(function()
 		{
