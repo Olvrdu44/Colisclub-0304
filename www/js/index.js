@@ -37,7 +37,7 @@ var app = {
 			$.ajax({
 				url : 'https://www.colisclub.fr/application/ajax.php',
 				type : 'GET',
-				data:'https://build.phonegap.com/apps/3094236/settingsload_map_ggl=1' +
+				data:'load_map_ggl=1' +
 				'lat' + lat +
 				'longi' + longi, 
 				dataType : 'html',
