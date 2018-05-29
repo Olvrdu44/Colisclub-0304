@@ -57,7 +57,7 @@ var app = {
 
 		$(function()
 		{
-			window.plugins.OneSignal
+			/*window.plugins.OneSignal
 			.startInit("424818bf-2ba9-490a-99a3-d31ccbc93993")
 			.handleNotificationOpened(notificationOpenedCallback)
 			.endInit();
@@ -66,7 +66,7 @@ var app = {
 
 			  alert("statut:" + status.subscriptionStatus.userId); // String: OneSignal Player ID
 
-			});
+			});*/
 			function checkConnection() 
 			{
 				var networkState = navigator.connection.type;
