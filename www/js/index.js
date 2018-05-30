@@ -1040,7 +1040,6 @@ function load_connexion()
 	/************* DECONNEXION *************/
 	$(".deconnexion").click(function()
 	{
-		alert("deco");
 		$.ajax({
 			url : 'https://www.colisclub.fr/application/ajax.php',
 			type : 'GET',
@@ -1048,8 +1047,7 @@ function load_connexion()
 			dataType : 'html',
 			success: function (html) 
 			{
-				alert("deco OK");
-				window.location.reload(true);
+				window.location.reload(true);//on a detruit la session on recharge la page
 			},
 			error: function(resultat, statut, erreur) {
 				alert("erreur");

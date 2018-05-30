@@ -1127,3 +1127,10 @@ span.colororange{
 	text-align:center;
 	font-weight:bold;
 }
+
+.deconnexion{
+	text-align:center;
+	float:left;
+	width:100%;
+	margin-top:10px;
+}
