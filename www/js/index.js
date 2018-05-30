@@ -23,10 +23,6 @@ var app = {
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 
-		alert(window.location);
-		param = obtenirParametre("deconnexion");
-		
-		alert(param);
 
 		if(adresseActuelle == "")
 		$.ajax({
@@ -1043,6 +1039,24 @@ function load_connexion()
 {
 	load_commandes();
 	
+	/************* DECONNEXION *************/
+	$(".deconnexion").click(function()
+	{
+		$.ajax({
+			url : 'https://www.colisclub.fr/application/ajax.php',
+			type : 'GET',
+			data:'deconnexion=1',
+			dataType : 'html',
+			success: function (html) 
+			{
+				window.location.reload(true);
+			},
+			error: function(resultat, statut, erreur) {
+				alert("erreur");
+			}
+		});
+	});
+	
 	function back_to_profil()
 	{
 		$(".menu_infos").show('blind');
@@ -1873,7 +1887,4 @@ function onError(error) {
 	navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
 }
 
-function obtenirParametre (sVar) {
-  return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(sVar).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
-}
 
