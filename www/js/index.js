@@ -24,7 +24,9 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 
 		alert(window.location);
-		obtenirParametre (deconnexion);
+		param = obtenirParametre("deconnexion");
+		
+		alert(param);
 
 		if(adresseActuelle == "")
 		$.ajax({
