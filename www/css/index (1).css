@@ -515,6 +515,7 @@ input.error{
 }
 .feuille_route{
 	padding-top:0;
+	margin-bottom:30px;
 }
 .mes_livraisons{
 	padding-top:0;
@@ -767,30 +768,18 @@ label.switch {
 	width: calc(100% + 40px);
 	background:#1fb5ac;
 	margin-left: -20px;	
-	border-bottom:1px solid rgba(255, 255, 255, 0.2);
 	float: left;
 	margin-bottom: 20px;
-	padding-bottom: 20px;
 }
 .feuille_route .entour_commande h3 {
 	text-transform: none;
 	font-size: 11px;
 	width: 100%;
 	text-align: center;	
-	background: rgba(0, 0, 0, 0.5);	
+	background: #000;	
 	color: #fff;	
 	margin-top: 0;
-	padding: 5px 0;
-}
-.feuille_route .entour_commande p {
-	text-transform: none;
-	font-size: 13px;
-	color: #fff;
-	margin: 0;
-	width: calc(100% - 20px);
-	float: left;
-	margin-left: 10px;
-	margin-bottom:10px;
+	padding: 10px 0;
 }
 .feuille_route .entour_commande span.poids {
 	padding: 3px 10px;
@@ -807,15 +796,72 @@ label.switch {
 	margin-top: 5px;
 	text-align: center;
 }
-.feuille_route .entour_commande p i.tel {
-	color:#e16c26;
-	font-size:16px;
+.feuille_route .entour_commande p {
+	text-transform: none;
+	font-size: 13px;
+	color: #fff;
+	margin: 0;
+	width: 100%;
+	float: left;
+	margin-bottom: 10px;
+}
+/** AJOUT LUCIE **/
+.feuille_route .entour_commande p.localisation {
+	text-transform: none;
+	font-size: 13px;
+	color: #fff;
+	margin: 0;
+	width: 100%;
+	float: left;
+	margin-bottom: 10px;
+	padding: 6px 10px;
+	background:#2dc9ba;
+}
+.feuille_route .entour_commande a.action {
+	color: #fff;
+	background: rgba(0, 0, 0, 0.5);
+	font-size: 12px;
+	border-radius: 4px;
+	margin-top: 5px;
+	float: left;
+	line-height: 2.5;
+	width: calc(50% - 15px);
+	text-align: center;
+}
+.feuille_route .entour_commande a.first {
+	margin-right: 15px;
+}
+.feuille_route .entour_commande a.action i {
+	color: #fff;
+	font-size: 12px;
+	width: auto;
+	text-align: left;
+	margin-right: 5px;
+}
+.feuille_route .entour_commande p span.title{
+	width: 100%;
+	float: left;
+	color: #444444;
+	font-weight: bold;
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 10px;
+	margin-bottom: 5px;
 }
 .feuille_route .entour_commande p span.qui{
 	width:100%;
 	float:left;
-	text-align:center;
+	text-align:left;
+	margin-bottom: 5px;
 }
+.feuille_route .entour_commande p span.adresse{
+	float:left;
+	width:100%;
+	text-align:left;
+	margin-bottom: 5px;
+}
+/*****/
+
 .feuille_route .entour_commande a.btn {
     float: left;
     width: 80%;
@@ -828,6 +874,7 @@ label.switch {
     font-size: 13px;
 	margin-bottom:10px;
 	font-weight:bold;
+	margin-top: 10px;
 }
 .feuille_route .entour_commande p.info{
 	float:left;
@@ -840,11 +887,6 @@ label.switch {
 }
 .feuille_route .entour_commande p.info span{
 	margin:0px 5px;
-}
-.feuille_route .entour_commande p span.adresse{
-	float:left;
-	width:100%;
-	text-align:center;
 }
 .feuille_route .popup {
 	position: fixed;
