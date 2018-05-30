@@ -23,6 +23,10 @@ var app = {
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 
+		alert(window.location);
+		obtenirParametre (deconnexion);
+
+		if(adresseActuelle == "")
 		$.ajax({
 			url : 'https://www.colisclub.fr/application/ajax.php',
 			type : 'GET',
@@ -1865,5 +1869,9 @@ function onError(error) {
 		  //'message: ' + error.message + '\n');
 		  
 	navigator.notification.alert("erreur lors de la récupération de votre position", alertCallback, "Géolocalisation", "Fermer");
+}
+
+function obtenirParametre (sVar) {
+  return unescape(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + escape(sVar).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
 }
 
