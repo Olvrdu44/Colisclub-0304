@@ -64,7 +64,7 @@ var app = {
 						else if(html.indexOf('erreur_compte') > 0)
 						{
 							
-							navigator.notification.alert("L'email n'est pas connu sur notre base de données. Assurez vous d'avoir taper le bon email sinon veuillez vous inscrire", alertCallback, "Email inconnu", "Fermer");
+							navigator.notification.alert("Le numéro n'est pas connu sur notre base de données. Assurez vous d'avoir taper le bon numéro sinon veuillez vous inscrire", alertCallback, "Téléphone inconnu", "Fermer");
 						}
 						// sinon c est bon
 						else
