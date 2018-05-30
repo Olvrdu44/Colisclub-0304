@@ -1049,6 +1049,7 @@ function load_connexion()
 			success: function (html) 
 			{
 				alert("deco OK");
+				window.location.reload(true);
 			},
 			error: function(resultat, statut, erreur) {
 				alert("erreur");
