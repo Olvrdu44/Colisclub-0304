@@ -119,7 +119,7 @@ a:hover {
 }
 
 .form {
-  background: rgba(19, 35, 47, 0.9);
+  background: #fff;
   padding: 20px;
   max-width: 600px;
   margin: 0px auto;
@@ -165,7 +165,7 @@ a:hover {
 
 h1 {
   text-align: center;
-  color: #ffffff;
+  color: #444;
   font-weight: 300;
   margin: 0 0 40px;
 }
@@ -175,7 +175,7 @@ label {
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
   left: 13px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #444;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
@@ -199,7 +199,7 @@ label.active .req {
 }
 
 label.highlight {
-  color: #ffffff;
+  color: #444;
 }
 
 input[type=date]
@@ -216,7 +216,7 @@ input, textarea {
   background: none;
   background-image: none;
   border: 1px solid #a0b3b0;
-  color: #ffffff;
+  color: #444;
   border-radius: 0;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
@@ -314,7 +314,7 @@ input.cb_radio[type="checkbox"] {
 }
 
 input.cb_radio[type="checkbox"] + label.cb_radio {
-    color:#f2f2f2;
+    color:#444;
 }
 
 input.cb_radio[type="checkbox"] + label.cb_radio span {
@@ -336,7 +336,7 @@ input.cb_radio[type="radio"] {
 }
 
 input.cb_radio[type="radio"] + label.cb_radio {
-    color:#f2f2f2;
+    color:#444;
     font-family:Arial, sans-serif;
 	
 }
@@ -403,9 +403,9 @@ input.cb_radio[type="radio"]:checked + label.cb_radio span {
 }
 
 img.logo_cc_connexion{
-	width:25%;
+	width:40%;
 	float:left;
-	margin:0 37.5%;
+	margin:0 30%;
 	margin-top:10px;
 	margin-bottom:0px;
 }
@@ -444,13 +444,13 @@ input.cb_radio{
 .ligne, .ligne_grisee{
 	width: 100%;
 	float: left;
-	border-top: 1px solid #263139;
+	border-top: 1px solid #fff;
 	min-height: 30px;
 	padding-top: 5px;
 }
 
 .ligne_grisee{
-	background:#263139;
+	background:#fecbac;
 }
 
 input[name='num_permis']{
@@ -781,29 +781,15 @@ label.switch {
 	margin-top: 0;
 	padding: 10px 0;
 }
-.feuille_route .entour_commande span.poids {
-	padding: 3px 10px;
-	background: #e0c124;
-	border-radius: 4px;
-	float: left;
-	margin-top: -2.5px;
-	margin-left:10px;
-}
-.feuille_route .entour_commande p i {
-	width: 25px;
-	color: #1fb5ac;
-	font-size: 20px;
-	margin-top: 5px;
-	text-align: center;
-}
 .feuille_route .entour_commande p {
 	text-transform: none;
 	font-size: 13px;
 	color: #fff;
 	margin: 0;
-	width: 100%;
+	width: calc(100% - 20px);
 	float: left;
-	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-bottom:10px;
 }
 /** AJOUT LUCIE **/
 .feuille_route .entour_commande p.localisation {
@@ -861,6 +847,25 @@ label.switch {
 	margin-bottom: 5px;
 }
 /*****/
+.feuille_route .entour_commande span.poids {
+	padding: 3px 10px;
+	background: #e0c124;
+	border-radius: 4px;
+	float: left;
+	margin-top: -2.5px;
+	margin-left:10px;
+}
+.feuille_route .entour_commande p i {
+	width: 25px;
+	color: #1fb5ac;
+	font-size: 20px;
+	margin-top: 5px;
+	text-align: center;
+}
+.feuille_route .entour_commande p i.tel {
+	color:#e16c26;
+	font-size:16px;
+}
 
 .feuille_route .entour_commande a.btn {
     float: left;
@@ -874,7 +879,6 @@ label.switch {
     font-size: 13px;
 	margin-bottom:10px;
 	font-weight:bold;
-	margin-top: 10px;
 }
 .feuille_route .entour_commande p.info{
 	float:left;
@@ -887,6 +891,11 @@ label.switch {
 }
 .feuille_route .entour_commande p.info span{
 	margin:0px 5px;
+}
+
+.feuille_route .entour_commande p.destinataire
+{
+	margin-top:-5px;
 }
 .feuille_route .popup {
 	position: fixed;
@@ -935,7 +944,8 @@ label.switch {
 	margin-left: 0;
 	background: #444;
 	float: left;
-	margin-top: 20px;
+	margin-top: 0px;
+	padding-top:20px;
 	position:fixed;
 	top:0;
 	left:0;
@@ -1067,6 +1077,8 @@ span.colororange{
     width: 100%;
 	overflow-x: scroll;
 	max-height: 100%;
+	top:0;
+	z-index:100;
 }
 .mes_informations, .mes_livraisons{
 	padding-bottom:50px:
@@ -1074,4 +1086,44 @@ span.colororange{
 .mes_informations{
 	background:#1fb5ac;
 	padding-bottom:50px;
+}
+
+.loader_map {
+    float: left;
+    width: 100%;
+    height: 600px;
+    background: #fff;
+}
+
+.windows{
+	position:fixed;
+	width:100%;
+	height:100%;
+	z-index:150;
+}
+
+.ferme_course{
+	float:right;
+	color:#fff;
+	margin-right:10px;
+}
+
+.waiting_div{
+	display:none;
+	background:#fff;
+	position:fixed;
+	z-index:9999999999;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	text-align:center;
+}
+.waiting_div img{
+	text-align:center;
+	margin-top:50px;
+}
+.waiting_div span{
+	text-align:center;
+	font-weight:bold;
 }

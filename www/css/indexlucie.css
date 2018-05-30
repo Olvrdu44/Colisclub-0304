@@ -119,7 +119,7 @@ a:hover {
 }
 
 .form {
-  background: #fff;
+  background: rgba(19, 35, 47, 0.9);
   padding: 20px;
   max-width: 600px;
   margin: 0px auto;
@@ -165,7 +165,7 @@ a:hover {
 
 h1 {
   text-align: center;
-  color: #444;
+  color: #ffffff;
   font-weight: 300;
   margin: 0 0 40px;
 }
@@ -175,7 +175,7 @@ label {
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
   left: 13px;
-  color: #444;
+  color: rgba(255, 255, 255, 0.5);
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
@@ -199,7 +199,7 @@ label.active .req {
 }
 
 label.highlight {
-  color: #444;
+  color: #ffffff;
 }
 
 input[type=date]
@@ -216,7 +216,7 @@ input, textarea {
   background: none;
   background-image: none;
   border: 1px solid #a0b3b0;
-  color: #444;
+  color: #ffffff;
   border-radius: 0;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
@@ -314,7 +314,7 @@ input.cb_radio[type="checkbox"] {
 }
 
 input.cb_radio[type="checkbox"] + label.cb_radio {
-    color:#444;
+    color:#f2f2f2;
 }
 
 input.cb_radio[type="checkbox"] + label.cb_radio span {
@@ -336,7 +336,7 @@ input.cb_radio[type="radio"] {
 }
 
 input.cb_radio[type="radio"] + label.cb_radio {
-    color:#444;
+    color:#f2f2f2;
     font-family:Arial, sans-serif;
 	
 }
@@ -403,9 +403,9 @@ input.cb_radio[type="radio"]:checked + label.cb_radio span {
 }
 
 img.logo_cc_connexion{
-	width:40%;
+	width:25%;
 	float:left;
-	margin:0 30%;
+	margin:0 37.5%;
 	margin-top:10px;
 	margin-bottom:0px;
 }
@@ -444,13 +444,13 @@ input.cb_radio{
 .ligne, .ligne_grisee{
 	width: 100%;
 	float: left;
-	border-top: 1px solid #fff;
+	border-top: 1px solid #263139;
 	min-height: 30px;
 	padding-top: 5px;
 }
 
 .ligne_grisee{
-	background:#fecbac;
+	background:#263139;
 }
 
 input[name='num_permis']{
@@ -515,6 +515,7 @@ input.error{
 }
 .feuille_route{
 	padding-top:0;
+	margin-bottom:30px;
 }
 .mes_livraisons{
 	padding-top:0;
@@ -767,30 +768,18 @@ label.switch {
 	width: calc(100% + 40px);
 	background:#1fb5ac;
 	margin-left: -20px;	
-	border-bottom:1px solid rgba(255, 255, 255, 0.2);
 	float: left;
 	margin-bottom: 20px;
-	padding-bottom: 20px;
 }
 .feuille_route .entour_commande h3 {
 	text-transform: none;
 	font-size: 11px;
 	width: 100%;
 	text-align: center;	
-	background: rgba(0, 0, 0, 0.5);	
+	background: #000;	
 	color: #fff;	
 	margin-top: 0;
-	padding: 5px 0;
-}
-.feuille_route .entour_commande p {
-	text-transform: none;
-	font-size: 13px;
-	color: #fff;
-	margin: 0;
-	width: calc(100% - 20px);
-	float: left;
-	margin-left: 10px;
-	margin-bottom:10px;
+	padding: 10px 0;
 }
 .feuille_route .entour_commande span.poids {
 	padding: 3px 10px;
@@ -807,16 +796,72 @@ label.switch {
 	margin-top: 5px;
 	text-align: center;
 }
-.feuille_route .entour_commande p i.tel {
-	color:#e16c26;
-	font-size:16px;
+.feuille_route .entour_commande p {
+	text-transform: none;
+	font-size: 13px;
+	color: #fff;
+	margin: 0;
+	width: 100%;
+	float: left;
+	margin-bottom: 10px;
+}
+/** AJOUT LUCIE **/
+.feuille_route .entour_commande p.localisation {
+	text-transform: none;
+	font-size: 13px;
+	color: #fff;
+	margin: 0;
+	width: 100%;
+	float: left;
+	margin-bottom: 10px;
+	padding: 6px 10px;
+	background:#2dc9ba;
+}
+.feuille_route .entour_commande a.action {
+	color: #fff;
+	background: rgba(0, 0, 0, 0.5);
+	font-size: 12px;
+	border-radius: 4px;
+	margin-top: 5px;
+	float: left;
+	line-height: 2.5;
+	width: calc(50% - 15px);
+	text-align: center;
+}
+.feuille_route .entour_commande a.first {
+	margin-right: 15px;
+}
+.feuille_route .entour_commande a.action i {
+	color: #fff;
+	font-size: 12px;
+	width: auto;
+	text-align: left;
+	margin-right: 5px;
+}
+.feuille_route .entour_commande p span.title{
+	width: 100%;
+	float: left;
+	color: #444444;
+	font-weight: bold;
+	text-align: left;
+	text-transform: uppercase;
+	font-size: 10px;
+	margin-bottom: 5px;
 }
 .feuille_route .entour_commande p span.qui{
 	width:100%;
 	float:left;
-	text-align:center;
-	line
+	text-align:left;
+	margin-bottom: 5px;
 }
+.feuille_route .entour_commande p span.adresse{
+	float:left;
+	width:100%;
+	text-align:left;
+	margin-bottom: 5px;
+}
+/*****/
+
 .feuille_route .entour_commande a.btn {
     float: left;
     width: 80%;
@@ -829,6 +874,7 @@ label.switch {
     font-size: 13px;
 	margin-bottom:10px;
 	font-weight:bold;
+	margin-top: 10px;
 }
 .feuille_route .entour_commande p.info{
 	float:left;
@@ -841,16 +887,6 @@ label.switch {
 }
 .feuille_route .entour_commande p.info span{
 	margin:0px 5px;
-}
-.feuille_route .entour_commande p span.adresse{
-	float:left;
-	width:100%;
-	text-align:center;
-    margin-top: -5px;
-}
-.feuille_route .entour_commande p.destinataire
-{
-	margin-top:-5px;
 }
 .feuille_route .popup {
 	position: fixed;
@@ -899,8 +935,7 @@ label.switch {
 	margin-left: 0;
 	background: #444;
 	float: left;
-	margin-top: 0px;
-	padding-top:20px;
+	margin-top: 20px;
 	position:fixed;
 	top:0;
 	left:0;
@@ -1032,8 +1067,6 @@ span.colororange{
     width: 100%;
 	overflow-x: scroll;
 	max-height: 100%;
-	top:0;
-	z-index:100;
 }
 .mes_informations, .mes_livraisons{
 	padding-bottom:50px:
@@ -1041,44 +1074,4 @@ span.colororange{
 .mes_informations{
 	background:#1fb5ac;
 	padding-bottom:50px;
-}
-
-.loader_map {
-    float: left;
-    width: 100%;
-    height: 600px;
-    background: #fff;
-}
-
-.windows{
-	position:fixed;
-	width:100%;
-	height:100%;
-	z-index:150;
-}
-
-.ferme_course{
-	float:right;
-	color:#fff;
-	margin-right:10px;
-}
-
-.waiting_div{
-	display:none;
-	background:#fff;
-	position:fixed;
-	z-index:9999999999;
-	width:100%;
-	height:100%;
-	top:0;
-	left:0;
-	text-align:center;
-}
-.waiting_div img{
-	text-align:center;
-	margin-top:50px;
-}
-.waiting_div span{
-	text-align:center;
-	font-weight:bold;
 }
