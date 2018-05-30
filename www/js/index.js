@@ -23,8 +23,6 @@ var app = {
 	{
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
 
-
-		if(adresseActuelle == "")
 		$.ajax({
 			url : 'https://www.colisclub.fr/application/ajax.php',
 			type : 'GET',
@@ -1049,7 +1047,7 @@ function load_connexion()
 			dataType : 'html',
 			success: function (html) 
 			{
-				window.location.reload(true);
+				
 			},
 			error: function(resultat, statut, erreur) {
 				alert("erreur");
